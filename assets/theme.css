@@ -324,6 +324,20 @@ ul.clean li {
   text-align: center;
 }
 
+.site-footer p {
+  margin: 0.45rem 0;
+}
+
+.site-footer img {
+  display: inline-block;
+  margin: 0.2rem auto 0;
+}
+
+.site-footer .footer-meta {
+  margin-top: 0.8rem;
+  font-size: 0.84rem;
+}
+
 @media (max-width: 920px) {
   .layout {
     grid-template-columns: 1fr;
@@ -345,5 +359,163 @@ ul.clean li {
 
   .stats {
     grid-template-columns: 1fr;
+  }
+}
+
+.workbench-section .lead {
+  max-width: 46rem;
+}
+
+.workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  grid-template-rows: auto auto;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+}
+
+.wb-main {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.wb-side {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wb-timeline {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  border-top: 1px solid var(--line);
+  padding-top: 0.65rem;
+}
+
+.wb-viewport {
+  position: relative;
+  background: #0b1c2c;
+  border-radius: 0.55rem;
+  overflow: hidden;
+  min-height: 16rem;
+}
+
+.wb-viewport img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wb-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.wb-tool {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.wb-args,
+.wb-intent {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.wb-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.wb-rail button,
+.wb-controls button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 0.45rem;
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+}
+
+.wb-rail button:hover,
+.wb-controls button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.wb-rail button.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: #115e59;
+}
+
+.wb-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.wb-film {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.wb-film button {
+  flex: 0 0 auto;
+  border: 2px solid transparent;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 0.35rem;
+}
+
+.wb-film button.active {
+  border-color: var(--accent);
+}
+
+.wb-film img {
+  width: 4.5rem;
+  height: 3rem;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.25rem;
+}
+
+.workbench-meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@media (max-width: 920px) {
+  .workbench {
+    grid-template-columns: 1fr;
+  }
+
+  .wb-side {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .wb-timeline {
+    grid-row: 3;
   }
 }

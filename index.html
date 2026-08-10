@@ -36,6 +36,7 @@
   <div class="layout">
     <aside class="toc" aria-label="On this page">
       <p>On this page</p>
+      <a href="#workbench">0. Workbench</a>
       <a href="#problem">1. Topology amnesia</a>
       <a href="#method">2. NetCanvas</a>
       <a href="#results">3. Results</a>
@@ -44,13 +45,58 @@
     </aside>
 
     <main>
+      <section id="workbench" class="workbench-section">
+        <h2>Interactive Visual Working Memory</h2>
+        <p class="lead">
+          Replay of a recorded <strong>M3</strong> trajectory (pass).
+          Left: probe-synchronized topology. Right: navigation tools the agent used
+          (overview / focus / path / inspect). Bottom: ordered frames — same sequence as the GIF.
+        </p>
+        <p class="workbench-meta" data-workbench-meta></p>
+
+        <div class="workbench" data-workbench>
+          <div class="wb-main">
+            <div class="wb-viewport">
+              <img data-wb-image alt="Topology working memory frame" />
+              <div class="wb-hotspots" data-wb-hotspots hidden></div>
+            </div>
+            <div class="wb-attr" data-wb-attr hidden></div>
+          </div>
+          <aside class="wb-side">
+            <div class="wb-act">
+              <p class="wb-label">Agent tool</p>
+              <p class="wb-tool" data-wb-tool></p>
+              <p class="wb-args" data-wb-args></p>
+              <p class="wb-intent" data-wb-intent></p>
+            </div>
+            <div class="wb-rail" aria-label="Tool chain">
+              <p class="wb-label">Tool chain</p>
+              <button type="button" data-wb-tag="overview">Overview</button>
+              <button type="button" data-wb-tag="focus">Focus</button>
+              <button type="button" data-wb-tag="path">Path</button>
+              <button type="button" data-wb-tag="inspect">Inspect</button>
+              <button type="button" data-wb-tag="physical">Plane</button>
+            </div>
+          </aside>
+          <div class="wb-timeline">
+            <div class="wb-controls">
+              <button type="button" data-wb-play>Play</button>
+              <button type="button" data-wb-prev>Prev</button>
+              <button type="button" data-wb-next>Next</button>
+              <span data-wb-index></span>
+              <a href="assets/demo/demo.gif" target="_blank" rel="noopener">Open GIF</a>
+            </div>
+            <div class="wb-film" data-wb-film></div>
+          </div>
+        </div>
+      </section>
+
       <section id="problem">
         <h2>Topology amnesia</h2>
         <p class="lead">
-          Cross-device IP fault localization needs a stable spatial map. Mainstream
-          LLM agents keep CLI output in textual context, so adjacency, path forks,
-          and regional hierarchy must be rebuilt from scattered logs at every hop.
-          We call this failure mode <em>topology amnesia</em>.
+          Cross-device IP fault localization needs a stable spatial map. Text-only
+          agents rebuild adjacency and path forks from scattered CLI logs at every hop—
+          <em>topology amnesia</em>. NetCanvas keeps a probe-synchronized topology image instead.
         </p>
         <figure>
           <img src="figures/teaser.png" alt="Text-only agent vs interactive visual agent" />
@@ -64,19 +110,23 @@
       <section id="method">
         <h2>NetCanvas</h2>
         <p>
-          NetCanvas is an interactive visual runtime that maintains
-          <strong>Interactive Visual Working Memory</strong>—topology images that
-          update with probing. The agent navigates this view on demand (zoom,
-          path highlight, attribute inspection) instead of re-deriving structure
-          from raw CLI text.
+          Two coupled pieces — not only the ingest loop.
+          Use the workbench above to feel both.
         </p>
 
+        <h3>1. Probe → Ingest → Render → Act</h3>
         <div class="loop" aria-label="Runtime loop">
           <span>Probe</span>
           <span>Ingest</span>
           <span>Render</span>
           <span>Act</span>
         </div>
+        <ul class="clean">
+          <li><strong>Probe</strong> — CLI on devices / simulator.</li>
+          <li><strong>Ingest</strong> — merge observations into growing graph state <em>G<sub>t</sub></em>.</li>
+          <li><strong>Render</strong> — project domain-aligned topology image + Manifest handles as <em>W<sub>t</sub></em>.</li>
+          <li><strong>Act</strong> — reason over visual working memory; choose next tool.</li>
+        </ul>
 
         <figure>
           <img src="figures/architecture.png" alt="NetCanvas architecture" />
@@ -86,13 +136,12 @@
           </figcaption>
         </figure>
 
-        <h3>Probe → Ingest → Render → Act</h3>
-        <ul class="clean">
-          <li><strong>Probe</strong> — run CLI on devices / simulator.</li>
-          <li><strong>Ingest</strong> — parse observations into a growing graph state <em>G<sub>t</sub></em>.</li>
-          <li><strong>Render</strong> — project a domain-aligned topology image plus Manifest handles.</li>
-          <li><strong>Act</strong> — reason over the visual working memory and choose the next tool call.</li>
-        </ul>
+        <h3>2. Multi-granularity interaction</h3>
+        <p>
+          The agent does not dump full <em>G<sub>t</sub></em> into context.
+          It pulls slices via overview / local focus / path highlight / attribute inspect
+          (and physical · logical · security planes) — the same controls mirrored in the workbench rail.
+        </p>
 
         <figure>
           <img src="figures/workflow.png" alt="M3 interactive visual workflow" />
@@ -182,9 +231,27 @@
   </div>
 
   <footer class="site-footer">
-    NetCanvas project page · static site for GitHub Pages (<code>/netcanvas/</code> subpath)
+    <p>
+      This project page and paper materials are licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+    </p>
+    <p>
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img
+          alt="Creative Commons License"
+          src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png"
+          width="88"
+          height="31"
+        />
+      </a>
+    </p>
+    <p class="footer-meta">
+      NetCanvas ·
+      <a href="https://caimanjing.github.io/netcanvas/">caimanjing.github.io/netcanvas</a>
+      · see <a href="LICENSE">LICENSE</a>
+    </p>
   </footer>
 
-  <script src="assets/site.js"></script>
+  <script type="module" src="assets/site.js"></script>
 </body>
 </html>
