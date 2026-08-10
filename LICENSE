@@ -1,0 +1,19 @@
+License
+=======
+
+This repository uses different licenses for different materials.
+
+Project page and paper materials
+--------------------------------
+Everything under `docs/` (project page HTML/CSS/JS, figures, demo frames,
+and related paper presentation materials) is licensed under
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0).
+
+See `docs/LICENSE` and https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Source code
+-----------
+Runnable NetCanvas source code is not included yet. When code is added,
+it will carry a separate software license (for example MIT or Apache-2.0)
+declared in this file or beside the corresponding source tree.

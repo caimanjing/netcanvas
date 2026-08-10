@@ -6,7 +6,7 @@ import {
   normalizeDemo,
   primaryPlane,
   primaryTool,
-} from "../assets/workbench.js";
+} from "../docs/assets/workbench.js";
 
 const steps = [
   { tool: "flush_and_render", tags: ["physical"], plane: "physical" },
