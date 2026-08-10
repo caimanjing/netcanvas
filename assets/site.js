@@ -175,7 +175,7 @@ async function initWorkbench() {
     if (timer) {
       clearInterval(timer);
       timer = null;
-      playBtn.textContent = "Play plane";
+      playBtn.textContent = "Autoplay plane";
       return;
     }
     playBtn.textContent = "Pause";

@@ -88,12 +88,16 @@
           </aside>
           <div class="wb-timeline">
             <div class="wb-controls">
-              <button type="button" data-wb-play>Play plane</button>
-              <button type="button" data-wb-prev>Prev</button>
-              <button type="button" data-wb-next>Next</button>
+              <button type="button" data-wb-play title="Auto-advance frames in the selected plane">Autoplay plane</button>
+              <button type="button" data-wb-prev title="Previous frame in this plane">← Prev frame</button>
+              <button type="button" data-wb-next title="Next frame in this plane">Next frame →</button>
               <span data-wb-index></span>
-              <a href="assets/demo/demo.gif" target="_blank" rel="noopener">Open GIF</a>
+              <a href="assets/demo/demo.gif" target="_blank" rel="noopener">Open full GIF</a>
             </div>
+            <p class="wb-hint">
+              Filmstrip = ordered renders on the <em>selected plane only</em>.
+              Autoplay / Prev / Next move inside that plane — they do not run CLI.
+            </p>
             <div class="wb-film" data-wb-film></div>
           </div>
         </div>
