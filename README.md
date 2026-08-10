@@ -18,6 +18,20 @@ python -m http.server 8080
 
 打开 <http://localhost:8080>。
 
+## 再生工作台 Demo（M3 + pass only）
+
+```powershell
+cd "D:\work\memory攻关\netcanvas-site"
+python scripts/test_export_demo_trajectory.py
+python scripts/export_demo_trajectory.py `
+  --run "D:\work\memory攻关\code\demo\memory-experiment\runs\<M3_PASS_RUN_ID>" `
+  --out "assets/demo" `
+  --max-steps 20
+node scripts/test_workbench_logic.mjs
+```
+
+脚本会拒绝 `M3-0` 与未通过轨迹。当前默认素材见 `assets/demo/SOURCE.txt`。
+
 子路径模拟（可选）：
 
 ```powershell
@@ -52,11 +66,18 @@ git push -u origin main
 - BibTeX 的 `month` / `day`（当前按站点创建日占位）
 - 如需双盲，暂勿公开作者信息或延迟开站
 
+## License
+
+本仓库的项目页与论文材料采用
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+（见根目录 `LICENSE`）。不包含可运行代码。
+
 ## 目录
 
 ```text
 netcanvas-site/
 ├── .nojekyll
+├── LICENSE                 # CC BY-NC-SA 4.0
 ├── index.html
 ├── assets/
 │   ├── theme.css
