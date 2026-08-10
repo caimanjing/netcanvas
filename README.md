@@ -77,11 +77,20 @@ git push -u origin main
 ```text
 netcanvas-site/
 ├── .nojekyll
-├── LICENSE                 # CC BY-NC-SA 4.0
+├── LICENSE
 ├── index.html
 ├── assets/
 │   ├── theme.css
-│   └── site.js
+│   ├── site.js
+│   ├── workbench.js
+│   └── demo/                 # M3+pass 导出帧 + steps.json + demo.gif
+├── scripts/
+│   ├── export_demo_trajectory.py
+│   ├── test_export_demo_trajectory.py
+│   └── test_workbench_logic.mjs
+├── docs/superpowers/
+│   ├── specs/
+│   └── plans/
 └── figures/
     ├── teaser.png
     ├── architecture.png
