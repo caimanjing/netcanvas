@@ -1,26 +1,44 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_control_focus_AGG_SW_03.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_control_focus_Core_SW_01.png",
   "html_path": null,
   "view_id": "control_focus",
   "plane_mode": "control",
-  "caption": "view=control_focus; plane=control; nodes=1; edges=0; focus=AGG_SW_03",
-  "nodes_shown": 1,
-  "edges_shown": 0,
+  "caption": "view=control_focus; plane=control; nodes=2; edges=1; focus=Core_SW_01",
+  "nodes_shown": 2,
+  "edges_shown": 1,
   "graph_snap": {
     "nodes": {
-      "AGG_SW_03": {
-        "id": "AGG_SW_03",
+      "Core_SW_01": {
+        "id": "Core_SW_01",
         "label": "Device",
         "properties": {
           "global_stp_enabled": "true",
-          "name": "AGG_SW_03",
+          "ha_protocol": "VRRP",
+          "ha_state": "enabled",
+          "name": "Core_SW_01",
           "plane": "overlay",
           "stp_mode": "enabled",
           "viz": {
             "layout": {
-              "x": -1032.0,
-              "y": 55.0,
+              "x": -1195.0,
+              "y": -251.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "EMPLOYEE_WIFI_CLIENT01": {
+        "id": "EMPLOYEE_WIFI_CLIENT01",
+        "label": "Device",
+        "properties": {
+          "name": "EMPLOYEE_WIFI_CLIENT01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -2309.0,
+              "y": 643.0,
               "source": "gns3_canvas_stamp"
             }
           },
@@ -28,35 +46,86 @@
         }
       }
     },
-    "edges": []
+    "edges": [
+      {
+        "source": "EMPLOYEE_WIFI_CLIENT01",
+        "target": "Core_SW_01",
+        "type": "CONTROL_LINK",
+        "properties": {
+          "next_hop_ip": "10.1.110.254",
+          "plane": "control",
+          "source_type": "NEXT_HOP_DEVICE",
+          "rendered_type": "NEXT_HOP_DEVICE",
+          "_viz_edge_label": "0.0.0.0/0 via 10.1.110.254"
+        }
+      }
+    ]
   },
   "model_node_index": [
     {
-      "id": "AGG_SW_03",
-      "display": "AGG_SW_03",
+      "id": "Core_SW_01",
+      "display": "Core_SW_01",
       "label": "Device",
       "properties": {
         "global_stp_enabled": "true",
-        "name": "AGG_SW_03",
+        "ha_protocol": "VRRP",
+        "ha_state": "enabled",
+        "name": "Core_SW_01",
         "plane": "overlay",
         "stp_mode": "enabled",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
-        "x": -1032.0,
-        "y": 55.0,
+        "x": -1195.0,
+        "y": -251.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 0,
-      "neighbors": []
+      "degree": 1,
+      "neighbors": [
+        "EMPLOYEE_WIFI_CLIENT01"
+      ]
+    },
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "display": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "Device",
+      "properties": {
+        "name": "EMPLOYEE_WIFI_CLIENT01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -2309.0,
+        "y": 643.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "Core_SW_01"
+      ]
     }
   ],
-  "model_edge_index": [],
+  "model_edge_index": [
+    {
+      "index": 0,
+      "source": "EMPLOYEE_WIFI_CLIENT01",
+      "target": "Core_SW_01",
+      "type": "CONTROL_LINK",
+      "label": "0.0.0.0/0 via 10.1.110.254",
+      "properties": {
+        "next_hop_ip": "10.1.110.254",
+        "plane": "control",
+        "source_type": "NEXT_HOP_DEVICE",
+        "rendered_type": "NEXT_HOP_DEVICE",
+        "_viz_edge_label": "0.0.0.0/0 via 10.1.110.254"
+      }
+    }
+  ],
   "vis_nodes": [
     {
-      "id": "AGG_SW_03",
-      "label": "AGG_SW_03",
-      "title": "Device\nAGG_SW_03",
+      "id": "Core_SW_01",
+      "label": "Core_SW_01",
+      "title": "Device\nCore_SW_01",
       "shape": "box",
       "size": 14,
       "color": {
@@ -93,14 +162,74 @@
         "x": 0,
         "y": 0
       },
-      "x": -433.0,
-      "y": 23.0,
+      "x": -649.0,
+      "y": -120.0,
+      "fixed": false
+    },
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "EMPLOYEE_WIFI_CLIENT01",
+      "title": "Device\nEMPLOYEE_WIFI_CLIENT01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -1003.0,
+      "y": 268.0,
       "fixed": false
     }
   ],
-  "vis_edges": [],
+  "vis_edges": [
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01|CONTROL_LINK|Core_SW_01|0",
+      "from": "EMPLOYEE_WIFI_CLIENT01",
+      "to": "Core_SW_01",
+      "label": "0.0.0.0/0 via 10.1.110.254",
+      "title": "CONTROL_LINK\n0.0.0.0/0 via 10.1.110.254",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    }
+  ],
   "focus_nodes": [
-    "AGG_SW_03"
+    "Core_SW_01"
   ],
   "highlight_path": [],
   "agent_path": [],
@@ -108,18 +237,64 @@
   "agent_path_segment_linked": [],
   "property_overlay": [
     {
-      "node": "AGG_SW_03",
-      "label": "AGG_SW_03",
+      "node": "Core_SW_01:Vlanif10:vrrp:1",
+      "label": "Core_SW_01:Vlanif10:vrrp:1",
       "fields": {
-        "global_stp_enabled": "true",
-        "plane": "overlay"
+        "virtual_ip": "10.1.10.254",
+        "vrid": 1,
+        "priority": 120
+      }
+    },
+    {
+      "node": "Core_SW_01:Vlanif110:vrrp:5",
+      "label": "Core_SW_01:Vlanif110:vrrp:5",
+      "fields": {
+        "virtual_ip": "10.1.110.254",
+        "vrid": 5,
+        "priority": 120
+      }
+    },
+    {
+      "node": "Core_SW_01:Vlanif120:vrrp:6",
+      "label": "Core_SW_01:Vlanif120:vrrp:6",
+      "fields": {
+        "virtual_ip": "10.1.120.254",
+        "vrid": 6,
+        "priority": 120
+      }
+    },
+    {
+      "node": "Core_SW_01:Vlanif20:vrrp:2",
+      "label": "Core_SW_01:Vlanif20:vrrp:2",
+      "fields": {
+        "virtual_ip": "10.1.20.254",
+        "vrid": 2,
+        "priority": 120
+      }
+    },
+    {
+      "node": "Core_SW_01:Vlanif30:vrrp:3",
+      "label": "Core_SW_01:Vlanif30:vrrp:3",
+      "fields": {
+        "virtual_ip": "10.1.30.254",
+        "vrid": 3,
+        "priority": 110
+      }
+    },
+    {
+      "node": "Core_SW_01:Vlanif40:vrrp:4",
+      "label": "Core_SW_01:Vlanif40:vrrp:4",
+      "fields": {
+        "virtual_ip": "10.1.40.254",
+        "vrid": 4,
+        "priority": 110
       }
     }
   ],
   "view_spec": {
     "view_id": "control_focus",
     "focus_nodes": [
-      "AGG_SW_03"
+      "Core_SW_01"
     ],
     "highlight_path": [],
     "agent_path": [],
@@ -131,7 +306,7 @@
     ],
     "show_protocols": true,
     "viewport": "subgraph",
-    "hops": 5,
+    "hops": 10,
     "device_backbone": false,
     "physical_plane": false,
     "plane_mode": "control",
@@ -139,7 +314,7 @@
     "annotations": [],
     "property_overlay_nodes": [],
     "legend": true,
-    "title": "Control focus: AGG_SW_03",
+    "title": "Control focus: Core_SW_01",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

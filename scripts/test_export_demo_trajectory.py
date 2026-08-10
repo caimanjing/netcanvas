@@ -3,6 +3,8 @@ import unittest
 from export_demo_trajectory import (
     assert_m3_passed,
     find_next_by_tag,
+    is_multi_node_frame,
+    nodes_shown_from_manifest,
     subsample_keep_tags,
     tags_from_name,
 )
@@ -49,6 +51,22 @@ class TestExport(unittest.TestCase):
         ]
         self.assertEqual(find_next_by_tag(steps, 0, "path"), 2)
         self.assertEqual(find_next_by_tag(steps, 2, "overview"), 0)
+
+    def test_nodes_shown_and_filter(self):
+        import json
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            png = root / "a.png"
+            man = root / "a.json"
+            png.write_bytes(b"")
+            man.write_text(json.dumps({"nodes_shown": 1, "edges_shown": 0}), encoding="utf-8")
+            self.assertEqual(nodes_shown_from_manifest(man), 1)
+            self.assertFalse(is_multi_node_frame(png, min_nodes=2))
+            man.write_text(json.dumps({"nodes_shown": 6, "edges_shown": 5}), encoding="utf-8")
+            self.assertTrue(is_multi_node_frame(png, min_nodes=2))
 
 
 if __name__ == "__main__":

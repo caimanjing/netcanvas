@@ -1,14 +1,112 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_physical_overview_overview.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_AGG_SW_01_physical_topology_inspect_edge_EMPLOYEE_WIFI_CLIENT01.png",
   "html_path": null,
-  "view_id": "physical_overview",
+  "view_id": "physical_inspect_edge_EMPLOYEE_WIFI_CLIENT01",
   "plane_mode": "physical",
-  "caption": "view=physical_overview; plane=physical; nodes=1; edges=0",
-  "nodes_shown": 1,
-  "edges_shown": 0,
+  "caption": "view=physical_inspect_edge_EMPLOYEE_WIFI_CLIENT01; plane=physical; nodes=7; edges=5; focus=EMPLOYEE_WIFI_CLIENT01",
+  "nodes_shown": 7,
+  "edges_shown": 5,
   "graph_snap": {
     "nodes": {
+      "AGG_SW_01": {
+        "id": "AGG_SW_01",
+        "label": "Device",
+        "properties": {
+          "global_stp_enabled": "true",
+          "name": "AGG_SW_01",
+          "plane": "overlay",
+          "stp_mode": "enabled",
+          "viz": {
+            "layout": {
+              "x": -1874.0,
+              "y": 45.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "Core_SW_01": {
+        "id": "Core_SW_01",
+        "label": "Device",
+        "properties": {
+          "name": "Core_SW_01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1195.0,
+              "y": -251.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "Core_SW_02": {
+        "id": "Core_SW_02",
+        "label": "Device",
+        "properties": {
+          "name": "Core_SW_02",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -664.0,
+              "y": -269.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "HQ_MKT_AP01": {
+        "id": "HQ_MKT_AP01",
+        "label": "Device",
+        "properties": {
+          "name": "HQ_MKT_AP01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -2167.0,
+              "y": 394.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "HQ_MKT_Client01": {
+        "id": "HQ_MKT_Client01",
+        "label": "Device",
+        "properties": {
+          "name": "HQ_MKT_Client01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1942.0,
+              "y": 258.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "HQ_MKT_PC01": {
+        "id": "HQ_MKT_PC01",
+        "label": "Device",
+        "properties": {
+          "name": "HQ_MKT_PC01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -2231.0,
+              "y": 156.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
       "EMPLOYEE_WIFI_CLIENT01": {
         "id": "EMPLOYEE_WIFI_CLIENT01",
         "label": "Device",
@@ -26,9 +124,203 @@
         }
       }
     },
-    "edges": []
+    "edges": [
+      {
+        "source": "AGG_SW_01",
+        "target": "Core_SW_01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "from_description": "to_Core_SW_01_GE1/0/3",
+          "local_device": "AGG_SW_01",
+          "local_port": "HundredGigE1/0/1",
+          "plane": "physical",
+          "remote_device": "Core_SW_01",
+          "remote_port": "GE1/0/3",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "_viz_original_source": "AGG_SW_01",
+          "_viz_original_target": "Core_SW_01",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "HundredGigE1/0/1 ↔ GE1/0/3"
+          ],
+          "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/3",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "AGG_SW_01",
+        "target": "Core_SW_02",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "from_description": "to_Core_SW_02_GE1/0/3",
+          "local_device": "AGG_SW_01",
+          "local_port": "HundredGigE1/0/2",
+          "plane": "physical",
+          "remote_device": "Core_SW_02",
+          "remote_port": "GE1/0/3",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "_viz_original_source": "AGG_SW_01",
+          "_viz_original_target": "Core_SW_02",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "HundredGigE1/0/2 ↔ GE1/0/3"
+          ],
+          "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/3",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "AGG_SW_01",
+        "target": "HQ_MKT_PC01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "from_description": "to_HQ_MKT_PC01_eth0",
+          "local_device": "AGG_SW_01",
+          "local_port": "HundredGigE1/0/3",
+          "plane": "physical",
+          "remote_device": "HQ_MKT_PC01",
+          "remote_port": "eth0",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "_viz_original_source": "AGG_SW_01",
+          "_viz_original_target": "HQ_MKT_PC01",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "HundredGigE1/0/3 ↔ eth0"
+          ],
+          "_viz_edge_label": "HundredGigE1/0/3 ↔ eth0",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "AGG_SW_01",
+        "target": "HQ_MKT_AP01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "from_description": "to_HQ_MKT_AP01_GE1/0/0",
+          "local_device": "AGG_SW_01",
+          "local_port": "HundredGigE1/0/4",
+          "plane": "physical",
+          "remote_device": "HQ_MKT_AP01",
+          "remote_port": "GE1/0/0",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "_viz_original_source": "AGG_SW_01",
+          "_viz_original_target": "HQ_MKT_AP01",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "HundredGigE1/0/4 ↔ GE1/0/0"
+          ],
+          "_viz_edge_label": "HundredGigE1/0/4 ↔ GE1/0/0",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "AGG_SW_01",
+        "target": "HQ_MKT_Client01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "from_description": "to_HQ_MKT_Client01_eth0",
+          "local_device": "AGG_SW_01",
+          "local_port": "HundredGigE1/0/5",
+          "plane": "physical",
+          "remote_device": "HQ_MKT_Client01",
+          "remote_port": "eth0",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "_viz_original_source": "AGG_SW_01",
+          "_viz_original_target": "HQ_MKT_Client01",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "HundredGigE1/0/5 ↔ eth0"
+          ],
+          "_viz_edge_label": "HundredGigE1/0/5 ↔ eth0",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      }
+    ]
   },
   "model_node_index": [
+    {
+      "id": "AGG_SW_01",
+      "display": "AGG_SW_01",
+      "label": "Device",
+      "properties": {
+        "global_stp_enabled": "true",
+        "name": "AGG_SW_01",
+        "plane": "overlay",
+        "stp_mode": "enabled",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1874.0,
+        "y": 45.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 5,
+      "neighbors": [
+        "Core_SW_01",
+        "Core_SW_02",
+        "HQ_MKT_AP01",
+        "HQ_MKT_Client01",
+        "HQ_MKT_PC01"
+      ]
+    },
+    {
+      "id": "Core_SW_01",
+      "display": "Core_SW_01",
+      "label": "Device",
+      "properties": {
+        "name": "Core_SW_01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1195.0,
+        "y": -251.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "AGG_SW_01"
+      ]
+    },
+    {
+      "id": "Core_SW_02",
+      "display": "Core_SW_02",
+      "label": "Device",
+      "properties": {
+        "name": "Core_SW_02",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -664.0,
+        "y": -269.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "AGG_SW_01"
+      ]
+    },
     {
       "id": "EMPLOYEE_WIFI_CLIENT01",
       "display": "EMPLOYEE_WIFI_CLIENT01",
@@ -45,14 +337,197 @@
       },
       "degree": 0,
       "neighbors": []
+    },
+    {
+      "id": "HQ_MKT_AP01",
+      "display": "HQ_MKT_AP01",
+      "label": "Device",
+      "properties": {
+        "name": "HQ_MKT_AP01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -2167.0,
+        "y": 394.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "AGG_SW_01"
+      ]
+    },
+    {
+      "id": "HQ_MKT_Client01",
+      "display": "HQ_MKT_Client01",
+      "label": "Device",
+      "properties": {
+        "name": "HQ_MKT_Client01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1942.0,
+        "y": 258.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "AGG_SW_01"
+      ]
+    },
+    {
+      "id": "HQ_MKT_PC01",
+      "display": "HQ_MKT_PC01",
+      "label": "Device",
+      "properties": {
+        "name": "HQ_MKT_PC01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -2231.0,
+        "y": 156.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 1,
+      "neighbors": [
+        "AGG_SW_01"
+      ]
     }
   ],
-  "model_edge_index": [],
+  "model_edge_index": [
+    {
+      "index": 0,
+      "source": "AGG_SW_01",
+      "target": "Core_SW_01",
+      "type": "PHYSICAL_LINK",
+      "label": "HundredGigE1/0/1 ↔ GE1/0/3",
+      "properties": {
+        "from_description": "to_Core_SW_01_GE1/0/3",
+        "local_device": "AGG_SW_01",
+        "local_port": "HundredGigE1/0/1",
+        "plane": "physical",
+        "remote_device": "Core_SW_01",
+        "remote_port": "GE1/0/3",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "_viz_original_source": "AGG_SW_01",
+        "_viz_original_target": "Core_SW_01",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/3",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 1,
+      "source": "AGG_SW_01",
+      "target": "Core_SW_02",
+      "type": "PHYSICAL_LINK",
+      "label": "HundredGigE1/0/2 ↔ GE1/0/3",
+      "properties": {
+        "from_description": "to_Core_SW_02_GE1/0/3",
+        "local_device": "AGG_SW_01",
+        "local_port": "HundredGigE1/0/2",
+        "plane": "physical",
+        "remote_device": "Core_SW_02",
+        "remote_port": "GE1/0/3",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "_viz_original_source": "AGG_SW_01",
+        "_viz_original_target": "Core_SW_02",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/3",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 2,
+      "source": "AGG_SW_01",
+      "target": "HQ_MKT_PC01",
+      "type": "PHYSICAL_LINK",
+      "label": "HundredGigE1/0/3 ↔ eth0",
+      "properties": {
+        "from_description": "to_HQ_MKT_PC01_eth0",
+        "local_device": "AGG_SW_01",
+        "local_port": "HundredGigE1/0/3",
+        "plane": "physical",
+        "remote_device": "HQ_MKT_PC01",
+        "remote_port": "eth0",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "_viz_original_source": "AGG_SW_01",
+        "_viz_original_target": "HQ_MKT_PC01",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "HundredGigE1/0/3 ↔ eth0",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 3,
+      "source": "AGG_SW_01",
+      "target": "HQ_MKT_AP01",
+      "type": "PHYSICAL_LINK",
+      "label": "HundredGigE1/0/4 ↔ GE1/0/0",
+      "properties": {
+        "from_description": "to_HQ_MKT_AP01_GE1/0/0",
+        "local_device": "AGG_SW_01",
+        "local_port": "HundredGigE1/0/4",
+        "plane": "physical",
+        "remote_device": "HQ_MKT_AP01",
+        "remote_port": "GE1/0/0",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "_viz_original_source": "AGG_SW_01",
+        "_viz_original_target": "HQ_MKT_AP01",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "HundredGigE1/0/4 ↔ GE1/0/0",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 4,
+      "source": "AGG_SW_01",
+      "target": "HQ_MKT_Client01",
+      "type": "PHYSICAL_LINK",
+      "label": "HundredGigE1/0/5 ↔ eth0",
+      "properties": {
+        "from_description": "to_HQ_MKT_Client01_eth0",
+        "local_device": "AGG_SW_01",
+        "local_port": "HundredGigE1/0/5",
+        "plane": "physical",
+        "remote_device": "HQ_MKT_Client01",
+        "remote_port": "eth0",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "_viz_original_source": "AGG_SW_01",
+        "_viz_original_target": "HQ_MKT_Client01",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "HundredGigE1/0/5 ↔ eth0",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    }
+  ],
   "vis_nodes": [
     {
-      "id": "EMPLOYEE_WIFI_CLIENT01",
-      "label": "EMPLOYEE_WIFI_CLIENT01",
-      "title": "Device\nEMPLOYEE_WIFI_CLIENT01",
+      "id": "AGG_SW_01",
+      "label": "AGG_SW_01",
+      "title": "Device\nAGG_SW_01",
       "shape": "box",
       "size": 14,
       "color": {
@@ -82,21 +557,365 @@
       "shapeProperties": {
         "borderRadius": 3
       },
+      "x": -787.0,
+      "y": 18.0,
+      "fixed": false
+    },
+    {
+      "id": "Core_SW_01",
+      "label": "Core_SW_01",
+      "title": "Device\nCore_SW_01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -649.0,
+      "y": -120.0,
+      "fixed": false
+    },
+    {
+      "id": "Core_SW_02",
+      "label": "Core_SW_02",
+      "title": "Device\nCore_SW_02",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -278.0,
+      "y": -112.0,
+      "fixed": false
+    },
+    {
+      "id": "HQ_MKT_AP01",
+      "label": "HQ_MKT_AP01",
+      "title": "Device\nHQ_MKT_AP01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -960.0,
+      "y": 143.0,
+      "fixed": false
+    },
+    {
+      "id": "HQ_MKT_Client01",
+      "label": "HQ_MKT_Client01",
+      "title": "Device\nHQ_MKT_Client01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -843.0,
+      "y": 161.0,
+      "fixed": false
+    },
+    {
+      "id": "HQ_MKT_PC01",
+      "label": "HQ_MKT_PC01",
+      "title": "Device\nHQ_MKT_PC01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -974.0,
+      "y": 70.0,
+      "fixed": false
+    },
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "EMPLOYEE_WIFI_CLIENT01",
+      "title": "Device\nEMPLOYEE_WIFI_CLIENT01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#1a3f6e",
+        "border": "#facc15",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 4.0,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
+        "size": 14,
+        "x": 0,
+        "y": 0
+      },
       "x": -1003.0,
       "y": 268.0,
       "fixed": false
     }
   ],
-  "vis_edges": [],
-  "focus_nodes": [],
+  "vis_edges": [
+    {
+      "id": "AGG_SW_01|PHYSICAL_LINK|Core_SW_01|0",
+      "from": "AGG_SW_01",
+      "to": "Core_SW_01",
+      "label": "HundredGigE1/0/1 ↔ GE1/0/3",
+      "title": "PHYSICAL_LINK\nHundredGigE1/0/1 ↔ GE1/0/3",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "AGG_SW_01|PHYSICAL_LINK|Core_SW_02|1",
+      "from": "AGG_SW_01",
+      "to": "Core_SW_02",
+      "label": "HundredGigE1/0/2 ↔ GE1/0/3",
+      "title": "PHYSICAL_LINK\nHundredGigE1/0/2 ↔ GE1/0/3",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "AGG_SW_01|PHYSICAL_LINK|HQ_MKT_PC01|2",
+      "from": "AGG_SW_01",
+      "to": "HQ_MKT_PC01",
+      "label": "HundredGigE1/0/3 ↔ eth0",
+      "title": "PHYSICAL_LINK\nHundredGigE1/0/3 ↔ eth0",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "AGG_SW_01|PHYSICAL_LINK|HQ_MKT_AP01|3",
+      "from": "AGG_SW_01",
+      "to": "HQ_MKT_AP01",
+      "label": "HundredGigE1/0/4 ↔ GE1/0/0",
+      "title": "PHYSICAL_LINK\nHundredGigE1/0/4 ↔ GE1/0/0",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "AGG_SW_01|PHYSICAL_LINK|HQ_MKT_Client01|4",
+      "from": "AGG_SW_01",
+      "to": "HQ_MKT_Client01",
+      "label": "HundredGigE1/0/5 ↔ eth0",
+      "title": "PHYSICAL_LINK\nHundredGigE1/0/5 ↔ eth0",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    }
+  ],
+  "focus_nodes": [
+    "EMPLOYEE_WIFI_CLIENT01"
+  ],
   "highlight_path": [],
   "agent_path": [],
   "agent_path_segment_connected": [],
   "agent_path_segment_linked": [],
   "property_overlay": [],
   "view_spec": {
-    "view_id": "physical_overview",
-    "focus_nodes": [],
+    "view_id": "physical_inspect_edge_EMPLOYEE_WIFI_CLIENT01",
+    "focus_nodes": [
+      "EMPLOYEE_WIFI_CLIENT01"
+    ],
     "highlight_path": [],
     "agent_path": [],
     "agent_path_segment_connected": [],
@@ -115,7 +934,7 @@
     "annotations": [],
     "property_overlay_nodes": [],
     "legend": true,
-    "title": "Physical topology overview",
+    "title": "inspect edge EMPLOYEE WIFI CLIENT01",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

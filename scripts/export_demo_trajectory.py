@@ -86,6 +86,30 @@ def subsample_keep_tags(steps: list[dict], max_steps: int = 20) -> list[dict]:
     return [steps[i] for i in chosen]
 
 
+def nodes_shown_from_manifest(manifest: Path | None) -> int | None:
+    if manifest is None or not manifest.exists():
+        return None
+    try:
+        data = json.loads(manifest.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    n = data.get("nodes_shown")
+    if isinstance(n, int):
+        return n
+    return None
+
+
+def is_multi_node_frame(png: Path, min_nodes: int = 2) -> bool:
+    """Drop sparse single-node renders — they look empty on the project page."""
+    n = nodes_shown_from_manifest(png.with_suffix(".json"))
+    if n is None:
+        # No manifest: keep only if filename suggests a rich view.
+        tags = tags_from_name(png.name)
+        return bool({"overview", "path", "inspect", "focus"} & set(tags))
+    return n >= min_nodes
+
+
+
 def load_meta(run_dir: Path) -> dict:
     return json.loads((run_dir / "run_meta.json").read_text(encoding="utf-8"))
 
@@ -148,11 +172,15 @@ def build_gif(frame_paths: list[Path], out_gif: Path, duration_ms: int = 900) ->
     )
 
 
-def export_run(run_dir: Path, out_dir: Path, max_steps: int = 20) -> None:
+def export_run(
+    run_dir: Path, out_dir: Path, max_steps: int = 20, min_nodes: int = 2
+) -> None:
     meta = load_meta(run_dir)
     assert_m3_passed(meta)
     run_id = str(meta.get("run_id") or run_dir.name)
-    pngs = collect_pngs(run_dir)
+    pngs = [p for p in collect_pngs(run_dir) if is_multi_node_frame(p, min_nodes=min_nodes)]
+    if not pngs:
+        raise SystemExit(f"no multi-node topology PNGs (min_nodes={min_nodes})")
     qid = "unknown"
     m = re.match(r"(q\d+)_", pngs[0].name, re.I)
     if m:
@@ -227,8 +255,19 @@ def main() -> None:
     ap.add_argument("--run", required=True, type=Path)
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--max-steps", type=int, default=20)
+    ap.add_argument(
+        "--min-nodes",
+        type=int,
+        default=2,
+        help="Skip frames whose Manifest nodes_shown is below this (default: 2).",
+    )
     args = ap.parse_args()
-    export_run(args.run.resolve(), args.out.resolve(), max_steps=args.max_steps)
+    export_run(
+        args.run.resolve(),
+        args.out.resolve(),
+        max_steps=args.max_steps,
+        min_nodes=args.min_nodes,
+    )
     print(f"exported -> {args.out}")
 
 
