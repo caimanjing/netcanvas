@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NetCanvas: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization</title>
+  <meta name="description" content="NetCanvas maintains probe-synchronized topology images as Interactive Visual Working Memory for LLM agents doing IP network fault localization." />
+  <!--
+    Project-page deploy: https://<user>.github.io/netcanvas/
+    Keep asset paths relative so the /netcanvas/ subpath works.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/theme.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="kicker">Project page</p>
+      <h1>NetCanvas</h1>
+      <p class="tagline">
+        Interactive Visual Working Memory for LLM-Based IP Network Fault Localization
+      </p>
+      <p class="links">
+        <!-- Replace # with real URLs when ready -->
+        <a class="primary" href="#">Paper (PDF)</a>
+        <a href="#">arXiv</a>
+        <a href="#">Code</a>
+        <a href="https://caimanjing.github.io/netcanvas/">Project</a>
+        <a href="#cite">Cite</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <a href="#problem">1. Topology amnesia</a>
+      <a href="#method">2. NetCanvas</a>
+      <a href="#results">3. Results</a>
+      <a href="#ablations">4. What drives the gains</a>
+      <a href="#cite">5. Cite</a>
+    </aside>
+
+    <main>
+      <section id="problem">
+        <h2>Topology amnesia</h2>
+        <p class="lead">
+          Cross-device IP fault localization needs a stable spatial map. Mainstream
+          LLM agents keep CLI output in textual context, so adjacency, path forks,
+          and regional hierarchy must be rebuilt from scattered logs at every hop.
+          We call this failure mode <em>topology amnesia</em>.
+        </p>
+        <figure>
+          <img src="figures/teaser.png" alt="Text-only agent vs interactive visual agent" />
+          <figcaption>
+            Text-only agents reconstruct topology from one-dimensional logs;
+            NetCanvas keeps a probe-synchronized topology image in context.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="method">
+        <h2>NetCanvas</h2>
+        <p>
+          NetCanvas is an interactive visual runtime that maintains
+          <strong>Interactive Visual Working Memory</strong>—topology images that
+          update with probing. The agent navigates this view on demand (zoom,
+          path highlight, attribute inspection) instead of re-deriving structure
+          from raw CLI text.
+        </p>
+
+        <div class="loop" aria-label="Runtime loop">
+          <span>Probe</span>
+          <span>Ingest</span>
+          <span>Render</span>
+          <span>Act</span>
+        </div>
+
+        <figure>
+          <img src="figures/architecture.png" alt="NetCanvas architecture" />
+          <figcaption>
+            Architecture: the agent context holds topology images and semantic
+            handles; the backend owns CLI execution, GraphStore updates, and rendering.
+          </figcaption>
+        </figure>
+
+        <h3>Probe → Ingest → Render → Act</h3>
+        <ul class="clean">
+          <li><strong>Probe</strong> — run CLI on devices / simulator.</li>
+          <li><strong>Ingest</strong> — parse observations into a growing graph state <em>G<sub>t</sub></em>.</li>
+          <li><strong>Render</strong> — project a domain-aligned topology image plus Manifest handles.</li>
+          <li><strong>Act</strong> — reason over the visual working memory and choose the next tool call.</li>
+        </ul>
+
+        <figure>
+          <img src="figures/workflow.png" alt="M3 interactive visual workflow" />
+          <figcaption>
+            Interactive visual workflow: the agent pulls local slices of topology
+            as diagnosis proceeds.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="results">
+        <h2>Results on CTBench</h2>
+        <p>
+          Evaluated on the 66-question fault localization subset of CTBench,
+          without preloading the physical topology unless noted.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>54.5%</strong>
+            <span>Interactive visual (M3) pass@66</span>
+          </div>
+          <div class="stat">
+            <strong>37.9%</strong>
+            <span>Structured-graph baseline</span>
+          </div>
+          <div class="stat">
+            <strong>30.3%</strong>
+            <span>Text-only baseline</span>
+          </div>
+        </div>
+
+        <p>
+          With physical topology preload, the interactive visual chain further
+          reaches <strong>63.6%</strong>, and uses fewer average probing steps than
+          text-only / structured-graph baselines. The advantage also persists under
+          an additional multimodal LLM backbone.
+        </p>
+
+        <figure>
+          <img src="figures/results.png" alt="Overall pass rates comparison" />
+          <figcaption>Main comparison across working-memory representations.</figcaption>
+        </figure>
+      </section>
+
+      <section id="ablations">
+        <h2>What drives the gains</h2>
+        <p>
+          Ablations attribute the benefit to two design choices:
+        </p>
+        <ul class="clean">
+          <li><strong>Probe-synchronized interactive views</strong> beat one-shot static global snapshots.</li>
+          <li><strong>Domain-aligned layouts</strong> beat generic force-directed layouts.</li>
+        </ul>
+        <figure>
+          <img src="figures/ablation.png" alt="Static vs dynamic visual memory" />
+          <figcaption>
+            Static global snapshots vs probe-synchronized interactive views.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="cite">
+        <h2>Cite this work</h2>
+        <div class="citation">
+          <div class="citation-bar">
+            <span>BibTeX</span>
+            <button type="button" data-copy-bibtex>Copy</button>
+          </div>
+          <pre><code id="bibtex-code">@misc{netcanvas2026,
+  title  = {{NetCanvas}: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization},
+  author = {Cai, Manjing and Wu, Chenwei and You, Qiheng and Sun, Weijian and Chen, Xin},
+  year   = {2026},
+  month  = {aug},
+  day    = {10},
+  url    = {https://caimanjing.github.io/netcanvas/}
+}</code></pre>
+        </div>
+        <p class="note">
+          Project page URL is set to
+          <a href="https://caimanjing.github.io/netcanvas/">https://caimanjing.github.io/netcanvas/</a>.
+          Update Paper/arXiv/Code links and the BibTeX date after public release.
+          During double-blind review, keep the page anonymous or unpublished if required.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    NetCanvas project page · static site for GitHub Pages (<code>/netcanvas/</code> subpath)
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
