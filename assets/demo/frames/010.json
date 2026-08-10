@@ -1,0 +1,202 @@
+{
+  "ok": true,
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_control_focus_FW_02.png",
+  "html_path": null,
+  "view_id": "control_focus",
+  "plane_mode": "control",
+  "caption": "view=control_focus; plane=control; nodes=1; edges=0; focus=FW_02",
+  "nodes_shown": 1,
+  "edges_shown": 0,
+  "graph_snap": {
+    "nodes": {
+      "FW_02": {
+        "id": "FW_02",
+        "label": "Device",
+        "properties": {
+          "ha_protocol": "HRP",
+          "ha_role": "standby-device",
+          "ha_state": "disabled",
+          "name": "FW_02",
+          "plane": "security",
+          "viz": {
+            "layout": {
+              "x": -672.0,
+              "y": -641.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      }
+    },
+    "edges": []
+  },
+  "model_node_index": [
+    {
+      "id": "FW_02",
+      "display": "FW_02",
+      "label": "Device",
+      "properties": {
+        "ha_protocol": "HRP",
+        "ha_role": "standby-device",
+        "ha_state": "disabled",
+        "name": "FW_02",
+        "plane": "security",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -672.0,
+        "y": -641.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 0,
+      "neighbors": []
+    }
+  ],
+  "model_edge_index": [],
+  "vis_nodes": [
+    {
+      "id": "FW_02",
+      "label": "FW_02",
+      "title": "Device\nFW_02",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#1a3f6e",
+        "border": "#facc15",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 4.0,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
+        "size": 14,
+        "x": 0,
+        "y": 0
+      },
+      "x": -282.0,
+      "y": -269.0,
+      "fixed": false
+    }
+  ],
+  "vis_edges": [],
+  "focus_nodes": [
+    "FW_02"
+  ],
+  "highlight_path": [],
+  "agent_path": [],
+  "agent_path_segment_connected": [],
+  "agent_path_segment_linked": [],
+  "property_overlay": [
+    {
+      "node": "FW_02:Eth-Trunk1",
+      "label": "Eth-Trunk1",
+      "fields": {
+        "ip_address": "1.1.1.2/30",
+        "ip_addresses": [
+          "1.1.1.2/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk2",
+      "label": "Eth-Trunk2",
+      "fields": {
+        "ip_address": "10.1.200.13/30",
+        "ip_addresses": [
+          "10.1.200.13/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk3",
+      "label": "Eth-Trunk3",
+      "fields": {
+        "ip_address": "10.1.200.5/30",
+        "ip_addresses": [
+          "10.1.200.5/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk4",
+      "label": "Eth-Trunk4",
+      "fields": {
+        "ip_address": "10.1.200.29/30",
+        "ip_addresses": [
+          "10.1.200.29/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk5",
+      "label": "Eth-Trunk5",
+      "fields": {
+        "ip_address": "10.1.200.21/30",
+        "ip_addresses": [
+          "10.1.200.21/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:RoutingProcess:OSPF_1",
+      "label": "FW_02:RoutingProcess:OSPF_1",
+      "fields": {
+        "protocol": "OSPF",
+        "plane": "control"
+      }
+    }
+  ],
+  "view_spec": {
+    "view_id": "control_focus",
+    "focus_nodes": [
+      "FW_02"
+    ],
+    "highlight_path": [],
+    "agent_path": [],
+    "agent_path_segment_connected": [],
+    "agent_paths": [],
+    "exclude_nodes": [],
+    "layers": [
+      "l2"
+    ],
+    "show_protocols": true,
+    "viewport": "subgraph",
+    "hops": 10,
+    "device_backbone": false,
+    "physical_plane": false,
+    "plane_mode": "control",
+    "respect_up_ports": false,
+    "annotations": [],
+    "property_overlay_nodes": [],
+    "legend": true,
+    "title": "Control focus: FW_02",
+    "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
+  }
+}

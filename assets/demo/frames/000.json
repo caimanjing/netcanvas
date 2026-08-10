@@ -1,0 +1,166 @@
+{
+  "ok": true,
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_EMPLOYEE_WIFI_CLIENT01_underlay_topology.png",
+  "html_path": null,
+  "view_id": "underlay_focus",
+  "plane_mode": "underlay",
+  "caption": "view=underlay_focus; plane=underlay; nodes=1; edges=0; focus=EMPLOYEE_WIFI_CLIENT01",
+  "nodes_shown": 1,
+  "edges_shown": 0,
+  "graph_snap": {
+    "nodes": {
+      "EMPLOYEE_WIFI_CLIENT01": {
+        "id": "EMPLOYEE_WIFI_CLIENT01",
+        "label": "Device",
+        "properties": {
+          "name": "EMPLOYEE_WIFI_CLIENT01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -2309.0,
+              "y": 643.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      }
+    },
+    "edges": []
+  },
+  "model_node_index": [
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "display": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "Device",
+      "properties": {
+        "name": "EMPLOYEE_WIFI_CLIENT01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -2309.0,
+        "y": 643.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 0,
+      "neighbors": []
+    }
+  ],
+  "model_edge_index": [],
+  "vis_nodes": [
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "EMPLOYEE_WIFI_CLIENT01",
+      "title": "Device\nEMPLOYEE_WIFI_CLIENT01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#1a3f6e",
+        "border": "#facc15",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 4.0,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
+        "size": 14,
+        "x": 0,
+        "y": 0
+      },
+      "x": -1003.0,
+      "y": 268.0,
+      "fixed": false
+    }
+  ],
+  "vis_edges": [],
+  "focus_nodes": [
+    "EMPLOYEE_WIFI_CLIENT01"
+  ],
+  "highlight_path": [],
+  "agent_path": [],
+  "agent_path_segment_connected": [],
+  "agent_path_segment_linked": [],
+  "property_overlay": [
+    {
+      "node": "EMPLOYEE_WIFI_CLIENT01:route:default:0.0.0.0/0:STATIC:10.1.110.254",
+      "label": "0.0.0.0/0 via 10.1.110.254",
+      "fields": {
+        "destination": "0.0.0.0",
+        "mask": "0",
+        "next_hop": "10.1.110.254"
+      }
+    },
+    {
+      "node": "EMPLOYEE_WIFI_CLIENT01:route:default:10.1.110.0/24:KERNEL:10.1.110.0",
+      "label": "10.1.110.0/24 via 10.1.110.0",
+      "fields": {
+        "destination": "10.1.110.0",
+        "mask": "24",
+        "next_hop": "10.1.110.0"
+      }
+    },
+    {
+      "node": "EMPLOYEE_WIFI_CLIENT01:eth0",
+      "label": "eth0",
+      "fields": {
+        "ip_address": "10.1.110.229/24",
+        "ip_addresses": [
+          "10.1.110.229/24"
+        ],
+        "protocol_state": "up"
+      }
+    }
+  ],
+  "view_spec": {
+    "view_id": "underlay_focus",
+    "focus_nodes": [
+      "EMPLOYEE_WIFI_CLIENT01"
+    ],
+    "highlight_path": [],
+    "agent_path": [],
+    "agent_path_segment_connected": [],
+    "agent_paths": [],
+    "exclude_nodes": [],
+    "layers": [
+      "l2"
+    ],
+    "show_protocols": true,
+    "viewport": "subgraph",
+    "hops": 7,
+    "device_backbone": false,
+    "physical_plane": false,
+    "plane_mode": "underlay",
+    "respect_up_ports": false,
+    "annotations": [],
+    "property_overlay_nodes": [
+      "EMPLOYEE_WIFI_CLIENT01:route:default:0.0.0.0/0:STATIC:10.1.110.254",
+      "EMPLOYEE_WIFI_CLIENT01:route:default:10.1.110.0/24:KERNEL:10.1.110.0",
+      "EMPLOYEE_WIFI_CLIENT01:eth0"
+    ],
+    "legend": true,
+    "title": "Underlay focus: EMPLOYEE_WIFI_CLIENT01",
+    "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
+  }
+}

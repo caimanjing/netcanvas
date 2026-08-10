@@ -1,0 +1,283 @@
+{
+  "run_id": "c9e0a994206b",
+  "question_id": "q10",
+  "arm": "M3",
+  "passed": true,
+  "caption": "q10 · M3 interactive visual replay",
+  "steps": [
+    {
+      "id": 0,
+      "image": "frames/000.png",
+      "manifest": "frames/000.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_EMPLOYEE_WIFI_CLIENT01_underlay_topology",
+      "intent": "Replay frame: q10_EMPLOYEE_WIFI_CLIENT01_underlay_topology.png",
+      "tags": [
+        "underlay",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 1,
+      "image": "frames/001.png",
+      "manifest": "frames/001.json",
+      "phase": "render",
+      "tool": "render_topology",
+      "tool_args": "q10_c9e0a994206b_physical_overview_overview",
+      "intent": "Replay frame: q10_c9e0a994206b_physical_overview_overview.png",
+      "tags": [
+        "overview",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 2,
+      "image": "frames/002.png",
+      "manifest": "frames/002.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_AGG_SW_01_physical_topology",
+      "intent": "Replay frame: q10_AGG_SW_01_physical_topology.png",
+      "tags": [
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 3,
+      "image": "frames/003.png",
+      "manifest": "frames/003.json",
+      "phase": "render",
+      "tool": "inspect_visual_node",
+      "tool_args": "q10_AGG_SW_01_physical_topology_inspect_edge_EMPLOYEE_WIFI_CLIENT01",
+      "intent": "Replay frame: q10_AGG_SW_01_physical_topology_inspect_edge_EMPLOYEE_WIFI_CLIENT01.png",
+      "tags": [
+        "inspect",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 4,
+      "image": "frames/004.png",
+      "manifest": "frames/004.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_AGG_SW_02_physical_topology",
+      "intent": "Replay frame: q10_AGG_SW_02_physical_topology.png",
+      "tags": [
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 5,
+      "image": "frames/005.png",
+      "manifest": "frames/005.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_AGG_SW_04_physical_topology",
+      "intent": "Replay frame: q10_AGG_SW_04_physical_topology.png",
+      "tags": [
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 6,
+      "image": "frames/006.png",
+      "manifest": "frames/006.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_control_focus_AGG_SW_03",
+      "intent": "Replay frame: q10_c9e0a994206b_control_focus_AGG_SW_03.png",
+      "tags": [
+        "focus"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 7,
+      "image": "frames/007.png",
+      "manifest": "frames/007.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_logical_focus_Core_SW_01",
+      "intent": "Replay frame: q10_c9e0a994206b_logical_focus_Core_SW_01.png",
+      "tags": [
+        "focus",
+        "logical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 8,
+      "image": "frames/008.png",
+      "manifest": "frames/008.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_logical_focus_Core_SW_02",
+      "intent": "Replay frame: q10_c9e0a994206b_logical_focus_Core_SW_02.png",
+      "tags": [
+        "focus",
+        "logical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 9,
+      "image": "frames/009.png",
+      "manifest": "frames/009.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_logical_focus_FW_01",
+      "intent": "Replay frame: q10_c9e0a994206b_logical_focus_FW_01.png",
+      "tags": [
+        "focus",
+        "logical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 10,
+      "image": "frames/010.png",
+      "manifest": "frames/010.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_control_focus_FW_02",
+      "intent": "Replay frame: q10_c9e0a994206b_control_focus_FW_02.png",
+      "tags": [
+        "focus"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 11,
+      "image": "frames/011.png",
+      "manifest": "frames/011.json",
+      "phase": "render",
+      "tool": "inspect_visual_node",
+      "tool_args": "q10_c9e0a994206b_security_focus_FW_02_inspect_node_to_internet",
+      "intent": "Replay frame: q10_c9e0a994206b_security_focus_FW_02_inspect_node_to_internet.png",
+      "tags": [
+        "focus",
+        "inspect",
+        "security"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 12,
+      "image": "frames/012.png",
+      "manifest": "frames/012.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_Core_SW_01_underlay_topology",
+      "intent": "Replay frame: q10_Core_SW_01_underlay_topology.png",
+      "tags": [
+        "underlay",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 13,
+      "image": "frames/013.png",
+      "manifest": "frames/013.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_FW_01_underlay_topology",
+      "intent": "Replay frame: q10_FW_01_underlay_topology.png",
+      "tags": [
+        "underlay",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 14,
+      "image": "frames/014.png",
+      "manifest": "frames/014.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_Core_SW_01_physical_topology",
+      "intent": "Replay frame: q10_Core_SW_01_physical_topology.png",
+      "tags": [
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 15,
+      "image": "frames/015.png",
+      "manifest": "frames/015.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_Core_SW_02_physical_topology",
+      "intent": "Replay frame: q10_Core_SW_02_physical_topology.png",
+      "tags": [
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 16,
+      "image": "frames/016.png",
+      "manifest": "frames/016.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_logical_focus_BJHQ_CSR1000V_GW_01",
+      "intent": "Replay frame: q10_c9e0a994206b_logical_focus_BJHQ_CSR1000V_GW_01.png",
+      "tags": [
+        "focus",
+        "logical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 17,
+      "image": "frames/017.png",
+      "manifest": "frames/017.json",
+      "phase": "ingest",
+      "tool": "flush_and_render",
+      "tool_args": "q10_BJHQ_CSR1000V_GW_01_underlay_topology",
+      "intent": "Replay frame: q10_BJHQ_CSR1000V_GW_01_underlay_topology.png",
+      "tags": [
+        "underlay",
+        "physical"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 18,
+      "image": "frames/018.png",
+      "manifest": "frames/018.json",
+      "phase": "render",
+      "tool": "crop_node",
+      "tool_args": "q10_c9e0a994206b_control_focus_BJHQ_CSR1000V_GW_01",
+      "intent": "Replay frame: q10_c9e0a994206b_control_focus_BJHQ_CSR1000V_GW_01.png",
+      "tags": [
+        "focus"
+      ],
+      "hotspots": []
+    },
+    {
+      "id": 19,
+      "image": "frames/019.png",
+      "manifest": "frames/019.json",
+      "phase": "render",
+      "tool": "trace_route_path",
+      "tool_args": "q10_GoogleWebServer01_underlay_topology_agent_path_EMPLOYEE_WIFI_CLIENT01_GoogleWebServer01",
+      "intent": "Replay frame: q10_GoogleWebServer01_underlay_topology_agent_path_EMPLOYEE_WIFI_CLIENT01_GoogleWebServer01.png",
+      "tags": [
+        "path",
+        "underlay",
+        "physical"
+      ],
+      "hotspots": []
+    }
+  ]
+}

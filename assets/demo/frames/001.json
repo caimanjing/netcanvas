@@ -1,0 +1,121 @@
+{
+  "ok": true,
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_physical_overview_overview.png",
+  "html_path": null,
+  "view_id": "physical_overview",
+  "plane_mode": "physical",
+  "caption": "view=physical_overview; plane=physical; nodes=1; edges=0",
+  "nodes_shown": 1,
+  "edges_shown": 0,
+  "graph_snap": {
+    "nodes": {
+      "EMPLOYEE_WIFI_CLIENT01": {
+        "id": "EMPLOYEE_WIFI_CLIENT01",
+        "label": "Device",
+        "properties": {
+          "name": "EMPLOYEE_WIFI_CLIENT01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -2309.0,
+              "y": 643.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      }
+    },
+    "edges": []
+  },
+  "model_node_index": [
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "display": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "Device",
+      "properties": {
+        "name": "EMPLOYEE_WIFI_CLIENT01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -2309.0,
+        "y": 643.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 0,
+      "neighbors": []
+    }
+  ],
+  "model_edge_index": [],
+  "vis_nodes": [
+    {
+      "id": "EMPLOYEE_WIFI_CLIENT01",
+      "label": "EMPLOYEE_WIFI_CLIENT01",
+      "title": "Device\nEMPLOYEE_WIFI_CLIENT01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -1003.0,
+      "y": 268.0,
+      "fixed": false
+    }
+  ],
+  "vis_edges": [],
+  "focus_nodes": [],
+  "highlight_path": [],
+  "agent_path": [],
+  "agent_path_segment_connected": [],
+  "agent_path_segment_linked": [],
+  "property_overlay": [],
+  "view_spec": {
+    "view_id": "physical_overview",
+    "focus_nodes": [],
+    "highlight_path": [],
+    "agent_path": [],
+    "agent_path_segment_connected": [],
+    "agent_paths": [],
+    "exclude_nodes": [],
+    "layers": [
+      "l2"
+    ],
+    "show_protocols": true,
+    "viewport": "full",
+    "hops": 5,
+    "device_backbone": false,
+    "physical_plane": false,
+    "plane_mode": "physical",
+    "respect_up_ports": false,
+    "annotations": [],
+    "property_overlay_nodes": [],
+    "legend": true,
+    "title": "Physical topology overview",
+    "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
+  }
+}
