@@ -1,96 +1,96 @@
-# NetCanvas project page: Interactive Visual Workbench (A1)
+# NetCanvas 项目页：可交互视觉工作台（A1）
 
-Date: 2026-08-10  
-Status: draft for user review  
-Site: `netcanvas-site` → `https://caimanjing.github.io/netcanvas/`  
-Reference UX: [VISTA](https://vista-research.github.io/) (workbench-first, not a static abstract page)  
-Paper: `code/demo/memory-experiment/docs/paper-en/arxiv/NetCanvas.tex`
+日期：2026-08-10  
+状态：待用户审阅  
+站点：`netcanvas-site` → `https://caimanjing.github.io/netcanvas/`  
+参考体验：[VISTA](https://vista-research.github.io/)（工作台优先，而不是静态摘要页）  
+论文：`code/demo/memory-experiment/docs/paper-en/arxiv/NetCanvas.tex`
 
-## Problem
+## 问题
 
-The current `index.html` reads like a paper abstract with static figures. It does not make the paper’s core tangible: **Interactive Visual Working Memory**—probe-synchronized topology images that the agent navigates with a multi-granularity tool protocol.
+当前 `index.html` 像论文摘要 + 静图，没有把论文核心讲「活」：**Interactive Visual Working Memory**——随探测同步更新的拓扑图，以及 agent 用多粒度工具在上面导航。
 
-## Goals
+## 目标
 
-1. First viewport is a **trajectory-replay workbench** (option A / A1), not a text hero alone.
-2. Surface **both** paper cores:
-   - **Ingest loop:** Probe → Ingest → Render → Act (how \(G_t\) / \(W_t\) grow).
-   - **Interaction tool chain:** overview / focus / path / inspect / plane switches (how the agent *uses* \(W_t\)).
-3. Demo evidence comes from a real run: **`arm === "M3"` and `pass === true` only** (no M3-0, no failed runs).
-4. Stay a **static** GitHub Pages site (PNG + JSON + JS). No live CLI / GraphStore.
+1. 第一屏是 **轨迹回放工作台**（方案 A / A1），不是大段文字 hero。
+2. 同时呈现论文 **两条核心**：
+   - **入图闭环：** Probe → Ingest → Render → Act（\(G_t\) / \(W_t\) 怎么长出来）
+   - **交互工具链：** overview / focus / path / inspect / 平面切换（agent 怎么**用** \(W_t\)）
+3. 演示素材必须来自真实 run：只允许 **`arm === "M3"` 且 `pass === true`**（不要 M3-0，不要失败轨）。
+4. 保持 **静态** GitHub Pages（PNG + JSON + JS），不做在线 CLI / GraphStore。
 
-## Non-goals (this round)
+## 非目标（本轮不做）
 
-- Live probing, backend GraphStore, or online re-render.
-- SVG / toy-graph self-drawing (A2).
-- Multi-run picker, M3-0 demos, failed-trajectory demos.
-- Full VISTA visual clone (grid theme optional polish later; not required).
-- Rewriting results tables or inventing new metrics.
+- 真探测、后端 GraphStore、在线重渲染
+- SVG / 自绘玩具拓扑（A2）
+- 多轨切换器、M3-0 演示、失败轨迹演示
+- 完整抄 VISTA 视觉皮肤（以后可微调，不是硬性）
+- 重写结果表或编造新指标
 
-## Page architecture
+## 页面结构
 
 ```
-header          title + Paper / arXiv / Code / Cite
-#workbench      NEW — A1 replay workbench (first meaningful viewport)
-#problem        Topology amnesia (shortened; keep teaser figure)
-#method         Dual-core: ingest loop + tool protocol (link back to workbench)
-#results        Existing CTBench numbers / figures
-#ablations      Existing ablation bullets / figure
+header          标题 + Paper / arXiv / Code / Cite
+#workbench      新增 — A1 回放工作台（首屏核心）
+#problem        Topology amnesia（缩短；保留 teaser 图）
+#method         双线：入图闭环 + 工具协议（指回工作台）
+#results        现有 CTBench 数字 / 图
+#ablations      现有消融要点 / 图
 #cite           BibTeX
 footer          CC BY-NC-SA
 ```
 
-TOC gains a Workbench entry first.
+目录（TOC）最前面增加 Workbench。
 
-## Workbench UI (A1)
+## 工作台 UI（A1）
 
-Four regions:
+四块区域：
 
-| Region | Role |
-|--------|------|
-| Left main viewport | Current-step topology PNG; optional Manifest hotspots |
-| Center | Tool name + args + short diagnostic intent from the step |
-| Right | Tool-chain shortcuts: Overview / Focus / Path / Inspect / Plane |
-| Bottom | Probe timeline filmstrip; play/pause; link or embed prebuilt `demo.gif` |
+| 区域 | 作用 |
+|------|------|
+| 左侧主视口 | 当前步拓扑 PNG；可选 Manifest 热区 |
+| 中间 | 工具名 + 参数 + 本步诊断意图 |
+| 右侧 | 工具链快捷键：Overview / Focus / Path / Inspect / Plane |
+| 底部 | Probe 时间线胶片；播放/暂停；预生成 `demo.gif` |
 
-### Interaction semantics
+### 交互语义
 
-- Click a filmstrip frame → jump to that step; sync image + center panel.
-- Click a right-rail tool → jump to the **nearest matching step at or after the current index** (else nearest globally), matched via `tags`.
-- Click a hotspot (only if present) → highlight + show attribute strip from Manifest / step metadata.
-- Autoplay advances `steps[]` in order; GIF is the same ordered frames for non-interactive viewers.
+- 点底条某帧 → 跳到该步；主图与中栏同步
+- 点右侧工具 → 跳到 **当前步及之后最近** 的匹配帧（没有则全局最近），用 `tags` 匹配
+- 点热区（有才启用）→ 高亮 + 属性条（来自 Manifest / 步元数据）
+- 自动播放按 `steps[]` 顺序；GIF 与步骤顺序一致，给不点的人看
 
-Replay only: buttons never claim to run CLI; UI copy should say “replay of a recorded M3 trajectory.”
+纯回放：按钮不声称在跑 CLI；文案写明「录制的 M3 轨迹回放」。
 
-## Trajectory selection
+## 选轨规则
 
-Hard filters:
+硬条件：
 
-1. `run_meta.arm === "M3"` (exclude `M3-0` and other arms).
-2. `pass === true` (field may be `passed` / `pass` / `success` in meta—normalize to boolean true).
+1. `run_meta.arm === "M3"`（排除 `M3-0` 等）
+2. `pass === true`（meta 里可能是 `passed` / `pass` / `success`，统一当成布尔 true）
 
-Soft preferences:
+软偏好：
 
-- Recent under `memory-experiment/runs/`.
-- Frame coverage: overview + focus + (path **or** inspect); prefer all three tool tags when possible.
-- Prefer ~12–25 steps on the page (subsample a long run while keeping tool-type diversity).
+- 优先 `memory-experiment/runs/` 里较新的
+- 帧类型尽量覆盖：overview + focus +（path **或** inspect）；三者都有更好
+- 页上约 12–25 步（长轨可抽样，但保留工具类型多样性）
 
-**Default candidate (as of 2026-08-10 scan):** `c9e0a994206b` (2026-08-05, 47 PNGs, overview/focus/path/inspect all present). Compact alternate: `97137ef4922a`. Final pick confirmed when the export script scores coverage.
+**默认候选（2026-08-10 扫描）：** `c9e0a994206b`（2026-08-05，47 张 PNG，overview/focus/path/inspect 都有）。较短备选：`97137ef4922a`。最终以导出脚本打分后确认为准。
 
-Note: 2026-08-10 daytime runs were mostly M3-0 or non-pass; they are **out of scope** for the demo.
+说明：2026-08-10 白天近跑多为 M3-0 或未过，**不进演示**。
 
-## Asset layout
+## 资源目录
 
 ```text
 netcanvas-site/assets/demo/
   frames/000.png … N.png
-  frames/000.json …          # optional per-frame Manifest / hotspots
-  steps.json                 # single source of truth for the workbench
-  demo.gif                   # same order as steps[]
-  SOURCE.txt                 # run_id, question_id, arm=M3, pass=true
+  frames/000.json …          # 可选：每帧 Manifest / 热区
+  steps.json                 # 工作台唯一数据源
+  demo.gif                   # 与 steps[] 同序
+  SOURCE.txt                 # run_id、question_id、arm=M3、pass=true
 ```
 
-## `steps.json` contract
+## `steps.json` 约定
 
 ```json
 {
@@ -98,7 +98,7 @@ netcanvas-site/assets/demo/
   "question_id": "qXX",
   "arm": "M3",
   "passed": true,
-  "caption": "short task one-liner",
+  "caption": "任务一句话",
   "steps": [
     {
       "id": 0,
@@ -106,8 +106,8 @@ netcanvas-site/assets/demo/
       "manifest": "frames/000.json",
       "phase": "probe|ingest|render|act",
       "tool": "flush_and_render|render_topology|crop_node|trace_route_path|inspect_visual_node|…",
-      "tool_args": "human-readable args",
-      "intent": "one-line why",
+      "tool_args": "可读参数",
+      "intent": "一句 why",
       "tags": ["overview", "focus", "path", "inspect", "physical", "logical", "security"],
       "hotspots": [{ "id": "FW_01", "x": 0.42, "y": 0.31, "w": 0.08, "h": 0.06 }]
     }
@@ -115,55 +115,55 @@ netcanvas-site/assets/demo/
 }
 ```
 
-- Right-rail buttons map to `tags`.
-- Center panel uses `tool`, `tool_args`, `intent`.
-- Timeline / GIF follow `steps[]` order strictly.
-- Hotspots optional; missing Manifest ⇒ frame switching only.
+- 右侧按钮对应 `tags`
+- 中栏用 `tool` / `tool_args` / `intent`
+- 时间线 / GIF 严格跟 `steps[]` 顺序
+- 热区可选；没有 Manifest 就只切帧
 
-## Export pipeline
+## 导出流水线
 
-A small script (under `netcanvas-site/scripts/` or the experiment repo) will:
+小脚本（放在 `netcanvas-site/scripts/` 或实验仓）负责：
 
-1. Load `run_meta.json`; assert `arm == M3` and pass true—abort otherwise.
-2. Walk `*_trace.json` / tool results and align `.graph_topology_images/**/*.png` in diagnostic order.
-3. Write numbered frames + `steps.json` (+ optional Manifest copies).
-4. Build `demo.gif` from the same ordered PNGs.
-5. Write `SOURCE.txt`.
+1. 读 `run_meta.json`；断言 `arm == M3` 且 pass=true，否则中止
+2. 按 `*_trace.json` / 工具结果顺序对齐 `.graph_topology_images/**/*.png`
+3. 写出编号帧 + `steps.json`（可选拷贝 Manifest）
+4. 用同序 PNG 生成 `demo.gif`
+5. 写 `SOURCE.txt`
 
-The published site remains static; regenerating demo assets is a offline step when swapping trajectories.
+上线站点仍是静态的；换轨迹时离线重跑导出即可。
 
-## Copy / method section changes
+## 正文怎么改
 
-- Shorten `#problem` to amnesia + teaser; do not compete with the workbench.
-- Rewrite `#method` as two subsections:
-  1. Probe → Ingest → Render → Act (backend grows \(G_t\), projects \(W_t\)).
-  2. Multi-granularity protocol (table tools, mirrored by workbench buttons).
-- Explicitly state that the loop alone is not the story—**navigation of \(W_t\)** is co-equal.
+- `#problem` 缩短为 amnesia + teaser，不跟工作台抢视线
+- `#method` 改成两小节：
+  1. Probe → Ingest → Render → Act（后端长大 \(G_t\)，投影 \(W_t\)）
+  2. 多粒度协议（对照论文工具表，与工作台按钮一一对应）
+- 明确写：入图闭环不是全部故事——**对 \(W_t\) 的导航**同等重要
 
-## Implementation sketch (for later plan)
+## 实现落点（留给后续计划）
 
-| File | Change |
-|------|--------|
-| `index.html` | Insert `#workbench`; adjust TOC / method copy |
-| `assets/theme.css` | Workbench layout (main + side + filmstrip) |
-| `assets/site.js` | Load `steps.json`, rail jumps, timeline, play |
-| `assets/demo/*` | Exported M3+pass trajectory |
-| `scripts/export_demo_trajectory.*` | Offline exporter |
-| `README.md` | How to regenerate demo assets |
+| 文件 | 改动 |
+|------|------|
+| `index.html` | 插入 `#workbench`；改 TOC / method 文案 |
+| `assets/theme.css` | 工作台布局（主区 + 侧栏 + 胶片） |
+| `assets/site.js` | 读 `steps.json`、侧栏跳转、时间线、播放 |
+| `assets/demo/*` | 导出的 M3+pass 轨迹 |
+| `scripts/export_demo_trajectory.*` | 离线导出 |
+| `README.md` | 如何重新生成 demo 素材 |
 
-## Success criteria
+## 成功标准
 
-- Visitor understands within one scroll that NetCanvas keeps an **interactive topology image** in agent context.
-- Clicking Path / Focus / Inspect visibly changes the topology view using **real M3** frames.
-- Filmstrip / GIF show topology **growing and being re-sliced** over probes.
-- No demo asset from non-M3 or failed runs.
-- Site still deploys as static Pages under `/netcanvas/`.
+- 一屏内能看懂：NetCanvas 把 **可交互拓扑图** 放进 agent 上下文
+- 点 Path / Focus / Inspect 会换真实 **M3** 拓扑帧
+- 胶片 / GIF 能看出拓扑在探测中 **生长并被重切视图**
+- 演示素材绝无非 M3 或失败轨
+- 仍可静态部署到 `/netcanvas/`
 
-## Open decisions (resolved)
+## 已拍板决策
 
-| Decision | Choice |
-|----------|--------|
-| First-screen metaphor | A — VISTA-like workbench |
-| Interactivity fidelity | A1 — trajectory replay of real renders |
-| Run filter | M3 + pass=True only |
-| Visual companion during design | Declined |
+| 决策 | 选择 |
+|------|------|
+| 首屏形态 | A — 类 VISTA 工作台 |
+| 交互保真度 | A1 — 真实渲染帧轨迹回放 |
+| 选轨过滤 | 仅 M3 + pass=True |
+| 设计期 Visual Companion | 不使用 |
