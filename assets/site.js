@@ -57,6 +57,12 @@ async function initWorkbench() {
   let idx = 0;
   let timer = null;
 
+  const cacheQ = `v=${encodeURIComponent(demo.run_id)}-${demo.steps.length}`;
+
+  function frameUrl(rel) {
+    return `assets/demo/${rel}?${cacheQ}`;
+  }
+
   if (meta) {
     meta.textContent = `${demo.caption} · run ${demo.run_id} · ${demo.steps.length} frames`;
   }
@@ -65,7 +71,7 @@ async function initWorkbench() {
   demo.steps.forEach((step, i) => {
     const b = document.createElement("button");
     b.type = "button";
-    b.innerHTML = `<img src="assets/demo/${step.image}" alt="step ${i}" />`;
+    b.innerHTML = `<img src="${frameUrl(step.image)}" alt="step ${i}" />`;
     b.addEventListener("click", () => show(i));
     film.appendChild(b);
   });
@@ -74,7 +80,7 @@ async function initWorkbench() {
   function show(i) {
     idx = i;
     const step = demo.steps[i];
-    img.src = `assets/demo/${step.image}`;
+    img.src = frameUrl(step.image);
     toolEl.textContent = step.tool;
     argsEl.textContent = step.tool_args || "";
     intentEl.textContent = step.intent || "";
