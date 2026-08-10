@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_logical_focus_FW_01.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_logical_focus_BJHQ_CSR1000V_GW_01.png",
   "html_path": null,
   "view_id": "logical_focus",
   "plane_mode": "logical",
-  "caption": "view=logical_focus; plane=logical; nodes=6; edges=7; focus=FW_01",
+  "caption": "view=logical_focus; plane=logical; nodes=6; edges=9; focus=BJHQ_CSR1000V_GW_01",
   "nodes_shown": 6,
-  "edges_shown": 7,
+  "edges_shown": 9,
   "graph_snap": {
     "nodes": {
       "BJHQ_CSR1000V_GW_01": {
@@ -14,7 +14,7 @@
         "label": "Device",
         "properties": {
           "name": "BJHQ_CSR1000V_GW_01",
-          "plane": "physical",
+          "plane": "overlay",
           "viz": {
             "layout": {
               "x": -1074.0,
@@ -72,7 +72,7 @@
           "ha_protocol": "HRP",
           "ha_state": "enabled",
           "name": "FW_01",
-          "plane": "security",
+          "plane": "physical",
           "viz": {
             "layout": {
               "x": -1192.0,
@@ -87,6 +87,9 @@
         "id": "FW_02",
         "label": "Device",
         "properties": {
+          "ha_protocol": "HRP",
+          "ha_role": "standby-device",
+          "ha_state": "disabled",
           "name": "FW_02",
           "plane": "physical",
           "viz": {
@@ -148,7 +151,7 @@
       {
         "source": "Core_SW_01",
         "target": "FW_02",
-        "type": "LOGICAL_LINK",
+        "type": "L3_LINK",
         "properties": {
           "from_description": "to_FW_02_GigabitEthernet1/0/1",
           "local_device": "Core_SW_01",
@@ -159,15 +162,18 @@
           "remote_port": "GigabitEthernet1/0/1",
           "source": "description",
           "source_type": "PEER_LINK",
-          "rendered_type": "LOGICAL_LINK",
+          "rendered_type": "L3_LINK",
           "_viz_device_backbone": true,
           "_viz_port_pairs": [
+            "10.1.200.6/30 ↔ 10.1.200.5/30",
+            "Eth-Trunk3 ↔ GE1/0/9",
             "Eth-Trunk3 ↔ GigabitEthernet1/0/1"
           ],
-          "_viz_edge_label": "Eth-Trunk3 ↔ GigabitEthernet1/0/1",
+          "_viz_edge_label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
           "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -201,7 +207,7 @@
       {
         "source": "Core_SW_02",
         "target": "FW_02",
-        "type": "LOGICAL_LINK",
+        "type": "L3_LINK",
         "properties": {
           "from_description": "to_FW_02_GigabitEthernet1/0/2",
           "local_device": "Core_SW_02",
@@ -212,21 +218,24 @@
           "remote_port": "GigabitEthernet1/0/2",
           "source": "description",
           "source_type": "PEER_LINK",
-          "rendered_type": "LOGICAL_LINK",
+          "rendered_type": "L3_LINK",
           "_viz_device_backbone": true,
           "_viz_port_pairs": [
+            "10.1.200.14/30 ↔ 10.1.200.13/30",
+            "Eth-Trunk2 ↔ GE1/0/9",
             "Eth-Trunk2 ↔ GigabitEthernet1/0/2"
           ],
-          "_viz_edge_label": "Eth-Trunk2 ↔ GigabitEthernet1/0/2",
+          "_viz_edge_label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
           "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
         "source": "FW_01",
         "target": "BJHQ_CSR1000V_GW_01",
-        "type": "LOGICAL_LINK",
+        "type": "L3_LINK",
         "properties": {
           "from_description": "to_BJHQ_CSR1000V_GW_01_Gi2",
           "local_device": "FW_01",
@@ -237,12 +246,14 @@
           "remote_port": "Gi2",
           "source": "description",
           "source_type": "PEER_LINK",
-          "rendered_type": "LOGICAL_LINK",
+          "rendered_type": "L3_LINK",
           "_viz_device_backbone": true,
           "_viz_port_pairs": [
-            "Eth-Trunk5 ↔ Gi2"
+            "10.1.200.18/30 ↔ 10.1.200.17/30",
+            "Eth-Trunk5 ↔ Gi2",
+            "Port-channel2 ↔ Eth-Trunk5"
           ],
-          "_viz_edge_label": "Eth-Trunk5 ↔ Gi2",
+          "_viz_edge_label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
           "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "unknown"
@@ -276,7 +287,7 @@
       {
         "source": "FW_01",
         "target": "FW_02",
-        "type": "LOGICAL_LINK",
+        "type": "L3_LINK",
         "properties": {
           "from_description": "to_FW_02_GigabitEthernet1/0/5",
           "local_device": "FW_01",
@@ -287,12 +298,66 @@
           "remote_port": "GigabitEthernet1/0/5",
           "source": "description",
           "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "1.1.1.1/30 ↔ 1.1.1.2/30",
+            "Eth-Trunk1 ↔ GigabitEthernet1/0/5"
+          ],
+          "_viz_edge_label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "FW_02",
+        "target": "BJHQ_CSR1000V_GW_01",
+        "type": "L3_LINK",
+        "properties": {
+          "from_description": "to_to_BJHQ_CSR1000V_GW_01_Gi3",
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/3",
+          "logical_local_port": "Eth-Trunk5",
+          "plane": "logical",
+          "remote_device": "BJHQ_CSR1000V_GW_01",
+          "remote_port": "Gi3",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.22/30 ↔ 10.1.200.21/30",
+            "Eth-Trunk2 ↔ GigabitEthernet1/0/3",
+            "Eth-Trunk5 ↔ Gi3"
+          ],
+          "_viz_edge_label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "FW_02",
+        "target": "SW-DMZ-ACC-01",
+        "type": "LOGICAL_LINK",
+        "properties": {
+          "from_description": "to_SW-DMZ-ACC-01_GE1/0/2",
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/4",
+          "logical_local_port": "Eth-Trunk4",
+          "plane": "logical",
+          "remote_device": "SW-DMZ-ACC-01",
+          "remote_port": "GE1/0/2",
+          "source": "description",
+          "source_type": "PEER_LINK",
           "rendered_type": "LOGICAL_LINK",
           "_viz_device_backbone": true,
           "_viz_port_pairs": [
-            "Eth-Trunk1 ↔ GigabitEthernet1/0/5"
+            "Eth-Trunk4 ↔ GE1/0/2"
           ],
-          "_viz_edge_label": "Eth-Trunk1 ↔ GigabitEthernet1/0/5",
+          "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/2",
           "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "unknown"
@@ -307,7 +372,7 @@
       "label": "Device",
       "properties": {
         "name": "BJHQ_CSR1000V_GW_01",
-        "plane": "physical",
+        "plane": "overlay",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
@@ -315,9 +380,10 @@
         "y": -994.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 1,
+      "degree": 2,
       "neighbors": [
-        "FW_01"
+        "FW_01",
+        "FW_02"
       ]
     },
     {
@@ -376,7 +442,7 @@
         "ha_protocol": "HRP",
         "ha_state": "enabled",
         "name": "FW_01",
-        "plane": "security",
+        "plane": "physical",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
@@ -398,6 +464,9 @@
       "display": "FW_02",
       "label": "Device",
       "properties": {
+        "ha_protocol": "HRP",
+        "ha_role": "standby-device",
+        "ha_state": "disabled",
         "name": "FW_02",
         "plane": "physical",
         "baseline_provenance": "gns3_design"
@@ -407,11 +476,13 @@
         "y": -641.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 3,
+      "degree": 5,
       "neighbors": [
+        "BJHQ_CSR1000V_GW_01",
         "Core_SW_01",
         "Core_SW_02",
-        "FW_01"
+        "FW_01",
+        "SW-DMZ-ACC-01"
       ]
     },
     {
@@ -428,9 +499,10 @@
         "y": -975.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 1,
+      "degree": 2,
       "neighbors": [
-        "FW_01"
+        "FW_01",
+        "FW_02"
       ]
     }
   ],
@@ -464,8 +536,8 @@
       "index": 1,
       "source": "Core_SW_01",
       "target": "FW_02",
-      "type": "LOGICAL_LINK",
-      "label": "Eth-Trunk3 ↔ GigabitEthernet1/0/1",
+      "type": "L3_LINK",
+      "label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
       "properties": {
         "from_description": "to_FW_02_GigabitEthernet1/0/1",
         "local_device": "Core_SW_01",
@@ -476,12 +548,13 @@
         "remote_port": "GigabitEthernet1/0/1",
         "source": "description",
         "source_type": "PEER_LINK",
-        "rendered_type": "LOGICAL_LINK",
+        "rendered_type": "L3_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Eth-Trunk3 ↔ GigabitEthernet1/0/1",
+        "_viz_edge_label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
         "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -513,8 +586,8 @@
       "index": 3,
       "source": "Core_SW_02",
       "target": "FW_02",
-      "type": "LOGICAL_LINK",
-      "label": "Eth-Trunk2 ↔ GigabitEthernet1/0/2",
+      "type": "L3_LINK",
+      "label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
       "properties": {
         "from_description": "to_FW_02_GigabitEthernet1/0/2",
         "local_device": "Core_SW_02",
@@ -525,20 +598,21 @@
         "remote_port": "GigabitEthernet1/0/2",
         "source": "description",
         "source_type": "PEER_LINK",
-        "rendered_type": "LOGICAL_LINK",
+        "rendered_type": "L3_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Eth-Trunk2 ↔ GigabitEthernet1/0/2",
+        "_viz_edge_label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
         "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 4,
       "source": "FW_01",
       "target": "BJHQ_CSR1000V_GW_01",
-      "type": "LOGICAL_LINK",
-      "label": "Eth-Trunk5 ↔ Gi2",
+      "type": "L3_LINK",
+      "label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
       "properties": {
         "from_description": "to_BJHQ_CSR1000V_GW_01_Gi2",
         "local_device": "FW_01",
@@ -549,9 +623,9 @@
         "remote_port": "Gi2",
         "source": "description",
         "source_type": "PEER_LINK",
-        "rendered_type": "LOGICAL_LINK",
+        "rendered_type": "L3_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Eth-Trunk5 ↔ Gi2",
+        "_viz_edge_label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
         "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "unknown"
@@ -585,8 +659,8 @@
       "index": 6,
       "source": "FW_01",
       "target": "FW_02",
-      "type": "LOGICAL_LINK",
-      "label": "Eth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "type": "L3_LINK",
+      "label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
       "properties": {
         "from_description": "to_FW_02_GigabitEthernet1/0/5",
         "local_device": "FW_01",
@@ -597,9 +671,58 @@
         "remote_port": "GigabitEthernet1/0/5",
         "source": "description",
         "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 7,
+      "source": "FW_02",
+      "target": "BJHQ_CSR1000V_GW_01",
+      "type": "L3_LINK",
+      "label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+      "properties": {
+        "from_description": "to_to_BJHQ_CSR1000V_GW_01_Gi3",
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/3",
+        "logical_local_port": "Eth-Trunk5",
+        "plane": "logical",
+        "remote_device": "BJHQ_CSR1000V_GW_01",
+        "remote_port": "Gi3",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 8,
+      "source": "FW_02",
+      "target": "SW-DMZ-ACC-01",
+      "type": "LOGICAL_LINK",
+      "label": "Eth-Trunk4 ↔ GE1/0/2",
+      "properties": {
+        "from_description": "to_SW-DMZ-ACC-01_GE1/0/2",
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/4",
+        "logical_local_port": "Eth-Trunk4",
+        "plane": "logical",
+        "remote_device": "SW-DMZ-ACC-01",
+        "remote_port": "GE1/0/2",
+        "source": "description",
+        "source_type": "PEER_LINK",
         "rendered_type": "LOGICAL_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Eth-Trunk1 ↔ GigabitEthernet1/0/5",
+        "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/2",
         "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "unknown"
@@ -614,14 +737,14 @@
       "shape": "box",
       "size": 14,
       "color": {
-        "background": "#0f315c",
-        "border": "#7dd3fc",
+        "background": "#1a3f6e",
+        "border": "#facc15",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1.2,
+      "borderWidth": 4.0,
       "font": {
         "color": "#f8fafc",
         "size": 13,
@@ -639,6 +762,13 @@
       },
       "shapeProperties": {
         "borderRadius": 3
+      },
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
+        "size": 14,
+        "x": 0,
+        "y": 0
       },
       "x": -676.0,
       "y": -437.0,
@@ -725,14 +855,14 @@
       "shape": "box",
       "size": 14,
       "color": {
-        "background": "#1a3f6e",
-        "border": "#facc15",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 4.0,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
         "size": 13,
@@ -750,13 +880,6 @@
       },
       "shapeProperties": {
         "borderRadius": 3
-      },
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
       },
       "x": -651.0,
       "y": -279.0,
@@ -861,11 +984,11 @@
       "smooth": false
     },
     {
-      "id": "Core_SW_01|LOGICAL_LINK|FW_02|1",
+      "id": "Core_SW_01|L3_LINK|FW_02|1",
       "from": "Core_SW_01",
       "to": "FW_02",
-      "label": "Eth-Trunk3 ↔ GigabitEthernet1/0/1",
-      "title": "LOGICAL_LINK\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+      "label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+      "title": "L3_LINK\n10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -905,11 +1028,11 @@
       "smooth": false
     },
     {
-      "id": "Core_SW_02|LOGICAL_LINK|FW_02|3",
+      "id": "Core_SW_02|L3_LINK|FW_02|3",
       "from": "Core_SW_02",
       "to": "FW_02",
-      "label": "Eth-Trunk2 ↔ GigabitEthernet1/0/2",
-      "title": "LOGICAL_LINK\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+      "label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+      "title": "L3_LINK\n10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -927,11 +1050,11 @@
       "smooth": false
     },
     {
-      "id": "FW_01|LOGICAL_LINK|BJHQ_CSR1000V_GW_01|4",
+      "id": "FW_01|L3_LINK|BJHQ_CSR1000V_GW_01|4",
       "from": "FW_01",
       "to": "BJHQ_CSR1000V_GW_01",
-      "label": "Eth-Trunk5 ↔ Gi2",
-      "title": "LOGICAL_LINK\nEth-Trunk5 ↔ Gi2",
+      "label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
+      "title": "L3_LINK\n10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -971,11 +1094,55 @@
       "smooth": false
     },
     {
-      "id": "FW_01|LOGICAL_LINK|FW_02|6",
+      "id": "FW_01|L3_LINK|FW_02|6",
       "from": "FW_01",
       "to": "FW_02",
-      "label": "Eth-Trunk1 ↔ GigabitEthernet1/0/5",
-      "title": "LOGICAL_LINK\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "title": "L3_LINK\n1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_02|L3_LINK|BJHQ_CSR1000V_GW_01|7",
+      "from": "FW_02",
+      "to": "BJHQ_CSR1000V_GW_01",
+      "label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+      "title": "L3_LINK\n10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_02|LOGICAL_LINK|SW-DMZ-ACC-01|8",
+      "from": "FW_02",
+      "to": "SW-DMZ-ACC-01",
+      "label": "Eth-Trunk4 ↔ GE1/0/2",
+      "title": "LOGICAL_LINK\nEth-Trunk4 ↔ GE1/0/2",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -994,7 +1161,7 @@
     }
   ],
   "focus_nodes": [
-    "FW_01"
+    "BJHQ_CSR1000V_GW_01"
   ],
   "highlight_path": [],
   "agent_path": [],
@@ -1002,73 +1169,32 @@
   "agent_path_segment_linked": [],
   "property_overlay": [
     {
-      "node": "FW_01:Eth-Trunk1",
-      "label": "Eth-Trunk1",
+      "node": "BJHQ_CSR1000V_GW_01:Port-channel1",
+      "label": "Port-channel1",
       "fields": {
-        "ip_address": "1.1.1.1/30",
+        "ip_address": "10.1.200.18/30",
         "ip_addresses": [
-          "1.1.1.1/30"
+          "10.1.200.18/30"
         ],
         "admin_state": "up"
       }
     },
     {
-      "node": "FW_01:Eth-Trunk2",
-      "label": "Eth-Trunk2",
+      "node": "BJHQ_CSR1000V_GW_01:Port-channel2",
+      "label": "Port-channel2",
       "fields": {
-        "ip_address": "10.1.200.1/30",
+        "ip_address": "10.1.200.22/30",
         "ip_addresses": [
-          "10.1.200.1/30"
+          "10.1.200.22/30"
         ],
         "admin_state": "up"
-      }
-    },
-    {
-      "node": "FW_01:Eth-Trunk3",
-      "label": "Eth-Trunk3",
-      "fields": {
-        "ip_address": "10.1.200.9/30",
-        "ip_addresses": [
-          "10.1.200.9/30"
-        ],
-        "admin_state": "up"
-      }
-    },
-    {
-      "node": "FW_01:Eth-Trunk4",
-      "label": "Eth-Trunk4",
-      "fields": {
-        "ip_address": "10.1.200.25/30",
-        "ip_addresses": [
-          "10.1.200.25/30"
-        ],
-        "admin_state": "up"
-      }
-    },
-    {
-      "node": "FW_01:Eth-Trunk5",
-      "label": "Eth-Trunk5",
-      "fields": {
-        "ip_address": "10.1.200.17/30",
-        "ip_addresses": [
-          "10.1.200.17/30"
-        ],
-        "admin_state": "up"
-      }
-    },
-    {
-      "node": "FW_01",
-      "label": "FW_01",
-      "fields": {
-        "ha_state": "enabled",
-        "plane": "security"
       }
     }
   ],
   "view_spec": {
     "view_id": "logical_focus",
     "focus_nodes": [
-      "FW_01"
+      "BJHQ_CSR1000V_GW_01"
     ],
     "highlight_path": [],
     "agent_path": [],
@@ -1088,7 +1214,7 @@
     "annotations": [],
     "property_overlay_nodes": [],
     "legend": true,
-    "title": "Logical focus: FW_01",
+    "title": "Logical focus: BJHQ_CSR1000V_GW_01",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

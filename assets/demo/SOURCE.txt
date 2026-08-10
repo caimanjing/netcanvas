@@ -2,6 +2,6 @@ run_id=c9e0a994206b
 question_id=q10
 arm=M3
 pass=true
-exported_at=2026-08-10T11:29:16
+exported_at=2026-08-10T11:42:55
 source_dir=D:\work\memory攻关\code\demo\memory-experiment\runs\c9e0a994206b
 frames=20

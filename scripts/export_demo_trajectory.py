@@ -66,24 +66,73 @@ def find_next_by_tag(steps: list[dict], current: int, tag: str) -> int:
 
 
 def subsample_keep_tags(steps: list[dict], max_steps: int = 20) -> list[dict]:
-    if len(steps) <= max_steps:
+    """Keep tool diversity, but prefer a plane-chapter ordering for narrative."""
+    if not steps:
         return steps
-    must = ["overview", "path", "inspect", "focus"]
-    chosen: list[int] = []
-    for tag in must:
-        for i, s in enumerate(steps):
-            if tag in (s.get("tags") or []) and i not in chosen:
-                chosen.append(i)
-                break
-    if len(chosen) < max_steps:
-        stride = max(1, len(steps) // max_steps)
-        for i in range(0, len(steps), stride):
-            if i not in chosen:
-                chosen.append(i)
-            if len(chosen) >= max_steps:
-                break
-    chosen = sorted(set(chosen))[:max_steps]
-    return [steps[i] for i in chosen]
+
+    plane_order = ["physical", "logical", "security", "underlay"]
+
+    def plane_of(s: dict) -> str:
+        return str(s.get("plane") or "physical")
+
+    # Chapter order: all physical (time), then logical, …
+    by_plane: dict[str, list[dict]] = {p: [] for p in plane_order}
+    for s in steps:
+        p = plane_of(s)
+        by_plane.setdefault(p, []).append(s)
+    ordered: list[dict] = []
+    for p in plane_order:
+        ordered.extend(by_plane.get(p, []))
+    for p, items in by_plane.items():
+        if p not in plane_order:
+            ordered.extend(items)
+
+    if len(ordered) <= max_steps:
+        return ordered
+
+    # Budget per plane proportional to availability, min 1 if present
+    present = [p for p in plane_order if by_plane.get(p)]
+    if not present:
+        return ordered[:max_steps]
+    budget = {p: 0 for p in present}
+    remaining = max_steps
+    for p in present:
+        budget[p] = 1
+        remaining -= 1
+    i = 0
+    while remaining > 0 and present:
+        p = present[i % len(present)]
+        if budget[p] < len(by_plane[p]):
+            budget[p] += 1
+            remaining -= 1
+        i += 1
+        if i > max_steps * 4:
+            break
+
+    picked: list[dict] = []
+    for p in plane_order:
+        chunk = by_plane.get(p, [])
+        if not chunk:
+            continue
+        n = budget.get(p, 0)
+        if n >= len(chunk):
+            picked.extend(chunk)
+        else:
+            must_tools = ("path", "inspect", "focus", "overview")
+            chosen: set[int] = set()
+            for tag in must_tools:
+                for k, s in enumerate(chunk):
+                    if tag in (s.get("tags") or []) and k not in chosen:
+                        chosen.add(k)
+                        break
+            stride = max(1, len(chunk) / n)
+            j = 0
+            while len(chosen) < n and j < len(chunk) * 2:
+                k = min(len(chunk) - 1, int(round((j % n) * stride)))
+                chosen.add(k)
+                j += 1
+            picked.extend(chunk[k] for k in sorted(chosen)[:n])
+    return picked[:max_steps]
 
 
 def nodes_shown_from_manifest(manifest: Path | None) -> int | None:
@@ -136,6 +185,11 @@ def infer_step(png: Path) -> dict:
     else:
         tool = "flush_and_render"
     phase = "render" if tool != "flush_and_render" else "ingest"
+    plane = "physical"
+    for p in ("security", "logical", "underlay", "physical"):
+        if p in tags:
+            plane = p
+            break
     manifest = png.with_suffix(".json")
     return {
         "image_src": png,
@@ -145,6 +199,7 @@ def infer_step(png: Path) -> dict:
         "tool_args": name.replace(".png", ""),
         "intent": f"Replay frame: {name}",
         "tags": tags,
+        "plane": plane,
         "hotspots": [],
     }
 
@@ -216,6 +271,7 @@ def export_run(
                 "tool_args": s["tool_args"],
                 "intent": s["intent"],
                 "tags": s["tags"],
+                "plane": s.get("plane") or "physical",
                 "hotspots": s["hotspots"],
             }
         )

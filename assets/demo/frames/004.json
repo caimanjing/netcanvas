@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_AGG_SW_04_physical_topology.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_Core_SW_01_physical_topology_inspect_edge_GE1_0_7.png",
   "html_path": null,
-  "view_id": "physical_focus",
+  "view_id": "physical_inspect_edge_GE1/0/7",
   "plane_mode": "physical",
-  "caption": "view=physical_focus; plane=physical; nodes=15; edges=17; focus=AGG_SW_04",
-  "nodes_shown": 15,
-  "edges_shown": 17,
+  "caption": "view=physical_inspect_edge_GE1/0/7; plane=physical; nodes=19; edges=26",
+  "nodes_shown": 19,
+  "edges_shown": 26,
   "graph_snap": {
     "nodes": {
       "AGG_SW_01": {
@@ -81,12 +81,32 @@
           "baseline_provenance": "gns3_design"
         }
       },
+      "BJHQ_CSR1000V_GW_01": {
+        "id": "BJHQ_CSR1000V_GW_01",
+        "label": "Device",
+        "properties": {
+          "name": "BJHQ_CSR1000V_GW_01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1074.0,
+              "y": -994.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
       "Core_SW_01": {
         "id": "Core_SW_01",
         "label": "Device",
         "properties": {
+          "global_stp_enabled": "true",
+          "ha_protocol": "VRRP",
+          "ha_state": "enabled",
           "name": "Core_SW_01",
           "plane": "physical",
+          "stp_mode": "enabled",
           "viz": {
             "layout": {
               "x": -1195.0,
@@ -101,12 +121,53 @@
         "id": "Core_SW_02",
         "label": "Device",
         "properties": {
+          "global_stp_enabled": "true",
+          "ha_protocol": "VRRP",
+          "ha_state": "enabled",
           "name": "Core_SW_02",
           "plane": "physical",
+          "stp_mode": "enabled",
           "viz": {
             "layout": {
               "x": -664.0,
               "y": -269.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "FW_01": {
+        "id": "FW_01",
+        "label": "Device",
+        "properties": {
+          "ha_protocol": "HRP",
+          "ha_state": "enabled",
+          "name": "FW_01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1192.0,
+              "y": -629.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
+      },
+      "FW_02": {
+        "id": "FW_02",
+        "label": "Device",
+        "properties": {
+          "ha_protocol": "HRP",
+          "ha_role": "standby-device",
+          "ha_state": "disabled",
+          "name": "FW_02",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -672.0,
+              "y": -641.0,
               "source": "gns3_canvas_stamp"
             }
           },
@@ -256,6 +317,22 @@
           },
           "baseline_provenance": "gns3_design"
         }
+      },
+      "SW-DMZ-ACC-01": {
+        "id": "SW-DMZ-ACC-01",
+        "label": "Device",
+        "properties": {
+          "name": "SW-DMZ-ACC-01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1920.0,
+              "y": -975.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
+        }
       }
     },
     "edges": [
@@ -282,7 +359,8 @@
           "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/3",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -308,7 +386,8 @@
           "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/3",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -412,7 +491,8 @@
           "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/4",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -438,7 +518,8 @@
           "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/4",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -516,7 +597,8 @@
           "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/5",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -542,7 +624,8 @@
           "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/5",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -620,7 +703,8 @@
           "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/6",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -646,7 +730,8 @@
           "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/6",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
-          "_viz_remote_port_state": "unknown"
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
         }
       },
       {
@@ -696,6 +781,237 @@
             "HundredGigE1/0/4 ↔ GE1/0/0"
           ],
           "_viz_edge_label": "HundredGigE1/0/4 ↔ GE1/0/0",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "Core_SW_01",
+        "target": "FW_01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "Core_SW_01",
+          "local_port": "GE1/0/8",
+          "plane": "physical",
+          "remote_device": "FW_01",
+          "remote_port": "GigabitEthernet1/0/1",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "Core_SW_01:GE1/0/8",
+          "_viz_original_target": "FW_01:GigabitEthernet1/0/1",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GE1/0/8 ↔ GigabitEthernet1/0/1"
+          ],
+          "_viz_edge_label": "GE1/0/8 ↔ GigabitEthernet1/0/1",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "Core_SW_01",
+        "target": "FW_02",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "Core_SW_01",
+          "local_port": "GE1/0/9",
+          "plane": "physical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/1",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "Core_SW_01:GE1/0/9",
+          "_viz_original_target": "FW_02:GigabitEthernet1/0/1",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GE1/0/9 ↔ GigabitEthernet1/0/1"
+          ],
+          "_viz_edge_label": "GE1/0/9 ↔ GigabitEthernet1/0/1",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "Core_SW_02",
+        "target": "FW_01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "Core_SW_02",
+          "local_port": "GE1/0/8",
+          "plane": "physical",
+          "remote_device": "FW_01",
+          "remote_port": "GigabitEthernet1/0/2",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "Core_SW_02:GE1/0/8",
+          "_viz_original_target": "FW_01:GigabitEthernet1/0/2",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GE1/0/8 ↔ GigabitEthernet1/0/2"
+          ],
+          "_viz_edge_label": "GE1/0/8 ↔ GigabitEthernet1/0/2",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "Core_SW_02",
+        "target": "FW_02",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "Core_SW_02",
+          "local_port": "GE1/0/9",
+          "plane": "physical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/2",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "Core_SW_02:GE1/0/9",
+          "_viz_original_target": "FW_02:GigabitEthernet1/0/2",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GE1/0/9 ↔ GigabitEthernet1/0/2"
+          ],
+          "_viz_edge_label": "GE1/0/9 ↔ GigabitEthernet1/0/2",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "FW_01",
+        "target": "BJHQ_CSR1000V_GW_01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/3",
+          "plane": "physical",
+          "remote_device": "BJHQ_CSR1000V_GW_01",
+          "remote_port": "Gi2",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "FW_01:GigabitEthernet1/0/3",
+          "_viz_original_target": "BJHQ_CSR1000V_GW_01:Gi2",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GigabitEthernet1/0/3 ↔ Gi2"
+          ],
+          "_viz_edge_label": "GigabitEthernet1/0/3 ↔ Gi2",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "FW_01",
+        "target": "SW-DMZ-ACC-01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/4",
+          "plane": "physical",
+          "remote_device": "SW-DMZ-ACC-01",
+          "remote_port": "GE1/0/1",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "FW_01:GigabitEthernet1/0/4",
+          "_viz_original_target": "SW-DMZ-ACC-01:GE1/0/1",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GigabitEthernet1/0/4 ↔ GE1/0/1"
+          ],
+          "_viz_edge_label": "GigabitEthernet1/0/4 ↔ GE1/0/1",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "FW_01",
+        "target": "FW_02",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/5",
+          "plane": "physical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/5",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "FW_01:GigabitEthernet1/0/5",
+          "_viz_original_target": "FW_02:GigabitEthernet1/0/5",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5",
+            "GigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6"
+          ],
+          "_viz_edge_label": "GigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5\nGigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
+      },
+      {
+        "source": "FW_02",
+        "target": "BJHQ_CSR1000V_GW_01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/3",
+          "plane": "physical",
+          "remote_device": "BJHQ_CSR1000V_GW_01",
+          "remote_port": "Gi3",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "FW_02:GigabitEthernet1/0/3",
+          "_viz_original_target": "BJHQ_CSR1000V_GW_01:Gi3",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GigabitEthernet1/0/3 ↔ Gi3"
+          ],
+          "_viz_edge_label": "GigabitEthernet1/0/3 ↔ Gi3",
+          "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "FW_02",
+        "target": "SW-DMZ-ACC-01",
+        "type": "PHYSICAL_LINK",
+        "properties": {
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/4",
+          "plane": "physical",
+          "remote_device": "SW-DMZ-ACC-01",
+          "remote_port": "GE1/0/2",
+          "source": "description",
+          "source_type": "PORT_LINK",
+          "_viz_original_source": "FW_02:GigabitEthernet1/0/4",
+          "_viz_original_target": "SW-DMZ-ACC-01:GE1/0/2",
+          "rendered_type": "PHYSICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "GigabitEthernet1/0/4 ↔ GE1/0/2"
+          ],
+          "_viz_edge_label": "GigabitEthernet1/0/4 ↔ GE1/0/2",
           "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "unknown"
@@ -802,12 +1118,36 @@
       ]
     },
     {
+      "id": "BJHQ_CSR1000V_GW_01",
+      "display": "BJHQ_CSR1000V_GW_01",
+      "label": "Device",
+      "properties": {
+        "name": "BJHQ_CSR1000V_GW_01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1074.0,
+        "y": -994.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 2,
+      "neighbors": [
+        "FW_01",
+        "FW_02"
+      ]
+    },
+    {
       "id": "Core_SW_01",
       "display": "Core_SW_01",
       "label": "Device",
       "properties": {
+        "global_stp_enabled": "true",
+        "ha_protocol": "VRRP",
+        "ha_state": "enabled",
         "name": "Core_SW_01",
         "plane": "physical",
+        "stp_mode": "enabled",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
@@ -815,12 +1155,14 @@
         "y": -251.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 4,
+      "degree": 6,
       "neighbors": [
         "AGG_SW_01",
         "AGG_SW_02",
         "AGG_SW_03",
-        "AGG_SW_04"
+        "AGG_SW_04",
+        "FW_01",
+        "FW_02"
       ]
     },
     {
@@ -828,8 +1170,12 @@
       "display": "Core_SW_02",
       "label": "Device",
       "properties": {
+        "global_stp_enabled": "true",
+        "ha_protocol": "VRRP",
+        "ha_state": "enabled",
         "name": "Core_SW_02",
         "plane": "physical",
+        "stp_mode": "enabled",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
@@ -837,12 +1183,65 @@
         "y": -269.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 4,
+      "degree": 6,
       "neighbors": [
         "AGG_SW_01",
         "AGG_SW_02",
         "AGG_SW_03",
-        "AGG_SW_04"
+        "AGG_SW_04",
+        "FW_01",
+        "FW_02"
+      ]
+    },
+    {
+      "id": "FW_01",
+      "display": "FW_01",
+      "label": "Device",
+      "properties": {
+        "ha_protocol": "HRP",
+        "ha_state": "enabled",
+        "name": "FW_01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1192.0,
+        "y": -629.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 5,
+      "neighbors": [
+        "BJHQ_CSR1000V_GW_01",
+        "Core_SW_01",
+        "Core_SW_02",
+        "FW_02",
+        "SW-DMZ-ACC-01"
+      ]
+    },
+    {
+      "id": "FW_02",
+      "display": "FW_02",
+      "label": "Device",
+      "properties": {
+        "ha_protocol": "HRP",
+        "ha_role": "standby-device",
+        "ha_state": "disabled",
+        "name": "FW_02",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -672.0,
+        "y": -641.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 5,
+      "neighbors": [
+        "BJHQ_CSR1000V_GW_01",
+        "Core_SW_01",
+        "Core_SW_02",
+        "FW_01",
+        "SW-DMZ-ACC-01"
       ]
     },
     {
@@ -1015,6 +1414,26 @@
       "neighbors": [
         "AGG_SW_04"
       ]
+    },
+    {
+      "id": "SW-DMZ-ACC-01",
+      "display": "SW-DMZ-ACC-01",
+      "label": "Device",
+      "properties": {
+        "name": "SW-DMZ-ACC-01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1920.0,
+        "y": -975.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 2,
+      "neighbors": [
+        "FW_01",
+        "FW_02"
+      ]
     }
   ],
   "model_edge_index": [
@@ -1040,7 +1459,8 @@
         "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/3",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1065,7 +1485,8 @@
         "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/3",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1165,7 +1586,8 @@
         "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/4",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1190,7 +1612,8 @@
         "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/4",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1265,7 +1688,8 @@
         "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/5",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1290,7 +1714,8 @@
         "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/5",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1365,7 +1790,8 @@
         "_viz_edge_label": "HundredGigE1/0/1 ↔ GE1/0/6",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1390,7 +1816,8 @@
         "_viz_edge_label": "HundredGigE1/0/2 ↔ GE1/0/6",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
-        "_viz_remote_port_state": "unknown"
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
@@ -1438,6 +1865,227 @@
         "rendered_type": "PHYSICAL_LINK",
         "_viz_device_backbone": true,
         "_viz_edge_label": "HundredGigE1/0/4 ↔ GE1/0/0",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 17,
+      "source": "Core_SW_01",
+      "target": "FW_01",
+      "type": "PHYSICAL_LINK",
+      "label": "GE1/0/8 ↔ GigabitEthernet1/0/1",
+      "properties": {
+        "local_device": "Core_SW_01",
+        "local_port": "GE1/0/8",
+        "plane": "physical",
+        "remote_device": "FW_01",
+        "remote_port": "GigabitEthernet1/0/1",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "Core_SW_01:GE1/0/8",
+        "_viz_original_target": "FW_01:GigabitEthernet1/0/1",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GE1/0/8 ↔ GigabitEthernet1/0/1",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 18,
+      "source": "Core_SW_01",
+      "target": "FW_02",
+      "type": "PHYSICAL_LINK",
+      "label": "GE1/0/9 ↔ GigabitEthernet1/0/1",
+      "properties": {
+        "local_device": "Core_SW_01",
+        "local_port": "GE1/0/9",
+        "plane": "physical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/1",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "Core_SW_01:GE1/0/9",
+        "_viz_original_target": "FW_02:GigabitEthernet1/0/1",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GE1/0/9 ↔ GigabitEthernet1/0/1",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 19,
+      "source": "Core_SW_02",
+      "target": "FW_01",
+      "type": "PHYSICAL_LINK",
+      "label": "GE1/0/8 ↔ GigabitEthernet1/0/2",
+      "properties": {
+        "local_device": "Core_SW_02",
+        "local_port": "GE1/0/8",
+        "plane": "physical",
+        "remote_device": "FW_01",
+        "remote_port": "GigabitEthernet1/0/2",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "Core_SW_02:GE1/0/8",
+        "_viz_original_target": "FW_01:GigabitEthernet1/0/2",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GE1/0/8 ↔ GigabitEthernet1/0/2",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 20,
+      "source": "Core_SW_02",
+      "target": "FW_02",
+      "type": "PHYSICAL_LINK",
+      "label": "GE1/0/9 ↔ GigabitEthernet1/0/2",
+      "properties": {
+        "local_device": "Core_SW_02",
+        "local_port": "GE1/0/9",
+        "plane": "physical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/2",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "Core_SW_02:GE1/0/9",
+        "_viz_original_target": "FW_02:GigabitEthernet1/0/2",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GE1/0/9 ↔ GigabitEthernet1/0/2",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 21,
+      "source": "FW_01",
+      "target": "BJHQ_CSR1000V_GW_01",
+      "type": "PHYSICAL_LINK",
+      "label": "GigabitEthernet1/0/3 ↔ Gi2",
+      "properties": {
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/3",
+        "plane": "physical",
+        "remote_device": "BJHQ_CSR1000V_GW_01",
+        "remote_port": "Gi2",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "FW_01:GigabitEthernet1/0/3",
+        "_viz_original_target": "BJHQ_CSR1000V_GW_01:Gi2",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GigabitEthernet1/0/3 ↔ Gi2",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 22,
+      "source": "FW_01",
+      "target": "SW-DMZ-ACC-01",
+      "type": "PHYSICAL_LINK",
+      "label": "GigabitEthernet1/0/4 ↔ GE1/0/1",
+      "properties": {
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/4",
+        "plane": "physical",
+        "remote_device": "SW-DMZ-ACC-01",
+        "remote_port": "GE1/0/1",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "FW_01:GigabitEthernet1/0/4",
+        "_viz_original_target": "SW-DMZ-ACC-01:GE1/0/1",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GigabitEthernet1/0/4 ↔ GE1/0/1",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 23,
+      "source": "FW_01",
+      "target": "FW_02",
+      "type": "PHYSICAL_LINK",
+      "label": "GigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5\nGigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6",
+      "properties": {
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/5",
+        "plane": "physical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/5",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "FW_01:GigabitEthernet1/0/5",
+        "_viz_original_target": "FW_02:GigabitEthernet1/0/5",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5\nGigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
+      }
+    },
+    {
+      "index": 24,
+      "source": "FW_02",
+      "target": "BJHQ_CSR1000V_GW_01",
+      "type": "PHYSICAL_LINK",
+      "label": "GigabitEthernet1/0/3 ↔ Gi3",
+      "properties": {
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/3",
+        "plane": "physical",
+        "remote_device": "BJHQ_CSR1000V_GW_01",
+        "remote_port": "Gi3",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "FW_02:GigabitEthernet1/0/3",
+        "_viz_original_target": "BJHQ_CSR1000V_GW_01:Gi3",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GigabitEthernet1/0/3 ↔ Gi3",
+        "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 25,
+      "source": "FW_02",
+      "target": "SW-DMZ-ACC-01",
+      "type": "PHYSICAL_LINK",
+      "label": "GigabitEthernet1/0/4 ↔ GE1/0/2",
+      "properties": {
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/4",
+        "plane": "physical",
+        "remote_device": "SW-DMZ-ACC-01",
+        "remote_port": "GE1/0/2",
+        "source": "description",
+        "source_type": "PORT_LINK",
+        "_viz_original_source": "FW_02:GigabitEthernet1/0/4",
+        "_viz_original_target": "SW-DMZ-ACC-01:GE1/0/2",
+        "rendered_type": "PHYSICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "GigabitEthernet1/0/4 ↔ GE1/0/2",
         "note_cn": "物理平面：PhysicalPort 邻接/description，不含 IP 与路由协议。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "unknown"
@@ -1563,14 +2211,14 @@
       "shape": "box",
       "size": 14,
       "color": {
-        "background": "#1a3f6e",
-        "border": "#facc15",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 4.0,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
         "size": 13,
@@ -1589,15 +2237,45 @@
       "shapeProperties": {
         "borderRadius": 3
       },
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
-      },
       "x": -283.0,
       "y": 25.0,
+      "fixed": false
+    },
+    {
+      "id": "BJHQ_CSR1000V_GW_01",
+      "label": "BJHQ_CSR1000V_GW_01",
+      "title": "Device\nBJHQ_CSR1000V_GW_01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -676.0,
+      "y": -437.0,
       "fixed": false
     },
     {
@@ -1672,6 +2350,80 @@
       },
       "x": -278.0,
       "y": -112.0,
+      "fixed": false
+    },
+    {
+      "id": "FW_01",
+      "label": "FW_01",
+      "title": "Device\nFW_01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -651.0,
+      "y": -279.0,
+      "fixed": false
+    },
+    {
+      "id": "FW_02",
+      "label": "FW_02",
+      "title": "Device\nFW_02",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -282.0,
+      "y": -269.0,
       "fixed": false
     },
     {
@@ -2005,6 +2757,43 @@
       },
       "x": -375.0,
       "y": 126.0,
+      "fixed": false
+    },
+    {
+      "id": "SW-DMZ-ACC-01",
+      "label": "SW-DMZ-ACC-01",
+      "title": "Device\nSW-DMZ-ACC-01",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#0f315c",
+        "border": "#7dd3fc",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1.2,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -886.0,
+      "y": -386.0,
       "fixed": false
     }
   ],
@@ -2382,75 +3171,216 @@
         "align": "horizontal"
       },
       "smooth": false
+    },
+    {
+      "id": "Core_SW_01|PHYSICAL_LINK|FW_01|17",
+      "from": "Core_SW_01",
+      "to": "FW_01",
+      "label": "GE1/0/8 ↔ GigabitEthernet1/0/1",
+      "title": "PHYSICAL_LINK\nGE1/0/8 ↔ GigabitEthernet1/0/1",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "Core_SW_01|PHYSICAL_LINK|FW_02|18",
+      "from": "Core_SW_01",
+      "to": "FW_02",
+      "label": "GE1/0/9 ↔ GigabitEthernet1/0/1",
+      "title": "PHYSICAL_LINK\nGE1/0/9 ↔ GigabitEthernet1/0/1",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "Core_SW_02|PHYSICAL_LINK|FW_01|19",
+      "from": "Core_SW_02",
+      "to": "FW_01",
+      "label": "GE1/0/8 ↔ GigabitEthernet1/0/2",
+      "title": "PHYSICAL_LINK\nGE1/0/8 ↔ GigabitEthernet1/0/2",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "Core_SW_02|PHYSICAL_LINK|FW_02|20",
+      "from": "Core_SW_02",
+      "to": "FW_02",
+      "label": "GE1/0/9 ↔ GigabitEthernet1/0/2",
+      "title": "PHYSICAL_LINK\nGE1/0/9 ↔ GigabitEthernet1/0/2",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_01|PHYSICAL_LINK|BJHQ_CSR1000V_GW_01|21",
+      "from": "FW_01",
+      "to": "BJHQ_CSR1000V_GW_01",
+      "label": "GigabitEthernet1/0/3 ↔ Gi2",
+      "title": "PHYSICAL_LINK\nGigabitEthernet1/0/3 ↔ Gi2",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_01|PHYSICAL_LINK|SW-DMZ-ACC-01|22",
+      "from": "FW_01",
+      "to": "SW-DMZ-ACC-01",
+      "label": "GigabitEthernet1/0/4 ↔ GE1/0/1",
+      "title": "PHYSICAL_LINK\nGigabitEthernet1/0/4 ↔ GE1/0/1",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_01|PHYSICAL_LINK|FW_02|23",
+      "from": "FW_01",
+      "to": "FW_02",
+      "label": "GigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5\nGigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6",
+      "title": "PHYSICAL_LINK\nGigabitEthernet1/0/5 ↔ GigabitEthernet1/0/5\nGigabitEthernet1/0/6 ↔ GigabitEthernet1/0/6",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_02|PHYSICAL_LINK|BJHQ_CSR1000V_GW_01|24",
+      "from": "FW_02",
+      "to": "BJHQ_CSR1000V_GW_01",
+      "label": "GigabitEthernet1/0/3 ↔ Gi3",
+      "title": "PHYSICAL_LINK\nGigabitEthernet1/0/3 ↔ Gi3",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
+    },
+    {
+      "id": "FW_02|PHYSICAL_LINK|SW-DMZ-ACC-01|25",
+      "from": "FW_02",
+      "to": "SW-DMZ-ACC-01",
+      "label": "GigabitEthernet1/0/4 ↔ GE1/0/2",
+      "title": "PHYSICAL_LINK\nGigabitEthernet1/0/4 ↔ GE1/0/2",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
     }
   ],
-  "focus_nodes": [
-    "AGG_SW_04"
-  ],
+  "focus_nodes": [],
   "highlight_path": [],
   "agent_path": [],
   "agent_path_segment_connected": [],
   "agent_path_segment_linked": [],
-  "property_overlay": [
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/1",
-      "label": "HundredGigE1/0/1",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    },
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/10",
-      "label": "HundredGigE1/0/10",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    },
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/100",
-      "label": "HundredGigE1/0/100",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    },
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/101",
-      "label": "HundredGigE1/0/101",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    },
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/102",
-      "label": "HundredGigE1/0/102",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    },
-    {
-      "node": "AGG_SW_04:HundredGigE1/0/103",
-      "label": "HundredGigE1/0/103",
-      "fields": {
-        "phy_state": "up",
-        "admin_state": "up",
-        "plane": "physical"
-      }
-    }
-  ],
+  "property_overlay": [],
   "view_spec": {
-    "view_id": "physical_focus",
+    "view_id": "physical_inspect_edge_GE1/0/7",
     "focus_nodes": [
-      "AGG_SW_04"
+      "GE1/0/7"
     ],
     "highlight_path": [],
     "agent_path": [],
@@ -2461,281 +3391,16 @@
       "l2"
     ],
     "show_protocols": true,
-    "viewport": "subgraph",
-    "hops": 8,
+    "viewport": "full",
+    "hops": 5,
     "device_backbone": false,
     "physical_plane": false,
     "plane_mode": "physical",
     "respect_up_ports": false,
     "annotations": [],
-    "property_overlay_nodes": [
-      "AGG_SW_04:HundredGigE1/0/1",
-      "AGG_SW_04:HundredGigE1/0/10",
-      "AGG_SW_04:HundredGigE1/0/100",
-      "AGG_SW_04:HundredGigE1/0/101",
-      "AGG_SW_04:HundredGigE1/0/102",
-      "AGG_SW_04:HundredGigE1/0/103",
-      "AGG_SW_04:HundredGigE1/0/104",
-      "AGG_SW_04:HundredGigE1/0/105",
-      "AGG_SW_04:HundredGigE1/0/106",
-      "AGG_SW_04:HundredGigE1/0/107",
-      "AGG_SW_04:HundredGigE1/0/108",
-      "AGG_SW_04:HundredGigE1/0/109",
-      "AGG_SW_04:HundredGigE1/0/11",
-      "AGG_SW_04:HundredGigE1/0/110",
-      "AGG_SW_04:HundredGigE1/0/111",
-      "AGG_SW_04:HundredGigE1/0/112",
-      "AGG_SW_04:HundredGigE1/0/113",
-      "AGG_SW_04:HundredGigE1/0/114",
-      "AGG_SW_04:HundredGigE1/0/115",
-      "AGG_SW_04:HundredGigE1/0/116",
-      "AGG_SW_04:HundredGigE1/0/117",
-      "AGG_SW_04:HundredGigE1/0/118",
-      "AGG_SW_04:HundredGigE1/0/119",
-      "AGG_SW_04:HundredGigE1/0/12",
-      "AGG_SW_04:HundredGigE1/0/120",
-      "AGG_SW_04:HundredGigE1/0/121",
-      "AGG_SW_04:HundredGigE1/0/122",
-      "AGG_SW_04:HundredGigE1/0/123",
-      "AGG_SW_04:HundredGigE1/0/124",
-      "AGG_SW_04:HundredGigE1/0/125",
-      "AGG_SW_04:HundredGigE1/0/126",
-      "AGG_SW_04:HundredGigE1/0/127",
-      "AGG_SW_04:HundredGigE1/0/128",
-      "AGG_SW_04:HundredGigE1/0/129",
-      "AGG_SW_04:HundredGigE1/0/13",
-      "AGG_SW_04:HundredGigE1/0/130",
-      "AGG_SW_04:HundredGigE1/0/131",
-      "AGG_SW_04:HundredGigE1/0/132",
-      "AGG_SW_04:HundredGigE1/0/133",
-      "AGG_SW_04:HundredGigE1/0/134",
-      "AGG_SW_04:HundredGigE1/0/135",
-      "AGG_SW_04:HundredGigE1/0/136",
-      "AGG_SW_04:HundredGigE1/0/137",
-      "AGG_SW_04:HundredGigE1/0/138",
-      "AGG_SW_04:HundredGigE1/0/139",
-      "AGG_SW_04:HundredGigE1/0/14",
-      "AGG_SW_04:HundredGigE1/0/140",
-      "AGG_SW_04:HundredGigE1/0/141",
-      "AGG_SW_04:HundredGigE1/0/142",
-      "AGG_SW_04:HundredGigE1/0/143",
-      "AGG_SW_04:HundredGigE1/0/144",
-      "AGG_SW_04:HundredGigE1/0/145",
-      "AGG_SW_04:HundredGigE1/0/146",
-      "AGG_SW_04:HundredGigE1/0/147",
-      "AGG_SW_04:HundredGigE1/0/148",
-      "AGG_SW_04:HundredGigE1/0/149",
-      "AGG_SW_04:HundredGigE1/0/15",
-      "AGG_SW_04:HundredGigE1/0/150",
-      "AGG_SW_04:HundredGigE1/0/151",
-      "AGG_SW_04:HundredGigE1/0/152",
-      "AGG_SW_04:HundredGigE1/0/153",
-      "AGG_SW_04:HundredGigE1/0/154",
-      "AGG_SW_04:HundredGigE1/0/155",
-      "AGG_SW_04:HundredGigE1/0/156",
-      "AGG_SW_04:HundredGigE1/0/157",
-      "AGG_SW_04:HundredGigE1/0/158",
-      "AGG_SW_04:HundredGigE1/0/159",
-      "AGG_SW_04:HundredGigE1/0/16",
-      "AGG_SW_04:HundredGigE1/0/160",
-      "AGG_SW_04:HundredGigE1/0/161",
-      "AGG_SW_04:HundredGigE1/0/162",
-      "AGG_SW_04:HundredGigE1/0/163",
-      "AGG_SW_04:HundredGigE1/0/164",
-      "AGG_SW_04:HundredGigE1/0/165",
-      "AGG_SW_04:HundredGigE1/0/166",
-      "AGG_SW_04:HundredGigE1/0/167",
-      "AGG_SW_04:HundredGigE1/0/168",
-      "AGG_SW_04:HundredGigE1/0/169",
-      "AGG_SW_04:HundredGigE1/0/17",
-      "AGG_SW_04:HundredGigE1/0/170",
-      "AGG_SW_04:HundredGigE1/0/171",
-      "AGG_SW_04:HundredGigE1/0/172",
-      "AGG_SW_04:HundredGigE1/0/173",
-      "AGG_SW_04:HundredGigE1/0/174",
-      "AGG_SW_04:HundredGigE1/0/175",
-      "AGG_SW_04:HundredGigE1/0/176",
-      "AGG_SW_04:HundredGigE1/0/177",
-      "AGG_SW_04:HundredGigE1/0/178",
-      "AGG_SW_04:HundredGigE1/0/179",
-      "AGG_SW_04:HundredGigE1/0/18",
-      "AGG_SW_04:HundredGigE1/0/180",
-      "AGG_SW_04:HundredGigE1/0/181",
-      "AGG_SW_04:HundredGigE1/0/182",
-      "AGG_SW_04:HundredGigE1/0/183",
-      "AGG_SW_04:HundredGigE1/0/184",
-      "AGG_SW_04:HundredGigE1/0/185",
-      "AGG_SW_04:HundredGigE1/0/186",
-      "AGG_SW_04:HundredGigE1/0/187",
-      "AGG_SW_04:HundredGigE1/0/188",
-      "AGG_SW_04:HundredGigE1/0/189",
-      "AGG_SW_04:HundredGigE1/0/19",
-      "AGG_SW_04:HundredGigE1/0/190",
-      "AGG_SW_04:HundredGigE1/0/191",
-      "AGG_SW_04:HundredGigE1/0/192",
-      "AGG_SW_04:HundredGigE1/0/193",
-      "AGG_SW_04:HundredGigE1/0/194",
-      "AGG_SW_04:HundredGigE1/0/195",
-      "AGG_SW_04:HundredGigE1/0/196",
-      "AGG_SW_04:HundredGigE1/0/197",
-      "AGG_SW_04:HundredGigE1/0/198",
-      "AGG_SW_04:HundredGigE1/0/199",
-      "AGG_SW_04:HundredGigE1/0/2",
-      "AGG_SW_04:HundredGigE1/0/20",
-      "AGG_SW_04:HundredGigE1/0/200",
-      "AGG_SW_04:HundredGigE1/0/201",
-      "AGG_SW_04:HundredGigE1/0/202",
-      "AGG_SW_04:HundredGigE1/0/203",
-      "AGG_SW_04:HundredGigE1/0/204",
-      "AGG_SW_04:HundredGigE1/0/205",
-      "AGG_SW_04:HundredGigE1/0/206",
-      "AGG_SW_04:HundredGigE1/0/207",
-      "AGG_SW_04:HundredGigE1/0/208",
-      "AGG_SW_04:HundredGigE1/0/209",
-      "AGG_SW_04:HundredGigE1/0/21",
-      "AGG_SW_04:HundredGigE1/0/210",
-      "AGG_SW_04:HundredGigE1/0/211",
-      "AGG_SW_04:HundredGigE1/0/212",
-      "AGG_SW_04:HundredGigE1/0/213",
-      "AGG_SW_04:HundredGigE1/0/214",
-      "AGG_SW_04:HundredGigE1/0/215",
-      "AGG_SW_04:HundredGigE1/0/216",
-      "AGG_SW_04:HundredGigE1/0/217",
-      "AGG_SW_04:HundredGigE1/0/218",
-      "AGG_SW_04:HundredGigE1/0/219",
-      "AGG_SW_04:HundredGigE1/0/22",
-      "AGG_SW_04:HundredGigE1/0/220",
-      "AGG_SW_04:HundredGigE1/0/221",
-      "AGG_SW_04:HundredGigE1/0/222",
-      "AGG_SW_04:HundredGigE1/0/223",
-      "AGG_SW_04:HundredGigE1/0/224",
-      "AGG_SW_04:HundredGigE1/0/225",
-      "AGG_SW_04:HundredGigE1/0/226",
-      "AGG_SW_04:HundredGigE1/0/227",
-      "AGG_SW_04:HundredGigE1/0/228",
-      "AGG_SW_04:HundredGigE1/0/229",
-      "AGG_SW_04:HundredGigE1/0/23",
-      "AGG_SW_04:HundredGigE1/0/230",
-      "AGG_SW_04:HundredGigE1/0/231",
-      "AGG_SW_04:HundredGigE1/0/232",
-      "AGG_SW_04:HundredGigE1/0/233",
-      "AGG_SW_04:HundredGigE1/0/234",
-      "AGG_SW_04:HundredGigE1/0/235",
-      "AGG_SW_04:HundredGigE1/0/236",
-      "AGG_SW_04:HundredGigE1/0/237",
-      "AGG_SW_04:HundredGigE1/0/238",
-      "AGG_SW_04:HundredGigE1/0/239",
-      "AGG_SW_04:HundredGigE1/0/24",
-      "AGG_SW_04:HundredGigE1/0/240",
-      "AGG_SW_04:HundredGigE1/0/241",
-      "AGG_SW_04:HundredGigE1/0/242",
-      "AGG_SW_04:HundredGigE1/0/243",
-      "AGG_SW_04:HundredGigE1/0/244",
-      "AGG_SW_04:HundredGigE1/0/245",
-      "AGG_SW_04:HundredGigE1/0/246",
-      "AGG_SW_04:HundredGigE1/0/247",
-      "AGG_SW_04:HundredGigE1/0/248",
-      "AGG_SW_04:HundredGigE1/0/249",
-      "AGG_SW_04:HundredGigE1/0/25",
-      "AGG_SW_04:HundredGigE1/0/250",
-      "AGG_SW_04:HundredGigE1/0/251",
-      "AGG_SW_04:HundredGigE1/0/252",
-      "AGG_SW_04:HundredGigE1/0/253",
-      "AGG_SW_04:HundredGigE1/0/254",
-      "AGG_SW_04:HundredGigE1/0/255",
-      "AGG_SW_04:HundredGigE1/0/256",
-      "AGG_SW_04:HundredGigE1/0/26",
-      "AGG_SW_04:HundredGigE1/0/27",
-      "AGG_SW_04:HundredGigE1/0/28",
-      "AGG_SW_04:HundredGigE1/0/29",
-      "AGG_SW_04:HundredGigE1/0/3",
-      "AGG_SW_04:HundredGigE1/0/30",
-      "AGG_SW_04:HundredGigE1/0/31",
-      "AGG_SW_04:HundredGigE1/0/32",
-      "AGG_SW_04:HundredGigE1/0/33",
-      "AGG_SW_04:HundredGigE1/0/34",
-      "AGG_SW_04:HundredGigE1/0/35",
-      "AGG_SW_04:HundredGigE1/0/36",
-      "AGG_SW_04:HundredGigE1/0/37",
-      "AGG_SW_04:HundredGigE1/0/38",
-      "AGG_SW_04:HundredGigE1/0/39",
-      "AGG_SW_04:HundredGigE1/0/4",
-      "AGG_SW_04:HundredGigE1/0/40",
-      "AGG_SW_04:HundredGigE1/0/41",
-      "AGG_SW_04:HundredGigE1/0/42",
-      "AGG_SW_04:HundredGigE1/0/43",
-      "AGG_SW_04:HundredGigE1/0/44",
-      "AGG_SW_04:HundredGigE1/0/45",
-      "AGG_SW_04:HundredGigE1/0/46",
-      "AGG_SW_04:HundredGigE1/0/47",
-      "AGG_SW_04:HundredGigE1/0/48",
-      "AGG_SW_04:HundredGigE1/0/49",
-      "AGG_SW_04:HundredGigE1/0/5",
-      "AGG_SW_04:HundredGigE1/0/50",
-      "AGG_SW_04:HundredGigE1/0/51",
-      "AGG_SW_04:HundredGigE1/0/52",
-      "AGG_SW_04:HundredGigE1/0/53",
-      "AGG_SW_04:HundredGigE1/0/54",
-      "AGG_SW_04:HundredGigE1/0/55",
-      "AGG_SW_04:HundredGigE1/0/56",
-      "AGG_SW_04:HundredGigE1/0/57",
-      "AGG_SW_04:HundredGigE1/0/58",
-      "AGG_SW_04:HundredGigE1/0/59",
-      "AGG_SW_04:HundredGigE1/0/6",
-      "AGG_SW_04:HundredGigE1/0/60",
-      "AGG_SW_04:HundredGigE1/0/61",
-      "AGG_SW_04:HundredGigE1/0/62",
-      "AGG_SW_04:HundredGigE1/0/63",
-      "AGG_SW_04:HundredGigE1/0/64",
-      "AGG_SW_04:HundredGigE1/0/65",
-      "AGG_SW_04:HundredGigE1/0/66",
-      "AGG_SW_04:HundredGigE1/0/67",
-      "AGG_SW_04:HundredGigE1/0/68",
-      "AGG_SW_04:HundredGigE1/0/69",
-      "AGG_SW_04:HundredGigE1/0/7",
-      "AGG_SW_04:HundredGigE1/0/70",
-      "AGG_SW_04:HundredGigE1/0/71",
-      "AGG_SW_04:HundredGigE1/0/72",
-      "AGG_SW_04:HundredGigE1/0/73",
-      "AGG_SW_04:HundredGigE1/0/74",
-      "AGG_SW_04:HundredGigE1/0/75",
-      "AGG_SW_04:HundredGigE1/0/76",
-      "AGG_SW_04:HundredGigE1/0/77",
-      "AGG_SW_04:HundredGigE1/0/78",
-      "AGG_SW_04:HundredGigE1/0/79",
-      "AGG_SW_04:HundredGigE1/0/8",
-      "AGG_SW_04:HundredGigE1/0/80",
-      "AGG_SW_04:HundredGigE1/0/81",
-      "AGG_SW_04:HundredGigE1/0/82",
-      "AGG_SW_04:HundredGigE1/0/83",
-      "AGG_SW_04:HundredGigE1/0/84",
-      "AGG_SW_04:HundredGigE1/0/85",
-      "AGG_SW_04:HundredGigE1/0/86",
-      "AGG_SW_04:HundredGigE1/0/87",
-      "AGG_SW_04:HundredGigE1/0/88",
-      "AGG_SW_04:HundredGigE1/0/89",
-      "AGG_SW_04:HundredGigE1/0/9",
-      "AGG_SW_04:HundredGigE1/0/90",
-      "AGG_SW_04:HundredGigE1/0/91",
-      "AGG_SW_04:HundredGigE1/0/92",
-      "AGG_SW_04:HundredGigE1/0/93",
-      "AGG_SW_04:HundredGigE1/0/94",
-      "AGG_SW_04:HundredGigE1/0/95",
-      "AGG_SW_04:HundredGigE1/0/96",
-      "AGG_SW_04:HundredGigE1/0/97",
-      "AGG_SW_04:HundredGigE1/0/98",
-      "AGG_SW_04:HundredGigE1/0/99",
-      "AGG_SW_04:M-GigabitEthernet0/0/0",
-      "AGG_SW_04",
-      "Core_SW_01:GE1/0/6",
-      "Core_SW_02:GE1/0/6",
-      "HQ_PROC_AP01",
-      "HQ_PROC_AP01:GE1/0/0",
-      "HQ_PROC_PC01",
-      "HQ_PROC_PC01:Ethernet0"
-    ],
+    "property_overlay_nodes": [],
     "legend": true,
-    "title": "Physical focus: AGG_SW_04",
+    "title": "inspect edge GE1/0/7",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

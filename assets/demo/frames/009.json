@@ -1,2078 +1,1242 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_security_focus_FW_02.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_logical_focus_FW_02.png",
   "html_path": null,
-  "view_id": "security_focus",
-  "plane_mode": "security",
-  "caption": "view=security_focus; plane=security; nodes=15; edges=19; focus=FW_02",
-  "nodes_shown": 15,
-  "edges_shown": 19,
+  "view_id": "logical_focus",
+  "plane_mode": "logical",
+  "caption": "view=logical_focus; plane=logical; nodes=6; edges=9; focus=FW_02",
+  "nodes_shown": 6,
+  "edges_shown": 9,
   "graph_snap": {
     "nodes": {
-      "FW_02:zone:local": {
-        "id": "FW_02:zone:local",
-        "label": "Zone",
+      "BJHQ_CSR1000V_GW_01": {
+        "id": "BJHQ_CSR1000V_GW_01",
+        "label": "Device",
         "properties": {
-          "device": "FW_02",
-          "name": "local",
-          "note": "防火墙本机；策略源为 local 时表示设备自身流量",
-          "plane": "security"
+          "name": "BJHQ_CSR1000V_GW_01",
+          "plane": "physical",
+          "vendor": "Cisco",
+          "viz": {
+            "layout": {
+              "x": -1074.0,
+              "y": -994.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       },
-      "FW_02:zone:untrust": {
-        "id": "FW_02:zone:untrust",
-        "label": "Zone",
+      "Core_SW_01": {
+        "id": "Core_SW_01",
+        "label": "Device",
         "properties": {
-          "device": "FW_02",
-          "member_interfaces": [
-            "Eth-Trunk5"
-          ],
-          "name": "untrust",
-          "note": "非信任/外联域；承载上联或 Internet 侧接口",
-          "plane": "security"
+          "global_stp_enabled": "true",
+          "ha_protocol": "VRRP",
+          "ha_state": "enabled",
+          "name": "Core_SW_01",
+          "plane": "physical",
+          "stp_mode": "enabled",
+          "viz": {
+            "layout": {
+              "x": -1195.0,
+              "y": -251.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       },
-      "FW_02:policy:to_Heartbeat": {
-        "id": "FW_02:policy:to_Heartbeat",
-        "label": "SecurityPolicy",
+      "Core_SW_02": {
+        "id": "Core_SW_02",
+        "label": "Device",
         "properties": {
-          "action": "permit",
-          "destination_addresses": [],
-          "destination_zone": "Heartbeat",
-          "destination_zones": [
-            "Heartbeat"
-          ],
-          "device": "FW_02",
-          "name": "to_Heartbeat",
-          "plane": "security",
-          "source_addresses": [],
-          "source_zone": "local",
-          "source_zones": [
-            "local"
-          ]
+          "global_stp_enabled": "true",
+          "ha_protocol": "VRRP",
+          "ha_state": "enabled",
+          "name": "Core_SW_02",
+          "plane": "physical",
+          "stp_mode": "enabled",
+          "viz": {
+            "layout": {
+              "x": -664.0,
+              "y": -269.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       },
-      "FW_02:zone:Heartbeat": {
-        "id": "FW_02:zone:Heartbeat",
-        "label": "Zone",
+      "FW_01": {
+        "id": "FW_01",
+        "label": "Device",
         "properties": {
-          "device": "FW_02",
-          "name": "Heartbeat",
-          "note": "HRP 双机心跳域；承载主备同步/心跳接口",
-          "plane": "security"
+          "ha_protocol": "HRP",
+          "ha_state": "enabled",
+          "name": "FW_01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1192.0,
+              "y": -629.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       },
-      "FW_02:policy:local": {
-        "id": "FW_02:policy:local",
-        "label": "SecurityPolicy",
+      "FW_02": {
+        "id": "FW_02",
+        "label": "Device",
         "properties": {
-          "action": "permit",
-          "destination_addresses": [],
-          "destination_zone": "",
-          "destination_zones": [],
-          "device": "FW_02",
-          "name": "local",
-          "plane": "security",
-          "source_addresses": [],
-          "source_zone": "local",
-          "source_zones": [
-            "local"
-          ]
+          "ha_protocol": "HRP",
+          "ha_role": "standby-device",
+          "ha_state": "disabled",
+          "name": "FW_02",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -672.0,
+              "y": -641.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       },
-      "FW_02:zone:dmz": {
-        "id": "FW_02:zone:dmz",
-        "label": "Zone",
+      "SW-DMZ-ACC-01": {
+        "id": "SW-DMZ-ACC-01",
+        "label": "Device",
         "properties": {
-          "device": "FW_02",
-          "member_interfaces": [
-            "Eth-Trunk4"
-          ],
-          "name": "dmz",
-          "note": "DMZ 隔离区；承载对外服务器或隔离网段接口",
-          "plane": "security"
-        }
-      },
-      "FW_02:policy:to_DNS-server": {
-        "id": "FW_02:policy:to_DNS-server",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.60.1/255.255.255.255"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_DNS-server",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.120.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:to_DHCP": {
-        "id": "FW_02:policy:to_DHCP",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.50.1/255.255.255.255"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_DHCP",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.110.0/255.255.255.0",
-            "10.1.120.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:to_dmz-server": {
-        "id": "FW_02:policy:to_dmz-server",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.60.0/255.255.255.0"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_dmz-server",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.110.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:deny_Guest_TO_SH_SZ": {
-        "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "deny",
-          "destination_addresses": [
-            "10.2.10.0/255.255.255.0",
-            "10.2.20.0/255.255.255.0",
-            "10.2.30.0/255.255.255.0",
-            "10.3.10.0/255.255.255.0",
-            "10.3.20.0/255.255.255.0",
-            "10.3.30.0/255.255.255.0"
-          ],
-          "destination_zone": "untrust",
-          "destination_zones": [
-            "untrust"
-          ],
-          "device": "FW_02",
-          "name": "deny_Guest_TO_SH_SZ",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.120.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:SH_SZ_TO_BJ": {
-        "id": "FW_02:policy:SH_SZ_TO_BJ",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "destination_zone": "trust",
-          "destination_zones": [
-            "trust"
-          ],
-          "device": "FW_02",
-          "name": "SH_SZ_TO_BJ",
-          "plane": "security",
-          "source_addresses": [
-            "10.2.10.0/255.255.255.0",
-            "10.2.20.0/255.255.255.0",
-            "10.2.30.0/255.255.255.0",
-            "10.3.10.0/255.255.255.0",
-            "10.3.20.0/255.255.255.0",
-            "10.3.30.0/255.255.255.0"
-          ],
-          "source_zone": "untrust",
-          "source_zones": [
-            "untrust"
-          ]
-        }
-      },
-      "FW_02:policy:BJ_TO_SH_SZ": {
-        "id": "FW_02:policy:BJ_TO_SH_SZ",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.2.10.0/255.255.255.0",
-            "10.2.20.0/255.255.255.0",
-            "10.2.30.0/255.255.255.0",
-            "10.3.10.0/255.255.255.0",
-            "10.3.20.0/255.255.255.0",
-            "10.3.30.0/255.255.255.0"
-          ],
-          "destination_zone": "untrust",
-          "destination_zones": [
-            "untrust"
-          ],
-          "device": "FW_02",
-          "name": "BJ_TO_SH_SZ",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:to_internet": {
-        "id": "FW_02:policy:to_internet",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [],
-          "destination_zone": "untrust",
-          "destination_zones": [
-            "untrust"
-          ],
-          "device": "FW_02",
-          "name": "to_internet",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.110.0/255.255.255.0",
-            "10.1.120.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:zone:trust": {
-        "id": "FW_02:zone:trust",
-        "label": "Zone",
-        "properties": {
-          "device": "FW_02",
-          "member_interfaces": [
-            "GigabitEthernet0/0/0",
-            "Eth-Trunk3",
-            "Eth-Trunk2"
-          ],
-          "name": "trust",
-          "note": "内网信任域；承载内网/业务侧接口",
-          "plane": "security"
-        }
-      },
-      "FW_02:policy:to_60.2": {
-        "id": "FW_02:policy:to_60.2",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.60.2/255.255.255.255"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_60.2",
-          "plane": "security",
-          "source_addresses": [
-            "100.100.100.0/255.255.255.0",
-            "200.200.200.0/255.255.255.0"
-          ],
-          "source_zone": "untrust",
-          "source_zones": [
-            "untrust"
-          ]
+          "name": "SW-DMZ-ACC-01",
+          "plane": "physical",
+          "viz": {
+            "layout": {
+              "x": -1920.0,
+              "y": -975.0,
+              "source": "gns3_canvas_stamp"
+            }
+          },
+          "baseline_provenance": "gns3_design"
         }
       }
     },
     "edges": [
       {
+        "source": "Core_SW_01",
+        "target": "FW_01",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:local",
-        "target": "FW_02:policy:to_Heartbeat",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_FW_01_GigabitEthernet1/0/1",
+          "local_device": "Core_SW_01",
+          "local_port": "GE1/0/8",
+          "logical_local_port": "Eth-Trunk2",
+          "plane": "logical",
+          "remote_device": "FW_01",
+          "remote_port": "GigabitEthernet1/0/1",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.2/30 ↔ 10.1.200.1/30",
+            "Eth-Trunk2 ↔ GE1/0/8",
+            "Eth-Trunk2 ↔ GigabitEthernet1/0/1"
+          ],
+          "_viz_edge_label": "10.1.200.2/30 ↔ 10.1.200.1/30\nEth-Trunk2 ↔ GE1/0/8\nEth-Trunk2 ↔ GigabitEthernet1/0/1",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
       },
       {
+        "source": "Core_SW_01",
+        "target": "FW_02",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:Heartbeat",
-        "target": "FW_02:policy:to_Heartbeat",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_FW_02_GigabitEthernet1/0/1",
+          "local_device": "Core_SW_01",
+          "local_port": "GE1/0/9",
+          "logical_local_port": "Eth-Trunk3",
+          "plane": "logical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/1",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.6/30 ↔ 10.1.200.5/30",
+            "Eth-Trunk3 ↔ GE1/0/9",
+            "Eth-Trunk3 ↔ GigabitEthernet1/0/1"
+          ],
+          "_viz_edge_label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
       },
       {
+        "source": "Core_SW_02",
+        "target": "FW_01",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:untrust",
-        "target": "FW_02:policy:to_60.2",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_FW_01_GigabitEthernet1/0/2",
+          "local_device": "Core_SW_02",
+          "local_port": "GE1/0/8",
+          "logical_local_port": "Eth-Trunk3",
+          "plane": "logical",
+          "remote_device": "FW_01",
+          "remote_port": "GigabitEthernet1/0/2",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.10/30 ↔ 10.1.200.9/30",
+            "Eth-Trunk3 ↔ GE1/0/8",
+            "Eth-Trunk3 ↔ GigabitEthernet1/0/2"
+          ],
+          "_viz_edge_label": "10.1.200.10/30 ↔ 10.1.200.9/30\nEth-Trunk3 ↔ GE1/0/8\nEth-Trunk3 ↔ GigabitEthernet1/0/2",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
       },
       {
+        "source": "Core_SW_02",
+        "target": "FW_02",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:dmz",
-        "target": "FW_02:policy:to_60.2",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_FW_02_GigabitEthernet1/0/2",
+          "local_device": "Core_SW_02",
+          "local_port": "GE1/0/9",
+          "logical_local_port": "Eth-Trunk2",
+          "plane": "logical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/2",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.14/30 ↔ 10.1.200.13/30",
+            "Eth-Trunk2 ↔ GE1/0/9",
+            "Eth-Trunk2 ↔ GigabitEthernet1/0/2"
+          ],
+          "_viz_edge_label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
       },
       {
+        "source": "FW_01",
+        "target": "BJHQ_CSR1000V_GW_01",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:untrust",
-        "target": "FW_02:policy:SH_SZ_TO_BJ",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_BJHQ_CSR1000V_GW_01_Gi2",
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/3",
+          "logical_local_port": "Eth-Trunk5",
+          "plane": "logical",
+          "remote_device": "BJHQ_CSR1000V_GW_01",
+          "remote_port": "Gi2",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.18/30 ↔ 10.1.200.17/30",
+            "Eth-Trunk5 ↔ Gi2",
+            "Port-channel2 ↔ Eth-Trunk5"
+          ],
+          "_viz_edge_label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
       },
       {
+        "source": "FW_01",
+        "target": "SW-DMZ-ACC-01",
+        "type": "LOGICAL_LINK",
         "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:SH_SZ_TO_BJ",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_SW-DMZ-ACC-01_GE1/0/1",
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/4",
+          "logical_local_port": "Eth-Trunk4",
+          "plane": "logical",
+          "remote_device": "SW-DMZ-ACC-01",
+          "remote_port": "GE1/0/1",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "LOGICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "Eth-Trunk4 ↔ GE1/0/1"
+          ],
+          "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/1",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
       },
       {
+        "source": "FW_01",
+        "target": "FW_02",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:to_DHCP",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_FW_02_GigabitEthernet1/0/5",
+          "local_device": "FW_01",
+          "local_port": "GigabitEthernet1/0/5",
+          "logical_local_port": "Eth-Trunk1",
+          "plane": "logical",
+          "remote_device": "FW_02",
+          "remote_port": "GigabitEthernet1/0/5",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "1.1.1.1/30 ↔ 1.1.1.2/30",
+            "Eth-Trunk1 ↔ GigabitEthernet1/0/5"
+          ],
+          "_viz_edge_label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "up",
+          "_viz_port_down": false
+        }
       },
       {
+        "source": "FW_02",
+        "target": "BJHQ_CSR1000V_GW_01",
+        "type": "L3_LINK",
         "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:dmz",
-        "target": "FW_02:policy:to_DHCP",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_to_BJHQ_CSR1000V_GW_01_Gi3",
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/3",
+          "logical_local_port": "Eth-Trunk5",
+          "plane": "logical",
+          "remote_device": "BJHQ_CSR1000V_GW_01",
+          "remote_port": "Gi3",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "L3_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "10.1.200.22/30 ↔ 10.1.200.21/30",
+            "Eth-Trunk2 ↔ GigabitEthernet1/0/3",
+            "Eth-Trunk5 ↔ Gi3"
+          ],
+          "_viz_edge_label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
       },
       {
+        "source": "FW_02",
+        "target": "SW-DMZ-ACC-01",
+        "type": "LOGICAL_LINK",
         "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:to_dmz-server",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:dmz",
-        "target": "FW_02:policy:to_dmz-server",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:to_DNS-server",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:dmz",
-        "target": "FW_02:policy:to_DNS-server",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:BJ_TO_SH_SZ",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:untrust",
-        "target": "FW_02:policy:BJ_TO_SH_SZ",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:untrust",
-        "target": "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:trust",
-        "target": "FW_02:policy:to_internet",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "destination",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "destination"
-        },
-        "source": "FW_02:zone:untrust",
-        "target": "FW_02:policy:to_internet",
-        "type": "APPLIES_POLICY"
-      },
-      {
-        "properties": {
-          "direction": "source",
-          "plane": "security",
-          "source_type": "APPLIES_POLICY",
-          "rendered_type": "APPLIES_POLICY",
-          "_viz_edge_label": "source"
-        },
-        "source": "FW_02:zone:local",
-        "target": "FW_02:policy:local",
-        "type": "APPLIES_POLICY"
+          "from_description": "to_SW-DMZ-ACC-01_GE1/0/2",
+          "local_device": "FW_02",
+          "local_port": "GigabitEthernet1/0/4",
+          "logical_local_port": "Eth-Trunk4",
+          "plane": "logical",
+          "remote_device": "SW-DMZ-ACC-01",
+          "remote_port": "GE1/0/2",
+          "source": "description",
+          "source_type": "PEER_LINK",
+          "rendered_type": "LOGICAL_LINK",
+          "_viz_device_backbone": true,
+          "_viz_port_pairs": [
+            "Eth-Trunk4 ↔ GE1/0/2"
+          ],
+          "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/2",
+          "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+          "_viz_local_port_state": "up",
+          "_viz_remote_port_state": "unknown"
+        }
       }
     ]
   },
   "model_node_index": [
     {
-      "id": "FW_02:policy:BJ_TO_SH_SZ",
-      "display": "BJ_TO_SH_SZ",
-      "label": "SecurityPolicy",
+      "id": "BJHQ_CSR1000V_GW_01",
+      "display": "BJHQ_CSR1000V_GW_01",
+      "label": "Device",
       "properties": {
-        "action": "permit",
-        "destination_zone": "untrust",
-        "device": "FW_02",
-        "name": "BJ_TO_SH_SZ",
-        "plane": "security",
-        "source_zone": "trust"
+        "name": "BJHQ_CSR1000V_GW_01",
+        "plane": "physical",
+        "vendor": "Cisco",
+        "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
+        "x": -1074.0,
+        "y": -994.0,
+        "source": "gns3_canvas_stamp"
       },
       "degree": 2,
       "neighbors": [
-        "FW_02:zone:trust",
-        "FW_02:zone:untrust"
+        "FW_01",
+        "FW_02"
       ]
     },
     {
-      "id": "FW_02:policy:SH_SZ_TO_BJ",
-      "display": "SH_SZ_TO_BJ",
-      "label": "SecurityPolicy",
+      "id": "Core_SW_01",
+      "display": "Core_SW_01",
+      "label": "Device",
       "properties": {
-        "action": "permit",
-        "destination_zone": "trust",
-        "device": "FW_02",
-        "name": "SH_SZ_TO_BJ",
-        "plane": "security",
-        "source_zone": "untrust"
+        "global_stp_enabled": "true",
+        "ha_protocol": "VRRP",
+        "ha_state": "enabled",
+        "name": "Core_SW_01",
+        "plane": "physical",
+        "stp_mode": "enabled",
+        "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
+        "x": -1195.0,
+        "y": -251.0,
+        "source": "gns3_canvas_stamp"
       },
       "degree": 2,
       "neighbors": [
-        "FW_02:zone:trust",
-        "FW_02:zone:untrust"
+        "FW_01",
+        "FW_02"
       ]
     },
     {
-      "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "display": "deny_Guest_TO_SH_SZ",
-      "label": "SecurityPolicy",
+      "id": "Core_SW_02",
+      "display": "Core_SW_02",
+      "label": "Device",
       "properties": {
-        "action": "deny",
-        "destination_zone": "untrust",
-        "device": "FW_02",
-        "name": "deny_Guest_TO_SH_SZ",
-        "plane": "security",
-        "source_zone": "trust"
+        "global_stp_enabled": "true",
+        "ha_protocol": "VRRP",
+        "ha_state": "enabled",
+        "name": "Core_SW_02",
+        "plane": "physical",
+        "stp_mode": "enabled",
+        "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
+        "x": -664.0,
+        "y": -269.0,
+        "source": "gns3_canvas_stamp"
       },
       "degree": 2,
       "neighbors": [
-        "FW_02:zone:trust",
-        "FW_02:zone:untrust"
+        "FW_01",
+        "FW_02"
       ]
     },
     {
-      "id": "FW_02:policy:local",
-      "display": "local",
-      "label": "SecurityPolicy",
+      "id": "FW_01",
+      "display": "FW_01",
+      "label": "Device",
       "properties": {
-        "action": "permit",
-        "destination_zone": "",
-        "device": "FW_02",
-        "name": "local",
-        "plane": "security",
-        "source_zone": "local"
+        "ha_protocol": "HRP",
+        "ha_state": "enabled",
+        "name": "FW_01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 1,
-      "neighbors": [
-        "FW_02:zone:local"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_60.2",
-      "display": "to_60.2",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "dmz",
-        "device": "FW_02",
-        "name": "to_60.2",
-        "plane": "security",
-        "source_zone": "untrust"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:dmz",
-        "FW_02:zone:untrust"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_DHCP",
-      "display": "to_DHCP",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "dmz",
-        "device": "FW_02",
-        "name": "to_DHCP",
-        "plane": "security",
-        "source_zone": "trust"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:dmz",
-        "FW_02:zone:trust"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_DNS-server",
-      "display": "to_DNS-server",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "dmz",
-        "device": "FW_02",
-        "name": "to_DNS-server",
-        "plane": "security",
-        "source_zone": "trust"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:dmz",
-        "FW_02:zone:trust"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_Heartbeat",
-      "display": "to_Heartbeat",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "Heartbeat",
-        "device": "FW_02",
-        "name": "to_Heartbeat",
-        "plane": "security",
-        "source_zone": "local"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:Heartbeat",
-        "FW_02:zone:local"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_dmz-server",
-      "display": "to_dmz-server",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "dmz",
-        "device": "FW_02",
-        "name": "to_dmz-server",
-        "plane": "security",
-        "source_zone": "trust"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:dmz",
-        "FW_02:zone:trust"
-      ]
-    },
-    {
-      "id": "FW_02:policy:to_internet",
-      "display": "to_internet",
-      "label": "SecurityPolicy",
-      "properties": {
-        "action": "permit",
-        "destination_zone": "untrust",
-        "device": "FW_02",
-        "name": "to_internet",
-        "plane": "security",
-        "source_zone": "trust"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:zone:trust",
-        "FW_02:zone:untrust"
-      ]
-    },
-    {
-      "id": "FW_02:zone:Heartbeat",
-      "display": "Heartbeat",
-      "label": "Zone",
-      "properties": {
-        "device": "FW_02",
-        "name": "Heartbeat",
-        "note": "HRP 双机心跳域；承载主备同步/心跳接口",
-        "plane": "security"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 1,
-      "neighbors": [
-        "FW_02:policy:to_Heartbeat"
-      ]
-    },
-    {
-      "id": "FW_02:zone:dmz",
-      "display": "dmz",
-      "label": "Zone",
-      "properties": {
-        "device": "FW_02",
-        "name": "dmz",
-        "note": "DMZ 隔离区；承载对外服务器或隔离网段接口",
-        "plane": "security"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 4,
-      "neighbors": [
-        "FW_02:policy:to_60.2",
-        "FW_02:policy:to_DHCP",
-        "FW_02:policy:to_DNS-server",
-        "FW_02:policy:to_dmz-server"
-      ]
-    },
-    {
-      "id": "FW_02:zone:local",
-      "display": "local",
-      "label": "Zone",
-      "properties": {
-        "device": "FW_02",
-        "name": "local",
-        "note": "防火墙本机；策略源为 local 时表示设备自身流量",
-        "plane": "security"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 2,
-      "neighbors": [
-        "FW_02:policy:local",
-        "FW_02:policy:to_Heartbeat"
-      ]
-    },
-    {
-      "id": "FW_02:zone:trust",
-      "display": "trust",
-      "label": "Zone",
-      "properties": {
-        "device": "FW_02",
-        "name": "trust",
-        "note": "内网信任域；承载内网/业务侧接口",
-        "plane": "security"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
-      },
-      "degree": 7,
-      "neighbors": [
-        "FW_02:policy:BJ_TO_SH_SZ",
-        "FW_02:policy:SH_SZ_TO_BJ",
-        "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "FW_02:policy:to_DHCP",
-        "FW_02:policy:to_DNS-server",
-        "FW_02:policy:to_dmz-server",
-        "FW_02:policy:to_internet"
-      ]
-    },
-    {
-      "id": "FW_02:zone:untrust",
-      "display": "untrust",
-      "label": "Zone",
-      "properties": {
-        "device": "FW_02",
-        "name": "untrust",
-        "note": "非信任/外联域；承载上联或 Internet 侧接口",
-        "plane": "security"
-      },
-      "gns3_xy": {
-        "x": null,
-        "y": null,
-        "source": null
+        "x": -1192.0,
+        "y": -629.0,
+        "source": "gns3_canvas_stamp"
       },
       "degree": 5,
       "neighbors": [
-        "FW_02:policy:BJ_TO_SH_SZ",
-        "FW_02:policy:SH_SZ_TO_BJ",
-        "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "FW_02:policy:to_60.2",
-        "FW_02:policy:to_internet"
+        "BJHQ_CSR1000V_GW_01",
+        "Core_SW_01",
+        "Core_SW_02",
+        "FW_02",
+        "SW-DMZ-ACC-01"
+      ]
+    },
+    {
+      "id": "FW_02",
+      "display": "FW_02",
+      "label": "Device",
+      "properties": {
+        "ha_protocol": "HRP",
+        "ha_role": "standby-device",
+        "ha_state": "disabled",
+        "name": "FW_02",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -672.0,
+        "y": -641.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 5,
+      "neighbors": [
+        "BJHQ_CSR1000V_GW_01",
+        "Core_SW_01",
+        "Core_SW_02",
+        "FW_01",
+        "SW-DMZ-ACC-01"
+      ]
+    },
+    {
+      "id": "SW-DMZ-ACC-01",
+      "display": "SW-DMZ-ACC-01",
+      "label": "Device",
+      "properties": {
+        "name": "SW-DMZ-ACC-01",
+        "plane": "physical",
+        "baseline_provenance": "gns3_design"
+      },
+      "gns3_xy": {
+        "x": -1920.0,
+        "y": -975.0,
+        "source": "gns3_canvas_stamp"
+      },
+      "degree": 2,
+      "neighbors": [
+        "FW_01",
+        "FW_02"
       ]
     }
   ],
   "model_edge_index": [
     {
       "index": 0,
-      "source": "FW_02:zone:local",
-      "target": "FW_02:policy:to_Heartbeat",
-      "type": "APPLIES_POLICY",
-      "label": "source",
+      "source": "Core_SW_01",
+      "target": "FW_01",
+      "type": "L3_LINK",
+      "label": "10.1.200.2/30 ↔ 10.1.200.1/30\nEth-Trunk2 ↔ GE1/0/8\nEth-Trunk2 ↔ GigabitEthernet1/0/1",
       "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
+        "from_description": "to_FW_01_GigabitEthernet1/0/1",
+        "local_device": "Core_SW_01",
+        "local_port": "GE1/0/8",
+        "logical_local_port": "Eth-Trunk2",
+        "plane": "logical",
+        "remote_device": "FW_01",
+        "remote_port": "GigabitEthernet1/0/1",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.2/30 ↔ 10.1.200.1/30\nEth-Trunk2 ↔ GE1/0/8\nEth-Trunk2 ↔ GigabitEthernet1/0/1",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 1,
-      "source": "FW_02:zone:Heartbeat",
-      "target": "FW_02:policy:to_Heartbeat",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
+      "source": "Core_SW_01",
+      "target": "FW_02",
+      "type": "L3_LINK",
+      "label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
       "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
+        "from_description": "to_FW_02_GigabitEthernet1/0/1",
+        "local_device": "Core_SW_01",
+        "local_port": "GE1/0/9",
+        "logical_local_port": "Eth-Trunk3",
+        "plane": "logical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/1",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 2,
-      "source": "FW_02:zone:untrust",
-      "target": "FW_02:policy:to_60.2",
-      "type": "APPLIES_POLICY",
-      "label": "source",
+      "source": "Core_SW_02",
+      "target": "FW_01",
+      "type": "L3_LINK",
+      "label": "10.1.200.10/30 ↔ 10.1.200.9/30\nEth-Trunk3 ↔ GE1/0/8\nEth-Trunk3 ↔ GigabitEthernet1/0/2",
       "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
+        "from_description": "to_FW_01_GigabitEthernet1/0/2",
+        "local_device": "Core_SW_02",
+        "local_port": "GE1/0/8",
+        "logical_local_port": "Eth-Trunk3",
+        "plane": "logical",
+        "remote_device": "FW_01",
+        "remote_port": "GigabitEthernet1/0/2",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.10/30 ↔ 10.1.200.9/30\nEth-Trunk3 ↔ GE1/0/8\nEth-Trunk3 ↔ GigabitEthernet1/0/2",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 3,
-      "source": "FW_02:zone:dmz",
-      "target": "FW_02:policy:to_60.2",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
+      "source": "Core_SW_02",
+      "target": "FW_02",
+      "type": "L3_LINK",
+      "label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
       "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
+        "from_description": "to_FW_02_GigabitEthernet1/0/2",
+        "local_device": "Core_SW_02",
+        "local_port": "GE1/0/9",
+        "logical_local_port": "Eth-Trunk2",
+        "plane": "logical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/2",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 4,
-      "source": "FW_02:zone:untrust",
-      "target": "FW_02:policy:SH_SZ_TO_BJ",
-      "type": "APPLIES_POLICY",
-      "label": "source",
+      "source": "FW_01",
+      "target": "BJHQ_CSR1000V_GW_01",
+      "type": "L3_LINK",
+      "label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
       "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
+        "from_description": "to_BJHQ_CSR1000V_GW_01_Gi2",
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/3",
+        "logical_local_port": "Eth-Trunk5",
+        "plane": "logical",
+        "remote_device": "BJHQ_CSR1000V_GW_01",
+        "remote_port": "Gi2",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
       }
     },
     {
       "index": 5,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:SH_SZ_TO_BJ",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
+      "source": "FW_01",
+      "target": "SW-DMZ-ACC-01",
+      "type": "LOGICAL_LINK",
+      "label": "Eth-Trunk4 ↔ GE1/0/1",
       "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
+        "from_description": "to_SW-DMZ-ACC-01_GE1/0/1",
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/4",
+        "logical_local_port": "Eth-Trunk4",
+        "plane": "logical",
+        "remote_device": "SW-DMZ-ACC-01",
+        "remote_port": "GE1/0/1",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "LOGICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/1",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
       }
     },
     {
       "index": 6,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:to_DHCP",
-      "type": "APPLIES_POLICY",
-      "label": "source",
+      "source": "FW_01",
+      "target": "FW_02",
+      "type": "L3_LINK",
+      "label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
       "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
+        "from_description": "to_FW_02_GigabitEthernet1/0/5",
+        "local_device": "FW_01",
+        "local_port": "GigabitEthernet1/0/5",
+        "logical_local_port": "Eth-Trunk1",
+        "plane": "logical",
+        "remote_device": "FW_02",
+        "remote_port": "GigabitEthernet1/0/5",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "up",
+        "_viz_port_down": false
       }
     },
     {
       "index": 7,
-      "source": "FW_02:zone:dmz",
-      "target": "FW_02:policy:to_DHCP",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
+      "source": "FW_02",
+      "target": "BJHQ_CSR1000V_GW_01",
+      "type": "L3_LINK",
+      "label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
       "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
+        "from_description": "to_to_BJHQ_CSR1000V_GW_01_Gi3",
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/3",
+        "logical_local_port": "Eth-Trunk5",
+        "plane": "logical",
+        "remote_device": "BJHQ_CSR1000V_GW_01",
+        "remote_port": "Gi3",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "L3_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
       }
     },
     {
       "index": 8,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:to_dmz-server",
-      "type": "APPLIES_POLICY",
-      "label": "source",
+      "source": "FW_02",
+      "target": "SW-DMZ-ACC-01",
+      "type": "LOGICAL_LINK",
+      "label": "Eth-Trunk4 ↔ GE1/0/2",
       "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
-      }
-    },
-    {
-      "index": 9,
-      "source": "FW_02:zone:dmz",
-      "target": "FW_02:policy:to_dmz-server",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
-      "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
-      }
-    },
-    {
-      "index": 10,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:to_DNS-server",
-      "type": "APPLIES_POLICY",
-      "label": "source",
-      "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
-      }
-    },
-    {
-      "index": 11,
-      "source": "FW_02:zone:dmz",
-      "target": "FW_02:policy:to_DNS-server",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
-      "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
-      }
-    },
-    {
-      "index": 12,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:BJ_TO_SH_SZ",
-      "type": "APPLIES_POLICY",
-      "label": "source",
-      "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
-      }
-    },
-    {
-      "index": 13,
-      "source": "FW_02:zone:untrust",
-      "target": "FW_02:policy:BJ_TO_SH_SZ",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
-      "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
-      }
-    },
-    {
-      "index": 14,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "type": "APPLIES_POLICY",
-      "label": "source",
-      "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
-      }
-    },
-    {
-      "index": 15,
-      "source": "FW_02:zone:untrust",
-      "target": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
-      "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
-      }
-    },
-    {
-      "index": 16,
-      "source": "FW_02:zone:trust",
-      "target": "FW_02:policy:to_internet",
-      "type": "APPLIES_POLICY",
-      "label": "source",
-      "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
-      }
-    },
-    {
-      "index": 17,
-      "source": "FW_02:zone:untrust",
-      "target": "FW_02:policy:to_internet",
-      "type": "APPLIES_POLICY",
-      "label": "destination",
-      "properties": {
-        "direction": "destination",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "destination"
-      }
-    },
-    {
-      "index": 18,
-      "source": "FW_02:zone:local",
-      "target": "FW_02:policy:local",
-      "type": "APPLIES_POLICY",
-      "label": "source",
-      "properties": {
-        "direction": "source",
-        "plane": "security",
-        "source_type": "APPLIES_POLICY",
-        "rendered_type": "APPLIES_POLICY",
-        "_viz_edge_label": "source"
+        "from_description": "to_SW-DMZ-ACC-01_GE1/0/2",
+        "local_device": "FW_02",
+        "local_port": "GigabitEthernet1/0/4",
+        "logical_local_port": "Eth-Trunk4",
+        "plane": "logical",
+        "remote_device": "SW-DMZ-ACC-01",
+        "remote_port": "GE1/0/2",
+        "source": "description",
+        "source_type": "PEER_LINK",
+        "rendered_type": "LOGICAL_LINK",
+        "_viz_device_backbone": true,
+        "_viz_edge_label": "Eth-Trunk4 ↔ GE1/0/2",
+        "note_cn": "逻辑平面：三层邻接或 BGP 对等。",
+        "_viz_local_port_state": "up",
+        "_viz_remote_port_state": "unknown"
       }
     }
   ],
   "vis_nodes": [
     {
-      "id": "FW_02:zone:local",
-      "label": "local",
-      "title": "Zone\nlocal",
-      "shape": "ellipse",
-      "size": 16,
+      "id": "BJHQ_CSR1000V_GW_01",
+      "label": "BJHQ_CSR1000V_GW_01",
+      "title": "Device\nBJHQ_CSR1000V_GW_01",
+      "shape": "box",
+      "size": 14,
       "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:zone:untrust",
-      "label": "untrust",
-      "title": "Zone\nuntrust",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#facc15",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 3,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
+        "size": 13,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 2,
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
       "opacity": 1.0,
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
-      }
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -676.0,
+      "y": -437.0,
+      "fixed": false
     },
     {
-      "id": "FW_02:policy:to_Heartbeat",
-      "label": "to_Heartbeat",
-      "title": "SecurityPolicy\nto_Heartbeat",
-      "shape": "ellipse",
-      "size": 16,
+      "id": "Core_SW_01",
+      "label": "Core_SW_01",
+      "title": "Device\nCore_SW_01",
+      "shape": "box",
+      "size": 14,
       "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:zone:Heartbeat",
-      "label": "Heartbeat",
-      "title": "Zone\nHeartbeat",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:local",
-      "label": "local",
-      "title": "SecurityPolicy\nlocal",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:zone:dmz",
-      "label": "dmz",
-      "title": "Zone\ndmz",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#facc15",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 3,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
+        "size": 13,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 2,
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
       "opacity": 1.0,
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
-      }
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -649.0,
+      "y": -120.0,
+      "fixed": false
     },
     {
-      "id": "FW_02:policy:to_DNS-server",
-      "label": "to_DNS-server",
-      "title": "SecurityPolicy\nto_DNS-server",
-      "shape": "ellipse",
-      "size": 16,
+      "id": "Core_SW_02",
+      "label": "Core_SW_02",
+      "title": "Device\nCore_SW_02",
+      "shape": "box",
+      "size": 14,
       "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:to_DHCP",
-      "label": "to_DHCP",
-      "title": "SecurityPolicy\nto_DHCP",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:to_dmz-server",
-      "label": "to_dmz-server",
-      "title": "SecurityPolicy\nto_dmz-server",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "label": "deny_Guest_TO_SH_SZ",
-      "title": "SecurityPolicy\ndeny_Guest_TO_SH_SZ",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#facc15",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 3,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
+        "size": 13,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 2,
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
       "opacity": 1.0,
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
-      }
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -278.0,
+      "y": -112.0,
+      "fixed": false
     },
     {
-      "id": "FW_02:policy:SH_SZ_TO_BJ",
-      "label": "SH_SZ_TO_BJ",
-      "title": "SecurityPolicy\nSH_SZ_TO_BJ",
-      "shape": "ellipse",
-      "size": 16,
+      "id": "FW_01",
+      "label": "FW_01",
+      "title": "Device\nFW_01",
+      "shape": "box",
+      "size": 14,
       "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:BJ_TO_SH_SZ",
-      "label": "BJ_TO_SH_SZ",
-      "title": "SecurityPolicy\nBJ_TO_SH_SZ",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:to_internet",
-      "label": "to_internet",
-      "title": "SecurityPolicy\nto_internet",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:zone:trust",
-      "label": "trust",
-      "title": "Zone\ntrust",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#facc15",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 3,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
+        "size": 13,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 2,
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
       "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -651.0,
+      "y": -279.0,
+      "fixed": false
+    },
+    {
+      "id": "FW_02",
+      "label": "FW_02",
+      "title": "Device\nFW_02",
+      "shape": "box",
+      "size": 14,
+      "color": {
+        "background": "#1a3f6e",
+        "border": "#facc15",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 4.0,
+      "font": {
+        "color": "#f8fafc",
+        "size": 13,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
       "shadow": {
         "enabled": true,
         "color": "rgba(250,204,21,0.9)",
         "size": 14,
         "x": 0,
         "y": 0
-      }
+      },
+      "x": -282.0,
+      "y": -269.0,
+      "fixed": false
     },
     {
-      "id": "FW_02:policy:to_60.2",
-      "label": "to_60.2",
-      "title": "SecurityPolicy\nto_60.2",
-      "shape": "ellipse",
-      "size": 16,
+      "id": "SW-DMZ-ACC-01",
+      "label": "SW-DMZ-ACC-01",
+      "title": "Device\nSW-DMZ-ACC-01",
+      "shape": "box",
+      "size": 14,
       "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
-        "size": 14,
+        "size": 13,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 2,
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
-      "opacity": 1.0
+      "opacity": 1.0,
+      "widthConstraint": {
+        "maximum": 112
+      },
+      "heightConstraint": {
+        "maximum": 32
+      },
+      "shapeProperties": {
+        "borderRadius": 3
+      },
+      "x": -886.0,
+      "y": -386.0,
+      "fixed": false
     }
   ],
   "vis_edges": [
     {
-      "id": "FW_02:zone:local|APPLIES_POLICY|FW_02:policy:to_Heartbeat|0",
-      "from": "FW_02:zone:local",
-      "to": "FW_02:policy:to_Heartbeat",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
+      "id": "Core_SW_01|L3_LINK|FW_01|0",
+      "from": "Core_SW_01",
+      "to": "FW_01",
+      "label": "10.1.200.2/30 ↔ 10.1.200.1/30\nEth-Trunk2 ↔ GE1/0/8\nEth-Trunk2 ↔ GigabitEthernet1/0/1",
+      "title": "L3_LINK\n10.1.200.2/30 ↔ 10.1.200.1/30\nEth-Trunk2 ↔ GE1/0/8\nEth-Trunk2 ↔ GigabitEthernet1/0/1",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:Heartbeat|APPLIES_POLICY|FW_02:policy:to_Heartbeat|1",
-      "from": "FW_02:zone:Heartbeat",
-      "to": "FW_02:policy:to_Heartbeat",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
+      "id": "Core_SW_01|L3_LINK|FW_02|1",
+      "from": "Core_SW_01",
+      "to": "FW_02",
+      "label": "10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+      "title": "L3_LINK\n10.1.200.6/30 ↔ 10.1.200.5/30\nEth-Trunk3 ↔ GE1/0/9\nEth-Trunk3 ↔ GigabitEthernet1/0/1",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:untrust|APPLIES_POLICY|FW_02:policy:to_60.2|2",
-      "from": "FW_02:zone:untrust",
-      "to": "FW_02:policy:to_60.2",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
+      "id": "Core_SW_02|L3_LINK|FW_01|2",
+      "from": "Core_SW_02",
+      "to": "FW_01",
+      "label": "10.1.200.10/30 ↔ 10.1.200.9/30\nEth-Trunk3 ↔ GE1/0/8\nEth-Trunk3 ↔ GigabitEthernet1/0/2",
+      "title": "L3_LINK\n10.1.200.10/30 ↔ 10.1.200.9/30\nEth-Trunk3 ↔ GE1/0/8\nEth-Trunk3 ↔ GigabitEthernet1/0/2",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:dmz|APPLIES_POLICY|FW_02:policy:to_60.2|3",
-      "from": "FW_02:zone:dmz",
-      "to": "FW_02:policy:to_60.2",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
+      "id": "Core_SW_02|L3_LINK|FW_02|3",
+      "from": "Core_SW_02",
+      "to": "FW_02",
+      "label": "10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+      "title": "L3_LINK\n10.1.200.14/30 ↔ 10.1.200.13/30\nEth-Trunk2 ↔ GE1/0/9\nEth-Trunk2 ↔ GigabitEthernet1/0/2",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:untrust|APPLIES_POLICY|FW_02:policy:SH_SZ_TO_BJ|4",
-      "from": "FW_02:zone:untrust",
-      "to": "FW_02:policy:SH_SZ_TO_BJ",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
+      "id": "FW_01|L3_LINK|BJHQ_CSR1000V_GW_01|4",
+      "from": "FW_01",
+      "to": "BJHQ_CSR1000V_GW_01",
+      "label": "10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
+      "title": "L3_LINK\n10.1.200.18/30 ↔ 10.1.200.17/30\nEth-Trunk5 ↔ Gi2\nPort-channel2 ↔ Eth-Trunk5",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:SH_SZ_TO_BJ|5",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:SH_SZ_TO_BJ",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
+      "id": "FW_01|LOGICAL_LINK|SW-DMZ-ACC-01|5",
+      "from": "FW_01",
+      "to": "SW-DMZ-ACC-01",
+      "label": "Eth-Trunk4 ↔ GE1/0/1",
+      "title": "LOGICAL_LINK\nEth-Trunk4 ↔ GE1/0/1",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:to_DHCP|6",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:to_DHCP",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
+      "id": "FW_01|L3_LINK|FW_02|6",
+      "from": "FW_01",
+      "to": "FW_02",
+      "label": "1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "title": "L3_LINK\n1.1.1.1/30 ↔ 1.1.1.2/30\nEth-Trunk1 ↔ GigabitEthernet1/0/5",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:dmz|APPLIES_POLICY|FW_02:policy:to_DHCP|7",
-      "from": "FW_02:zone:dmz",
-      "to": "FW_02:policy:to_DHCP",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
+      "id": "FW_02|L3_LINK|BJHQ_CSR1000V_GW_01|7",
+      "from": "FW_02",
+      "to": "BJHQ_CSR1000V_GW_01",
+      "label": "10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+      "title": "L3_LINK\n10.1.200.22/30 ↔ 10.1.200.21/30\nEth-Trunk2 ↔ GigabitEthernet1/0/3\nEth-Trunk5 ↔ Gi3",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     },
     {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:to_dmz-server|8",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:to_dmz-server",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
+      "id": "FW_02|LOGICAL_LINK|SW-DMZ-ACC-01|8",
+      "from": "FW_02",
+      "to": "SW-DMZ-ACC-01",
+      "label": "Eth-Trunk4 ↔ GE1/0/2",
+      "title": "LOGICAL_LINK\nEth-Trunk4 ↔ GE1/0/2",
+      "width": 1.15,
       "color": {
-        "color": "#64748b",
+        "color": "rgba(203,213,225,0.88)",
         "highlight": "#cbd5e1"
       },
       "font": {
         "color": "#f8fafc",
-        "size": 12,
+        "size": 11,
         "face": "Segoe UI, Arial, sans-serif",
         "strokeWidth": 3,
         "strokeColor": "#0f172a",
         "background": "rgba(15,23,42,0.92)",
         "align": "horizontal"
       },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:dmz|APPLIES_POLICY|FW_02:policy:to_dmz-server|9",
-      "from": "FW_02:zone:dmz",
-      "to": "FW_02:policy:to_dmz-server",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:to_DNS-server|10",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:to_DNS-server",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:dmz|APPLIES_POLICY|FW_02:policy:to_DNS-server|11",
-      "from": "FW_02:zone:dmz",
-      "to": "FW_02:policy:to_DNS-server",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:BJ_TO_SH_SZ|12",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:BJ_TO_SH_SZ",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:untrust|APPLIES_POLICY|FW_02:policy:BJ_TO_SH_SZ|13",
-      "from": "FW_02:zone:untrust",
-      "to": "FW_02:policy:BJ_TO_SH_SZ",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:deny_Guest_TO_SH_SZ|14",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:untrust|APPLIES_POLICY|FW_02:policy:deny_Guest_TO_SH_SZ|15",
-      "from": "FW_02:zone:untrust",
-      "to": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:trust|APPLIES_POLICY|FW_02:policy:to_internet|16",
-      "from": "FW_02:zone:trust",
-      "to": "FW_02:policy:to_internet",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:untrust|APPLIES_POLICY|FW_02:policy:to_internet|17",
-      "from": "FW_02:zone:untrust",
-      "to": "FW_02:policy:to_internet",
-      "label": "destination",
-      "title": "APPLIES_POLICY\ndestination",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
-    },
-    {
-      "id": "FW_02:zone:local|APPLIES_POLICY|FW_02:policy:local|18",
-      "from": "FW_02:zone:local",
-      "to": "FW_02:policy:local",
-      "label": "source",
-      "title": "APPLIES_POLICY\nsource",
-      "width": 1.5,
-      "color": {
-        "color": "#64748b",
-        "highlight": "#cbd5e1"
-      },
-      "font": {
-        "color": "#f8fafc",
-        "size": 12,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 3,
-        "strokeColor": "#0f172a",
-        "background": "rgba(15,23,42,0.92)",
-        "align": "horizontal"
-      },
-      "smooth": {
-        "type": "continuous",
-        "roundness": 0.2
-      }
+      "smooth": false
     }
   ],
   "focus_nodes": [
-    "FW_02:policy:deny_Guest_TO_SH_SZ",
-    "FW_02:zone:dmz",
-    "FW_02:zone:trust",
-    "FW_02:zone:untrust"
+    "FW_02"
   ],
   "highlight_path": [],
   "agent_path": [],
   "agent_path_segment_connected": [],
   "agent_path_segment_linked": [],
-  "property_overlay": [],
+  "property_overlay": [
+    {
+      "node": "FW_02:Eth-Trunk1",
+      "label": "Eth-Trunk1",
+      "fields": {
+        "ip_address": "1.1.1.2/30",
+        "ip_addresses": [
+          "1.1.1.2/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk2",
+      "label": "Eth-Trunk2",
+      "fields": {
+        "ip_address": "10.1.200.13/30",
+        "ip_addresses": [
+          "10.1.200.13/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk3",
+      "label": "Eth-Trunk3",
+      "fields": {
+        "ip_address": "10.1.200.5/30",
+        "ip_addresses": [
+          "10.1.200.5/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk4",
+      "label": "Eth-Trunk4",
+      "fields": {
+        "ip_address": "10.1.200.29/30",
+        "ip_addresses": [
+          "10.1.200.29/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:Eth-Trunk5",
+      "label": "Eth-Trunk5",
+      "fields": {
+        "ip_address": "10.1.200.21/30",
+        "ip_addresses": [
+          "10.1.200.21/30"
+        ],
+        "admin_state": "up"
+      }
+    },
+    {
+      "node": "FW_02:LoopBack0",
+      "label": "LoopBack0",
+      "fields": {
+        "protocol_state": "up(s)",
+        "phy_state": "up",
+        "admin_state": "up"
+      }
+    }
+  ],
   "view_spec": {
-    "view_id": "security_focus",
+    "view_id": "logical_focus",
     "focus_nodes": [
       "FW_02"
     ],
@@ -2089,12 +1253,12 @@
     "hops": 5,
     "device_backbone": false,
     "physical_plane": false,
-    "plane_mode": "security",
+    "plane_mode": "logical",
     "respect_up_ports": false,
     "annotations": [],
     "property_overlay_nodes": [],
     "legend": true,
-    "title": "Security focus: FW_02",
+    "title": "Logical focus: FW_02",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

@@ -49,8 +49,9 @@
         <h2>Interactive Visual Working Memory</h2>
         <p class="lead">
           Replay of a recorded <strong>M3</strong> trajectory (pass).
-          Left: probe-synchronized topology. Right: navigation tools the agent used
-          (overview / focus / path / inspect). Bottom: ordered frames — same sequence as the GIF.
+          Pick a <strong>plane</strong> (physical / logical / security / underlay) —
+          the filmstrip only plays that plane in probe order.
+          Tool chain jumps among overview / focus / path / inspect <em>inside</em> the active plane.
         </p>
         <p class="workbench-meta" data-workbench-meta></p>
 
@@ -68,19 +69,26 @@
               <p class="wb-tool" data-wb-tool></p>
               <p class="wb-args" data-wb-args></p>
               <p class="wb-intent" data-wb-intent></p>
+              <p class="wb-plane-now" data-wb-plane-now></p>
             </div>
             <div class="wb-rail" aria-label="Tool chain">
               <p class="wb-label">Tool chain</p>
-              <button type="button" data-wb-tag="overview">Overview</button>
-              <button type="button" data-wb-tag="focus">Focus</button>
-              <button type="button" data-wb-tag="path">Path</button>
-              <button type="button" data-wb-tag="inspect">Inspect</button>
-              <button type="button" data-wb-tag="physical">Plane</button>
+              <button type="button" data-wb-tool-btn="overview">Overview</button>
+              <button type="button" data-wb-tool-btn="focus">Focus</button>
+              <button type="button" data-wb-tool-btn="path">Path</button>
+              <button type="button" data-wb-tool-btn="inspect">Inspect</button>
+            </div>
+            <div class="wb-planes" aria-label="Topology plane">
+              <p class="wb-label">Plane</p>
+              <button type="button" data-wb-plane="physical">Physical</button>
+              <button type="button" data-wb-plane="logical">Logical</button>
+              <button type="button" data-wb-plane="security">Security</button>
+              <button type="button" data-wb-plane="underlay">Underlay</button>
             </div>
           </aside>
           <div class="wb-timeline">
             <div class="wb-controls">
-              <button type="button" data-wb-play>Play</button>
+              <button type="button" data-wb-play>Play plane</button>
               <button type="button" data-wb-prev>Prev</button>
               <button type="button" data-wb-next>Next</button>
               <span data-wb-index></span>

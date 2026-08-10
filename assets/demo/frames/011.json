@@ -1,14 +1,82 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_security_focus_FW_02_inspect_node_deny_Guest_TO_SH_SZ.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_c9e0a994206b_security_focus_FW_02_inspect_node_to_internet.png",
   "html_path": null,
-  "view_id": "security_inspect_node_deny_Guest_TO_SH_SZ",
+  "view_id": "security_inspect_node_to_internet",
   "plane_mode": "security",
-  "caption": "view=security_inspect_node_deny_Guest_TO_SH_SZ; plane=security; nodes=10; edges=12; focus=FW_02:policy:deny_Guest_TO_SH_SZ",
+  "caption": "view=security_inspect_node_to_internet; plane=security; nodes=10; edges=12; focus=FW_02:policy:to_internet",
   "nodes_shown": 10,
   "edges_shown": 12,
   "graph_snap": {
     "nodes": {
+      "FW_02:policy:to_DNS-server": {
+        "id": "FW_02:policy:to_DNS-server",
+        "label": "SecurityPolicy",
+        "properties": {
+          "action": "permit",
+          "destination_addresses": [
+            "10.1.60.1/255.255.255.255"
+          ],
+          "destination_zone": "dmz",
+          "destination_zones": [
+            "dmz"
+          ],
+          "device": "FW_02",
+          "name": "to_DNS-server",
+          "plane": "security",
+          "source_addresses": [
+            "10.1.120.0/255.255.255.0"
+          ],
+          "source_zone": "trust",
+          "source_zones": [
+            "trust"
+          ]
+        }
+      },
+      "FW_02:zone:trust": {
+        "id": "FW_02:zone:trust",
+        "label": "Zone",
+        "properties": {
+          "device": "FW_02",
+          "member_interfaces": [
+            "GigabitEthernet0/0/0",
+            "Eth-Trunk3",
+            "Eth-Trunk2"
+          ],
+          "name": "trust",
+          "note": "内网信任域；承载内网/业务侧接口",
+          "plane": "security"
+        }
+      },
+      "FW_02:policy:deny_Guest_TO_SH_SZ": {
+        "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
+        "label": "SecurityPolicy",
+        "properties": {
+          "action": "deny",
+          "destination_addresses": [
+            "10.2.10.0/255.255.255.0",
+            "10.2.20.0/255.255.255.0",
+            "10.2.30.0/255.255.255.0",
+            "10.3.10.0/255.255.255.0",
+            "10.3.20.0/255.255.255.0",
+            "10.3.30.0/255.255.255.0"
+          ],
+          "destination_zone": "untrust",
+          "destination_zones": [
+            "untrust"
+          ],
+          "device": "FW_02",
+          "name": "deny_Guest_TO_SH_SZ",
+          "plane": "security",
+          "source_addresses": [
+            "10.1.120.0/255.255.255.0"
+          ],
+          "source_zone": "trust",
+          "source_zones": [
+            "trust"
+          ]
+        }
+      },
       "FW_02:policy:BJ_TO_SH_SZ": {
         "id": "FW_02:policy:BJ_TO_SH_SZ",
         "label": "SecurityPolicy",
@@ -41,83 +109,23 @@
           ]
         }
       },
-      "FW_02:policy:to_dmz-server": {
-        "id": "FW_02:policy:to_dmz-server",
+      "FW_02:policy:to_internet": {
+        "id": "FW_02:policy:to_internet",
         "label": "SecurityPolicy",
         "properties": {
           "action": "permit",
-          "destination_addresses": [
-            "10.1.60.0/255.255.255.0"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_dmz-server",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.10.0/255.255.255.0",
-            "10.1.110.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
-            "10.1.30.0/255.255.255.0",
-            "10.1.40.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:deny_Guest_TO_SH_SZ": {
-        "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "deny",
-          "destination_addresses": [
-            "10.2.10.0/255.255.255.0",
-            "10.2.20.0/255.255.255.0",
-            "10.2.30.0/255.255.255.0",
-            "10.3.10.0/255.255.255.0",
-            "10.3.20.0/255.255.255.0",
-            "10.3.30.0/255.255.255.0"
-          ],
+          "destination_addresses": [],
           "destination_zone": "untrust",
           "destination_zones": [
             "untrust"
           ],
           "device": "FW_02",
-          "name": "deny_Guest_TO_SH_SZ",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.120.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:policy:to_DHCP": {
-        "id": "FW_02:policy:to_DHCP",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.50.1/255.255.255.255"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_DHCP",
+          "name": "to_internet",
           "plane": "security",
           "source_addresses": [
             "10.1.10.0/255.255.255.0",
             "10.1.110.0/255.255.255.0",
             "10.1.120.0/255.255.255.0",
-            "10.1.20.0/255.255.255.0",
             "10.1.30.0/255.255.255.0",
             "10.1.40.0/255.255.255.0"
           ],
@@ -159,38 +167,67 @@
           ]
         }
       },
-      "FW_02:zone:trust": {
-        "id": "FW_02:zone:trust",
+      "FW_02:zone:untrust": {
+        "id": "FW_02:zone:untrust",
         "label": "Zone",
         "properties": {
           "device": "FW_02",
           "member_interfaces": [
-            "GigabitEthernet0/0/0",
-            "Eth-Trunk3",
-            "Eth-Trunk2"
+            "Eth-Trunk5"
           ],
-          "name": "trust",
-          "note": "内网信任域；承载内网/业务侧接口",
+          "name": "untrust",
+          "note": "非信任/外联域；承载上联或 Internet 侧接口",
           "plane": "security"
         }
       },
-      "FW_02:policy:to_internet": {
-        "id": "FW_02:policy:to_internet",
+      "FW_02:policy:to_dmz-server": {
+        "id": "FW_02:policy:to_dmz-server",
         "label": "SecurityPolicy",
         "properties": {
           "action": "permit",
-          "destination_addresses": [],
-          "destination_zone": "untrust",
+          "destination_addresses": [
+            "10.1.60.0/255.255.255.0"
+          ],
+          "destination_zone": "dmz",
           "destination_zones": [
-            "untrust"
+            "dmz"
           ],
           "device": "FW_02",
-          "name": "to_internet",
+          "name": "to_dmz-server",
+          "plane": "security",
+          "source_addresses": [
+            "10.1.10.0/255.255.255.0",
+            "10.1.110.0/255.255.255.0",
+            "10.1.20.0/255.255.255.0",
+            "10.1.30.0/255.255.255.0",
+            "10.1.40.0/255.255.255.0"
+          ],
+          "source_zone": "trust",
+          "source_zones": [
+            "trust"
+          ]
+        }
+      },
+      "FW_02:policy:to_DHCP": {
+        "id": "FW_02:policy:to_DHCP",
+        "label": "SecurityPolicy",
+        "properties": {
+          "action": "permit",
+          "destination_addresses": [
+            "10.1.50.1/255.255.255.255"
+          ],
+          "destination_zone": "dmz",
+          "destination_zones": [
+            "dmz"
+          ],
+          "device": "FW_02",
+          "name": "to_DHCP",
           "plane": "security",
           "source_addresses": [
             "10.1.10.0/255.255.255.0",
             "10.1.110.0/255.255.255.0",
             "10.1.120.0/255.255.255.0",
+            "10.1.20.0/255.255.255.0",
             "10.1.30.0/255.255.255.0",
             "10.1.40.0/255.255.255.0"
           ],
@@ -223,43 +260,6 @@
           "source_zones": [
             "untrust"
           ]
-        }
-      },
-      "FW_02:policy:to_DNS-server": {
-        "id": "FW_02:policy:to_DNS-server",
-        "label": "SecurityPolicy",
-        "properties": {
-          "action": "permit",
-          "destination_addresses": [
-            "10.1.60.1/255.255.255.255"
-          ],
-          "destination_zone": "dmz",
-          "destination_zones": [
-            "dmz"
-          ],
-          "device": "FW_02",
-          "name": "to_DNS-server",
-          "plane": "security",
-          "source_addresses": [
-            "10.1.120.0/255.255.255.0"
-          ],
-          "source_zone": "trust",
-          "source_zones": [
-            "trust"
-          ]
-        }
-      },
-      "FW_02:zone:untrust": {
-        "id": "FW_02:zone:untrust",
-        "label": "Zone",
-        "properties": {
-          "device": "FW_02",
-          "member_interfaces": [
-            "Eth-Trunk5"
-          ],
-          "name": "untrust",
-          "note": "非信任/外联域；承载上联或 Internet 侧接口",
-          "plane": "security"
         }
       }
     },
@@ -814,116 +814,9 @@
   ],
   "vis_nodes": [
     {
-      "id": "FW_02:policy:BJ_TO_SH_SZ",
-      "label": "BJ_TO_SH_SZ",
-      "title": "SecurityPolicy\nBJ_TO_SH_SZ",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:to_dmz-server",
-      "label": "to_dmz-server",
-      "title": "SecurityPolicy\nto_dmz-server",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
-      "label": "deny_Guest_TO_SH_SZ",
-      "title": "SecurityPolicy\ndeny_Guest_TO_SH_SZ",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#facc15",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 3,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0,
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "id": "FW_02:policy:to_DHCP",
-      "label": "to_DHCP",
-      "title": "SecurityPolicy\nto_DHCP",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
-        "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:SH_SZ_TO_BJ",
-      "label": "SH_SZ_TO_BJ",
-      "title": "SecurityPolicy\nSH_SZ_TO_BJ",
+      "id": "FW_02:policy:to_DNS-server",
+      "label": "to_DNS-server",
+      "title": "SecurityPolicy\nto_DNS-server",
       "shape": "ellipse",
       "size": 16,
       "color": {
@@ -971,6 +864,56 @@
       "opacity": 1.0
     },
     {
+      "id": "FW_02:policy:deny_Guest_TO_SH_SZ",
+      "label": "deny_Guest_TO_SH_SZ",
+      "title": "SecurityPolicy\ndeny_Guest_TO_SH_SZ",
+      "shape": "ellipse",
+      "size": 16,
+      "color": {
+        "background": "#1e293b",
+        "border": "#94a3b8",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1,
+      "font": {
+        "color": "#f8fafc",
+        "size": 14,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0
+    },
+    {
+      "id": "FW_02:policy:BJ_TO_SH_SZ",
+      "label": "BJ_TO_SH_SZ",
+      "title": "SecurityPolicy\nBJ_TO_SH_SZ",
+      "shape": "ellipse",
+      "size": 16,
+      "color": {
+        "background": "#1e293b",
+        "border": "#94a3b8",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1,
+      "font": {
+        "color": "#f8fafc",
+        "size": 14,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0
+    },
+    {
       "id": "FW_02:policy:to_internet",
       "label": "to_internet",
       "title": "SecurityPolicy\nto_internet",
@@ -978,13 +921,13 @@
       "size": 16,
       "color": {
         "background": "#1e293b",
-        "border": "#94a3b8",
+        "border": "#facc15",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1,
+      "borderWidth": 3,
       "font": {
         "color": "#f8fafc",
         "size": 14,
@@ -993,37 +936,19 @@
         "strokeColor": "#0f172a",
         "vadjust": 0
       },
-      "opacity": 1.0
-    },
-    {
-      "id": "FW_02:policy:to_60.2",
-      "label": "to_60.2",
-      "title": "SecurityPolicy\nto_60.2",
-      "shape": "ellipse",
-      "size": 16,
-      "color": {
-        "background": "#1e293b",
-        "border": "#94a3b8",
-        "highlight": {
-          "background": "#1a3f6e",
-          "border": "#facc15"
-        }
-      },
-      "borderWidth": 1,
-      "font": {
-        "color": "#f8fafc",
+      "opacity": 1.0,
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
         "size": 14,
-        "face": "Segoe UI, Arial, sans-serif",
-        "strokeWidth": 2,
-        "strokeColor": "#0f172a",
-        "vadjust": 0
-      },
-      "opacity": 1.0
+        "x": 0,
+        "y": 0
+      }
     },
     {
-      "id": "FW_02:policy:to_DNS-server",
-      "label": "to_DNS-server",
-      "title": "SecurityPolicy\nto_DNS-server",
+      "id": "FW_02:policy:SH_SZ_TO_BJ",
+      "label": "SH_SZ_TO_BJ",
+      "title": "SecurityPolicy\nSH_SZ_TO_BJ",
       "shape": "ellipse",
       "size": 16,
       "color": {
@@ -1049,6 +974,81 @@
       "id": "FW_02:zone:untrust",
       "label": "untrust",
       "title": "Zone\nuntrust",
+      "shape": "ellipse",
+      "size": 16,
+      "color": {
+        "background": "#1e293b",
+        "border": "#94a3b8",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1,
+      "font": {
+        "color": "#f8fafc",
+        "size": 14,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0
+    },
+    {
+      "id": "FW_02:policy:to_dmz-server",
+      "label": "to_dmz-server",
+      "title": "SecurityPolicy\nto_dmz-server",
+      "shape": "ellipse",
+      "size": 16,
+      "color": {
+        "background": "#1e293b",
+        "border": "#94a3b8",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1,
+      "font": {
+        "color": "#f8fafc",
+        "size": 14,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0
+    },
+    {
+      "id": "FW_02:policy:to_DHCP",
+      "label": "to_DHCP",
+      "title": "SecurityPolicy\nto_DHCP",
+      "shape": "ellipse",
+      "size": 16,
+      "color": {
+        "background": "#1e293b",
+        "border": "#94a3b8",
+        "highlight": {
+          "background": "#1a3f6e",
+          "border": "#facc15"
+        }
+      },
+      "borderWidth": 1,
+      "font": {
+        "color": "#f8fafc",
+        "size": 14,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 2,
+        "strokeColor": "#0f172a",
+        "vadjust": 0
+      },
+      "opacity": 1.0
+    },
+    {
+      "id": "FW_02:policy:to_60.2",
+      "label": "to_60.2",
+      "title": "SecurityPolicy\nto_60.2",
       "shape": "ellipse",
       "size": 16,
       "color": {
@@ -1374,7 +1374,7 @@
     }
   ],
   "focus_nodes": [
-    "FW_02:policy:deny_Guest_TO_SH_SZ"
+    "FW_02:policy:to_internet"
   ],
   "highlight_path": [],
   "agent_path": [],
@@ -1382,9 +1382,9 @@
   "agent_path_segment_linked": [],
   "property_overlay": [],
   "view_spec": {
-    "view_id": "security_inspect_node_deny_Guest_TO_SH_SZ",
+    "view_id": "security_inspect_node_to_internet",
     "focus_nodes": [
-      "FW_02:policy:deny_Guest_TO_SH_SZ"
+      "FW_02:policy:to_internet"
     ],
     "highlight_path": [],
     "agent_path": [],
@@ -1404,7 +1404,7 @@
     "annotations": [],
     "property_overlay_nodes": [],
     "legend": true,
-    "title": "inspect node deny Guest TO SH SZ",
+    "title": "inspect node to internet",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

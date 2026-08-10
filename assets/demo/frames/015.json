@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_FW_02_underlay_topology.png",
+  "image_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\runs\\c9e0a994206b\\agent_workspace\\.graph_topology_images\\c9e0a994206b\\q10_Core_SW_01_underlay_topology.png",
   "html_path": null,
   "view_id": "underlay_focus",
   "plane_mode": "underlay",
-  "caption": "view=underlay_focus; plane=underlay; nodes=19; edges=26; focus=FW_02",
+  "caption": "view=underlay_focus; plane=underlay; nodes=19; edges=27; focus=Core_SW_01",
   "nodes_shown": 19,
-  "edges_shown": 26,
+  "edges_shown": 27,
   "graph_snap": {
     "nodes": {
       "AGG_SW_01": {
@@ -163,7 +163,7 @@
           "ha_role": "standby-device",
           "ha_state": "disabled",
           "name": "FW_02",
-          "plane": "physical",
+          "plane": "security",
           "viz": {
             "layout": {
               "x": -672.0,
@@ -803,11 +803,15 @@
           "_viz_port_pairs": [
             "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）"
           ],
-          "_viz_edge_label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）",
+          "_viz_edge_label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.1 (O_ASE)",
           "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "up",
-          "_viz_port_down": false
+          "_viz_port_down": false,
+          "_viz_route_nhop": true,
+          "_viz_route_label": "0.0.0.0/0 via 10.1.200.1 (O_ASE)\n10.1.200.16/30 via 10.1.200.1",
+          "_viz_route_from": "Core_SW_01",
+          "_viz_route_to": "FW_01"
         }
       },
       {
@@ -827,15 +831,15 @@
           "_viz_port_pairs": [
             "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）"
           ],
-          "_viz_edge_label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.22 (O_ASE)",
+          "_viz_edge_label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.5 (O_ASE)",
           "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "up",
           "_viz_port_down": false,
           "_viz_route_nhop": true,
-          "_viz_route_label": "0.0.0.0/0 via 10.1.200.22 (O_ASE)\n10.1.10.0/24 via 10.1.200.6",
-          "_viz_route_from": "FW_02",
-          "_viz_route_to": "Core_SW_01"
+          "_viz_route_label": "0.0.0.0/0 via 10.1.200.5 (O_ASE)\n10.1.200.12/30 via 10.1.200.5",
+          "_viz_route_from": "Core_SW_01",
+          "_viz_route_to": "FW_02"
         }
       },
       {
@@ -879,15 +883,11 @@
           "_viz_port_pairs": [
             "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）"
           ],
-          "_viz_edge_label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）\n10.1.10.0/24 via 10.1.200.14",
+          "_viz_edge_label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）",
           "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "up",
-          "_viz_port_down": false,
-          "_viz_route_nhop": true,
-          "_viz_route_label": "10.1.10.0/24 via 10.1.200.14\n10.1.110.0/24 via 10.1.200.14",
-          "_viz_route_from": "FW_02",
-          "_viz_route_to": "Core_SW_02"
+          "_viz_port_down": false
         }
       },
       {
@@ -1005,6 +1005,21 @@
           "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
           "_viz_local_port_state": "up",
           "_viz_remote_port_state": "unknown"
+        }
+      },
+      {
+        "source": "Core_SW_01",
+        "target": "Core_SW_02",
+        "type": "ROUTE_NHOP",
+        "properties": {
+          "plane": "underlay",
+          "source_type": "NEXT_HOP_DEVICE",
+          "rendered_type": "ROUTE_NHOP",
+          "_viz_edge_label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+          "_viz_route_nhop": true,
+          "_viz_route_label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+          "_viz_route_from": "Core_SW_01",
+          "_viz_route_to": "Core_SW_02"
         }
       }
     ]
@@ -1145,12 +1160,13 @@
         "y": -251.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 6,
+      "degree": 7,
       "neighbors": [
         "AGG_SW_01",
         "AGG_SW_02",
         "AGG_SW_03",
         "AGG_SW_04",
+        "Core_SW_02",
         "FW_01",
         "FW_02"
       ]
@@ -1173,12 +1189,13 @@
         "y": -269.0,
         "source": "gns3_canvas_stamp"
       },
-      "degree": 6,
+      "degree": 7,
       "neighbors": [
         "AGG_SW_01",
         "AGG_SW_02",
         "AGG_SW_03",
         "AGG_SW_04",
+        "Core_SW_01",
         "FW_01",
         "FW_02"
       ]
@@ -1217,7 +1234,7 @@
         "ha_role": "standby-device",
         "ha_state": "disabled",
         "name": "FW_02",
-        "plane": "physical",
+        "plane": "security",
         "baseline_provenance": "gns3_design"
       },
       "gns3_xy": {
@@ -1865,7 +1882,7 @@
       "source": "Core_SW_01",
       "target": "FW_01",
       "type": "UNDERLAY_LINK",
-      "label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）",
+      "label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.1 (O_ASE)",
       "properties": {
         "local_device": "Core_SW_01",
         "local_port": "GE1/0/8",
@@ -1876,11 +1893,15 @@
         "source_type": "description",
         "rendered_type": "UNDERLAY_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）",
+        "_viz_edge_label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.1 (O_ASE)",
         "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "up",
-        "_viz_port_down": false
+        "_viz_port_down": false,
+        "_viz_route_nhop": true,
+        "_viz_route_label": "0.0.0.0/0 via 10.1.200.1 (O_ASE)\n10.1.200.16/30 via 10.1.200.1",
+        "_viz_route_from": "Core_SW_01",
+        "_viz_route_to": "FW_01"
       }
     },
     {
@@ -1888,7 +1909,7 @@
       "source": "Core_SW_01",
       "target": "FW_02",
       "type": "UNDERLAY_LINK",
-      "label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.22 (O_ASE)",
+      "label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.5 (O_ASE)",
       "properties": {
         "local_device": "Core_SW_01",
         "local_port": "GE1/0/9",
@@ -1899,15 +1920,15 @@
         "source_type": "description",
         "rendered_type": "UNDERLAY_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.22 (O_ASE)",
+        "_viz_edge_label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.5 (O_ASE)",
         "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "up",
         "_viz_port_down": false,
         "_viz_route_nhop": true,
-        "_viz_route_label": "0.0.0.0/0 via 10.1.200.22 (O_ASE)\n10.1.10.0/24 via 10.1.200.6",
-        "_viz_route_from": "FW_02",
-        "_viz_route_to": "Core_SW_01"
+        "_viz_route_label": "0.0.0.0/0 via 10.1.200.5 (O_ASE)\n10.1.200.12/30 via 10.1.200.5",
+        "_viz_route_from": "Core_SW_01",
+        "_viz_route_to": "FW_02"
       }
     },
     {
@@ -1938,7 +1959,7 @@
       "source": "Core_SW_02",
       "target": "FW_02",
       "type": "UNDERLAY_LINK",
-      "label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）\n10.1.10.0/24 via 10.1.200.14",
+      "label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）",
       "properties": {
         "local_device": "Core_SW_02",
         "local_port": "GE1/0/9",
@@ -1949,15 +1970,11 @@
         "source_type": "description",
         "rendered_type": "UNDERLAY_LINK",
         "_viz_device_backbone": true,
-        "_viz_edge_label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）\n10.1.10.0/24 via 10.1.200.14",
+        "_viz_edge_label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）",
         "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "up",
-        "_viz_port_down": false,
-        "_viz_route_nhop": true,
-        "_viz_route_label": "10.1.10.0/24 via 10.1.200.14\n10.1.110.0/24 via 10.1.200.14",
-        "_viz_route_from": "FW_02",
-        "_viz_route_to": "Core_SW_02"
+        "_viz_port_down": false
       }
     },
     {
@@ -2069,6 +2086,23 @@
         "note_cn": "Underlay：物理链路 + IP + OSPF/IS-IS（IGP）；BGP 见逻辑平面。",
         "_viz_local_port_state": "up",
         "_viz_remote_port_state": "unknown"
+      }
+    },
+    {
+      "index": 26,
+      "source": "Core_SW_01",
+      "target": "Core_SW_02",
+      "type": "ROUTE_NHOP",
+      "label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+      "properties": {
+        "plane": "underlay",
+        "source_type": "NEXT_HOP_DEVICE",
+        "rendered_type": "ROUTE_NHOP",
+        "_viz_edge_label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+        "_viz_route_nhop": true,
+        "_viz_route_label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+        "_viz_route_from": "Core_SW_01",
+        "_viz_route_to": "Core_SW_02"
       }
     }
   ],
@@ -2265,14 +2299,14 @@
       "shape": "box",
       "size": 14,
       "color": {
-        "background": "#0f315c",
-        "border": "#7dd3fc",
+        "background": "#1a3f6e",
+        "border": "#facc15",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 1.2,
+      "borderWidth": 4.0,
       "font": {
         "color": "#f8fafc",
         "size": 13,
@@ -2290,6 +2324,13 @@
       },
       "shapeProperties": {
         "borderRadius": 3
+      },
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(250,204,21,0.9)",
+        "size": 14,
+        "x": 0,
+        "y": 0
       },
       "x": -649.0,
       "y": -120.0,
@@ -2376,14 +2417,14 @@
       "shape": "box",
       "size": 14,
       "color": {
-        "background": "#1a3f6e",
-        "border": "#facc15",
+        "background": "#0f315c",
+        "border": "#7dd3fc",
         "highlight": {
           "background": "#1a3f6e",
           "border": "#facc15"
         }
       },
-      "borderWidth": 4.0,
+      "borderWidth": 1.2,
       "font": {
         "color": "#f8fafc",
         "size": 13,
@@ -2401,13 +2442,6 @@
       },
       "shapeProperties": {
         "borderRadius": 3
-      },
-      "shadow": {
-        "enabled": true,
-        "color": "rgba(250,204,21,0.9)",
-        "size": 14,
-        "x": 0,
-        "y": 0
       },
       "x": -282.0,
       "y": -269.0,
@@ -3163,8 +3197,8 @@
       "id": "Core_SW_01|UNDERLAY_LINK|FW_01|17",
       "from": "Core_SW_01",
       "to": "FW_01",
-      "label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）",
-      "title": "UNDERLAY_LINK\nCore_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）",
+      "label": "Core_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.1 (O_ASE)",
+      "title": "UNDERLAY_LINK\nCore_SW_01:GE1/0/8 ↔ FW_01:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.1 (O_ASE)",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -3185,8 +3219,8 @@
       "id": "Core_SW_01|UNDERLAY_LINK|FW_02|18",
       "from": "Core_SW_01",
       "to": "FW_02",
-      "label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.22 (O_ASE)",
-      "title": "UNDERLAY_LINK\nCore_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.22 (O_ASE)",
+      "label": "Core_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.5 (O_ASE)",
+      "title": "UNDERLAY_LINK\nCore_SW_01:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/1（仅端口，未入 IP）\n0.0.0.0/0 via 10.1.200.5 (O_ASE)",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -3229,8 +3263,8 @@
       "id": "Core_SW_02|UNDERLAY_LINK|FW_02|20",
       "from": "Core_SW_02",
       "to": "FW_02",
-      "label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）\n10.1.10.0/24 via 10.1.200.14",
-      "title": "UNDERLAY_LINK\nCore_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）\n10.1.10.0/24 via 10.1.200.14",
+      "label": "Core_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）",
+      "title": "UNDERLAY_LINK\nCore_SW_02:GE1/0/9 ↔ FW_02:GigabitEthernet1/0/2（仅端口，未入 IP）",
       "width": 1.15,
       "color": {
         "color": "rgba(203,213,225,0.88)",
@@ -3356,10 +3390,32 @@
         "align": "horizontal"
       },
       "smooth": false
+    },
+    {
+      "id": "Core_SW_01|ROUTE_NHOP|Core_SW_02|26",
+      "from": "Core_SW_01",
+      "to": "Core_SW_02",
+      "label": "10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+      "title": "ROUTE_NHOP\n10.1.30.254/32 via 10.1.10.252\n10.1.30.254/32 via 10.1.30.252",
+      "width": 1.15,
+      "color": {
+        "color": "rgba(203,213,225,0.88)",
+        "highlight": "#cbd5e1"
+      },
+      "font": {
+        "color": "#f8fafc",
+        "size": 11,
+        "face": "Segoe UI, Arial, sans-serif",
+        "strokeWidth": 3,
+        "strokeColor": "#0f172a",
+        "background": "rgba(15,23,42,0.92)",
+        "align": "horizontal"
+      },
+      "smooth": false
     }
   ],
   "focus_nodes": [
-    "FW_02"
+    "Core_SW_01"
   ],
   "highlight_path": [],
   "agent_path": [],
@@ -3367,64 +3423,64 @@
   "agent_path_segment_linked": [],
   "property_overlay": [
     {
-      "node": "FW_02:route:default:0.0.0.0/0:O_ASE:10.1.200.22",
-      "label": "0.0.0.0/0 via 10.1.200.22",
+      "node": "Core_SW_01:route:default:0.0.0.0/0:O_ASE:10.1.200.1",
+      "label": "0.0.0.0/0 via 10.1.200.1",
       "fields": {
         "destination": "0.0.0.0",
         "mask": "0",
-        "next_hop": "10.1.200.22"
+        "next_hop": "10.1.200.1"
       }
     },
     {
-      "node": "FW_02:route:default:1.1.1.0/30:Direct:1.1.1.2",
-      "label": "1.1.1.0/30 via 1.1.1.2",
+      "node": "Core_SW_01:route:default:0.0.0.0/0:O_ASE:10.1.200.5",
+      "label": "0.0.0.0/0 via 10.1.200.5",
       "fields": {
-        "destination": "1.1.1.0",
-        "mask": "30",
-        "next_hop": "1.1.1.2"
+        "destination": "0.0.0.0",
+        "mask": "0",
+        "next_hop": "10.1.200.5"
       }
     },
     {
-      "node": "FW_02:route:default:1.1.1.2/32:Direct:127.0.0.1",
-      "label": "1.1.1.2/32 via 127.0.0.1",
+      "node": "Core_SW_01:route:default:10.1.10.0/24:Direct:10.1.10.253",
+      "label": "10.1.10.0/24 via 10.1.10.253",
       "fields": {
-        "destination": "1.1.1.2",
+        "destination": "10.1.10.0",
+        "mask": "24",
+        "next_hop": "10.1.10.253"
+      }
+    },
+    {
+      "node": "Core_SW_01:route:default:10.1.10.253/32:Direct:127.0.0.1",
+      "label": "10.1.10.253/32 via 127.0.0.1",
+      "fields": {
+        "destination": "10.1.10.253",
         "mask": "32",
         "next_hop": "127.0.0.1"
       }
     },
     {
-      "node": "FW_02:route:default:10.1.10.0/24:OSPF:10.1.200.14",
-      "label": "10.1.10.0/24 via 10.1.200.14",
-      "fields": {
-        "destination": "10.1.10.0",
-        "mask": "24",
-        "next_hop": "10.1.200.14"
-      }
-    },
-    {
-      "node": "FW_02:route:default:10.1.10.0/24:OSPF:10.1.200.6",
-      "label": "10.1.10.0/24 via 10.1.200.6",
-      "fields": {
-        "destination": "10.1.10.0",
-        "mask": "24",
-        "next_hop": "10.1.200.6"
-      }
-    },
-    {
-      "node": "FW_02:route:default:10.1.10.254/32:OSPF:10.1.200.6",
-      "label": "10.1.10.254/32 via 10.1.200.6",
+      "node": "Core_SW_01:route:default:10.1.10.254/32:Direct:127.0.0.1",
+      "label": "10.1.10.254/32 via 127.0.0.1",
       "fields": {
         "destination": "10.1.10.254",
         "mask": "32",
-        "next_hop": "10.1.200.6"
+        "next_hop": "127.0.0.1"
+      }
+    },
+    {
+      "node": "Core_SW_01:route:default:10.1.10.255/32:Direct:127.0.0.1",
+      "label": "10.1.10.255/32 via 127.0.0.1",
+      "fields": {
+        "destination": "10.1.10.255",
+        "mask": "32",
+        "next_hop": "127.0.0.1"
       }
     }
   ],
   "view_spec": {
     "view_id": "underlay_focus",
     "focus_nodes": [
-      "FW_02"
+      "Core_SW_01"
     ],
     "highlight_path": [],
     "agent_path": [],
@@ -3443,57 +3499,78 @@
     "respect_up_ports": false,
     "annotations": [],
     "property_overlay_nodes": [
-      "FW_02:route:default:0.0.0.0/0:O_ASE:10.1.200.22",
-      "FW_02:route:default:1.1.1.0/30:Direct:1.1.1.2",
-      "FW_02:route:default:1.1.1.2/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.10.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.10.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.10.254/32:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.110.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.110.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.110.254/32:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.120.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.120.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.120.254/32:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.20.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.20.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.20.254/32:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.200.0/30:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.200.12/30:Direct:10.1.200.13",
-      "FW_02:route:default:10.1.200.13/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.200.16/30:OSPF:10.1.200.22",
-      "FW_02:route:default:10.1.200.20/30:Direct:10.1.200.21",
-      "FW_02:route:default:10.1.200.21/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.200.24/30:OSPF:10.1.200.30",
-      "FW_02:route:default:10.1.200.28/30:Direct:10.1.200.29",
-      "FW_02:route:default:10.1.200.29/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.200.4/30:Direct:10.1.200.5",
-      "FW_02:route:default:10.1.200.5/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.200.8/30:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.254.4/32:Direct:127.0.0.1",
-      "FW_02:route:default:10.1.254.6/32:OSPF:10.1.200.22",
-      "FW_02:route:default:10.1.30.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.30.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.30.254/32:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.40.0/24:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.40.0/24:OSPF:10.1.200.6",
-      "FW_02:route:default:10.1.40.254/32:OSPF:10.1.200.14",
-      "FW_02:route:default:10.1.50.0/24:OSPF:10.1.200.30",
-      "FW_02:route:default:10.1.60.0/24:OSPF:10.1.200.30",
-      "FW_02:route:default:10.2.10.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:10.2.20.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:10.2.30.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:10.3.10.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:10.3.20.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:10.3.30.0/24:O_ASE:10.1.200.22",
-      "FW_02:route:default:127.0.0.0/8:Direct:127.0.0.1",
-      "FW_02:route:default:127.0.0.1/32:Direct:127.0.0.1",
-      "FW_02",
-      "FW_02:InLoopBack0",
-      "FW_02:LoopBack0"
+      "Core_SW_01:route:default:0.0.0.0/0:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:0.0.0.0/0:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.1.10.0/24:Direct:10.1.10.253",
+      "Core_SW_01:route:default:10.1.10.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.10.254/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.10.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.110.0/24:Direct:10.1.110.253",
+      "Core_SW_01:route:default:10.1.110.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.110.254/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.110.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.120.0/24:Direct:10.1.120.253",
+      "Core_SW_01:route:default:10.1.120.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.120.254/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.120.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.20.0/24:Direct:10.1.20.253",
+      "Core_SW_01:route:default:10.1.20.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.20.254/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.20.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.200.0/30:Direct:10.1.200.2",
+      "Core_SW_01:route:default:10.1.200.12/30:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.1.200.16/30:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.200.2/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.200.20/30:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.1.200.24/30:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.200.28/30:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.1.200.3/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.200.4/30:Direct:10.1.200.6",
+      "Core_SW_01:route:default:10.1.200.6/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.200.7/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.200.8/30:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.254.1/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.254.6/32:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.254.6/32:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.1.30.0/24:Direct:10.1.30.253",
+      "Core_SW_01:route:default:10.1.30.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.30.254/32:OSPF:10.1.10.252",
+      "Core_SW_01:route:default:10.1.30.254/32:OSPF:10.1.20.252",
+      "Core_SW_01:route:default:10.1.30.254/32:OSPF:10.1.30.252",
+      "Core_SW_01:route:default:10.1.30.254/32:OSPF:10.1.40.252",
+      "Core_SW_01:route:default:10.1.30.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.40.0/24:Direct:10.1.40.253",
+      "Core_SW_01:route:default:10.1.40.253/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.40.254/32:OSPF:10.1.10.252",
+      "Core_SW_01:route:default:10.1.40.254/32:OSPF:10.1.20.252",
+      "Core_SW_01:route:default:10.1.40.254/32:OSPF:10.1.30.252",
+      "Core_SW_01:route:default:10.1.40.254/32:OSPF:10.1.40.252",
+      "Core_SW_01:route:default:10.1.40.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:10.1.50.0/24:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.50.0/24:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.1.60.0/24:OSPF:10.1.200.1",
+      "Core_SW_01:route:default:10.1.60.0/24:OSPF:10.1.200.5",
+      "Core_SW_01:route:default:10.2.10.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.2.10.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.2.20.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.2.20.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.2.30.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.2.30.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.3.10.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.3.10.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.3.20.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.3.20.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:10.3.30.0/24:O_ASE:10.1.200.1",
+      "Core_SW_01:route:default:10.3.30.0/24:O_ASE:10.1.200.5",
+      "Core_SW_01:route:default:127.0.0.0/8:Direct:127.0.0.1",
+      "Core_SW_01:route:default:127.0.0.1/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:127.255.255.255/32:Direct:127.0.0.1",
+      "Core_SW_01:route:default:255.255.255.255/32:Direct:127.0.0.1",
+      "Core_SW_01:InLoopBack0",
+      "Core_SW_01:LoopBack0"
     ],
     "legend": true,
-    "title": "Underlay focus: FW_02",
+    "title": "Underlay focus: Core_SW_01",
     "layout_positions_path": "D:\\work\\memory攻关\\code\\demo\\memory-experiment\\data\\baseline_topology\\topology_positions.json"
   }
 }

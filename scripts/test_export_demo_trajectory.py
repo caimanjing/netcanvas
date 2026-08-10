@@ -28,18 +28,16 @@ class TestExport(unittest.TestCase):
 
     def test_subsample_keeps_tool_diversity(self):
         steps = [
-            {"tags": ["overview"], "image": "a"},
-            {"tags": ["focus"], "image": "b"},
-            {"tags": ["focus"], "image": "c"},
-            {"tags": ["path"], "image": "d"},
-            {"tags": ["inspect"], "image": "e"},
+            {"tags": ["overview"], "plane": "physical", "image": "a"},
+            {"tags": ["focus"], "plane": "physical", "image": "b"},
+            {"tags": ["focus"], "plane": "logical", "image": "c"},
+            {"tags": ["path"], "plane": "underlay", "image": "d"},
+            {"tags": ["inspect"], "plane": "security", "image": "e"},
         ]
         out = subsample_keep_tags(steps, max_steps=4)
-        flat = {t for s in out for t in s["tags"]}
-        self.assertTrue(
-            {"overview", "path", "inspect"} <= flat
-            or {"overview", "focus", "path"} <= flat
-        )
+        planes = [s["plane"] for s in out]
+        # chapter order: physical before logical before security before underlay
+        self.assertEqual(planes, sorted(planes, key=["physical", "logical", "security", "underlay"].index))
         self.assertLessEqual(len(out), 4)
 
     def test_find_next_by_tag(self):

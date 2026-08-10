@@ -435,13 +435,15 @@ ul.clean li {
   word-break: break-word;
 }
 
-.wb-rail {
+.wb-rail,
+.wb-planes {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
 .wb-rail button,
+.wb-planes button,
 .wb-controls button {
   font: inherit;
   cursor: pointer;
@@ -453,14 +455,23 @@ ul.clean li {
 }
 
 .wb-rail button:hover,
+.wb-planes button:hover,
 .wb-controls button:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.wb-rail button.active {
+.wb-rail button.active,
+.wb-planes button.active {
   background: var(--accent-soft);
   border-color: var(--accent);
+  color: #115e59;
+}
+
+.wb-plane-now {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   color: #115e59;
 }
 

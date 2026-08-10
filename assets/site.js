@@ -1,4 +1,11 @@
-import { findNextByTag, normalizeDemo } from "./workbench.js";
+import {
+  findNextInIndices,
+  findNextToolInPlane,
+  indicesForPlane,
+  normalizeDemo,
+  primaryPlane,
+  primaryTool,
+} from "./workbench.js";
 
 function initBibtex() {
   const btn = document.querySelector("[data-copy-bibtex]");
@@ -49,61 +56,118 @@ async function initWorkbench() {
   const toolEl = root.querySelector("[data-wb-tool]");
   const argsEl = root.querySelector("[data-wb-args]");
   const intentEl = root.querySelector("[data-wb-intent]");
+  const planeNowEl = root.querySelector("[data-wb-plane-now]");
   const indexEl = root.querySelector("[data-wb-index]");
   const film = root.querySelector("[data-wb-film]");
   const meta = document.querySelector("[data-workbench-meta]");
-  const railBtns = [...root.querySelectorAll("[data-wb-tag]")];
+  const toolBtns = [...root.querySelectorAll("[data-wb-tool-btn]")];
+  const planeBtns = [...root.querySelectorAll("[data-wb-plane]")];
 
-  let idx = 0;
+  const availablePlanes = [
+    ...new Set(demo.steps.map((s) => primaryPlane(s)).filter(Boolean)),
+  ];
+  const planeOrder = ["physical", "logical", "security", "underlay"].filter((p) =>
+    availablePlanes.includes(p)
+  );
+
+  let plane = planeOrder[0] || "physical";
+  let idx = indicesForPlane(demo.steps, plane)[0] ?? 0;
   let timer = null;
 
-  const cacheQ = `v=${encodeURIComponent(demo.run_id)}-${demo.steps.length}`;
+  const cacheQ = `v=${encodeURIComponent(demo.run_id)}-plane1`;
 
   function frameUrl(rel) {
     return `assets/demo/${rel}?${cacheQ}`;
   }
 
-  if (meta) {
-    meta.textContent = `${demo.caption} · run ${demo.run_id} · ${demo.steps.length} frames`;
+  function planeIndices() {
+    return indicesForPlane(demo.steps, plane);
   }
 
-  film.innerHTML = "";
-  demo.steps.forEach((step, i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.innerHTML = `<img src="${frameUrl(step.image)}" alt="step ${i}" />`;
-    b.addEventListener("click", () => show(i));
-    film.appendChild(b);
-  });
-  const thumbs = [...film.querySelectorAll("button")];
+  if (meta) {
+    meta.textContent = `${demo.caption} · run ${demo.run_id} · planes: ${planeOrder.join(" · ")}`;
+  }
 
-  function show(i) {
-    idx = i;
-    const step = demo.steps[i];
+  planeBtns.forEach((b) => {
+    const p = b.getAttribute("data-wb-plane");
+    b.hidden = !planeOrder.includes(p);
+    b.disabled = !planeOrder.includes(p);
+  });
+
+  function rebuildFilm() {
+    const indices = planeIndices();
+    film.innerHTML = "";
+    indices.forEach((globalIdx) => {
+      const step = demo.steps[globalIdx];
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.globalIndex = String(globalIdx);
+      b.innerHTML = `<img src="${frameUrl(step.image)}" alt="frame ${globalIdx}" />`;
+      b.addEventListener("click", () => show(globalIdx));
+      film.appendChild(b);
+    });
+  }
+
+  function show(globalIdx) {
+    idx = globalIdx;
+    const step = demo.steps[globalIdx];
+    const p = primaryPlane(step);
+    if (p && p !== plane) {
+      plane = p;
+      rebuildFilm();
+    }
     img.src = frameUrl(step.image);
     toolEl.textContent = step.tool;
     argsEl.textContent = step.tool_args || "";
     intentEl.textContent = step.intent || "";
-    indexEl.textContent = `${i + 1} / ${demo.steps.length}`;
-    thumbs.forEach((t, j) => t.classList.toggle("active", j === i));
-    railBtns.forEach((b) => {
-      const tag = b.getAttribute("data-wb-tag");
-      b.classList.toggle("active", (step.tags || []).includes(tag));
+    if (planeNowEl) planeNowEl.textContent = `Plane · ${primaryPlane(step) || "?"}`;
+
+    const indices = planeIndices();
+    const local = indices.indexOf(globalIdx);
+    indexEl.textContent =
+      local >= 0
+        ? `${plane} ${local + 1}/${indices.length}`
+        : `${globalIdx + 1}/${demo.steps.length}`;
+
+    [...film.querySelectorAll("button")].forEach((t) => {
+      t.classList.toggle("active", Number(t.dataset.globalIndex) === globalIdx);
+    });
+
+    const tool = primaryTool(step);
+    toolBtns.forEach((b) => {
+      b.classList.toggle("active", b.getAttribute("data-wb-tool-btn") === tool);
+    });
+    planeBtns.forEach((b) => {
+      b.classList.toggle("active", b.getAttribute("data-wb-plane") === plane);
     });
   }
 
-  railBtns.forEach((b) => {
+  function setPlane(nextPlane) {
+    if (!planeOrder.includes(nextPlane)) return;
+    plane = nextPlane;
+    rebuildFilm();
+    const indices = planeIndices();
+    show(indices[0] ?? idx);
+  }
+
+  toolBtns.forEach((b) => {
     b.addEventListener("click", () => {
-      const tag = b.getAttribute("data-wb-tag");
-      show(findNextByTag(demo.steps, idx, tag));
+      const tag = b.getAttribute("data-wb-tool-btn");
+      show(findNextToolInPlane(demo.steps, planeIndices(), idx, tag));
+    });
+  });
+
+  planeBtns.forEach((b) => {
+    b.addEventListener("click", () => {
+      setPlane(b.getAttribute("data-wb-plane"));
     });
   });
 
   root.querySelector("[data-wb-prev]")?.addEventListener("click", () => {
-    show((idx - 1 + demo.steps.length) % demo.steps.length);
+    show(findNextInIndices(planeIndices(), idx, false));
   });
   root.querySelector("[data-wb-next]")?.addEventListener("click", () => {
-    show((idx + 1) % demo.steps.length);
+    show(findNextInIndices(planeIndices(), idx, true));
   });
 
   const playBtn = root.querySelector("[data-wb-play]");
@@ -111,16 +175,17 @@ async function initWorkbench() {
     if (timer) {
       clearInterval(timer);
       timer = null;
-      playBtn.textContent = "Play";
+      playBtn.textContent = "Play plane";
       return;
     }
     playBtn.textContent = "Pause";
     timer = setInterval(() => {
-      show((idx + 1) % demo.steps.length);
+      show(findNextInIndices(planeIndices(), idx, true));
     }, 900);
   });
 
-  show(0);
+  rebuildFilm();
+  show(idx);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
