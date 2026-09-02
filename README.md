@@ -18,15 +18,13 @@ The page has an **EN / 中** toggle. Chinese browsers default to Chinese; otherw
 netcanvas/
 ├── README.md
 ├── LICENSE                 # dual-license note (site vs future code)
-├── docs/                   # GitHub Pages source (Settings → /docs)
-│   ├── .nojekyll
-│   ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
-│   ├── index.html          # bilingual project page (EN / 中)
-│   ├── paper/NetCanvas.pdf # arXiv v2, named version
-│   ├── assets/             # theme, workbench, demo frames, growth GIFs
-│   └── figures/            # from arXiv v2 fig1–fig6
-├── scripts/                # demo export + tests (dev tooling)
-└── superpowers/            # design notes (not published by Pages)
+└── docs/                   # GitHub Pages source (Settings → /docs)
+    ├── .nojekyll
+    ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
+    ├── index.html          # bilingual project page (EN / 中)
+    ├── paper/NetCanvas.pdf
+    ├── assets/             # theme, site JS, growth GIFs
+    └── figures/
 ```
 
 Root is reserved for future runnable code. The public site lives only in `docs/`.
@@ -34,27 +32,10 @@ Root is reserved for future runnable code. The public site lives only in `docs/`
 ## Local preview
 
 ```powershell
-cd "d:\work\memory攻关\netcanvas-site"
 python -m http.server 8080 --directory docs
 ```
 
 Open <http://localhost:8080>.
-
-## Regen workbench demo (M3 + pass only)
-
-Export one question folder at a time. Catalog: `docs/assets/demo/catalog.json`.
-
-```powershell
-cd "d:\work\memory攻关\netcanvas-site"
-python scripts/test_export_demo_trajectory.py
-python scripts/export_demo_trajectory.py `
-  --run "D:\work\memory攻关\code\demo\memory-experiment\runs\<M3_PASS_RUN_ID>" `
-  --out "docs/assets/demo\q15" `
-  --max-steps 16
-node scripts/test_workbench_logic.mjs
-```
-
-Scripts reject `M3-0` and failed trajectories. Default playback is chronological and loops.
 
 ## GitHub Pages (project subpath)
 
