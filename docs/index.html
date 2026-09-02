@@ -12,239 +12,243 @@
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/theme.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Noto+Sans+SC:wght@400;600&family=Noto+Serif+SC:wght@600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/theme.css?v=cli" />
 </head>
 <body>
   <header class="hero">
+    <div class="hero-bar">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+    </div>
     <div class="hero-inner">
-      <p class="kicker">Project page</p>
+      <p class="kicker" data-i18n="hero.kicker">Problem · Solution · Effect · Next</p>
       <h1>NetCanvas</h1>
-      <p class="tagline">
-        Interactive Visual Working Memory for LLM-Based IP Network Fault Localization
+      <p class="tagline" data-i18n="hero.tagline">
+        Let the agent look at the network the way an engineer does.
       </p>
       <p class="links">
-        <!-- Replace # with real URLs when ready -->
-        <a class="primary" href="paper/NetCanvas.pdf">Paper (PDF)</a>
-        <a href="#">arXiv</a>
-        <a href="#">Code</a>
-        <a href="https://caimanjing.github.io/netcanvas/">Project</a>
-        <a href="#cite">Cite</a>
+        <a class="primary" href="paper/NetCanvas.pdf" data-i18n="hero.paper">Paper (PDF)</a>
+        <a class="disabled" href="#" aria-disabled="true" title="Not listed on arXiv yet" data-i18n="hero.arxiv">arXiv (soon)</a>
+        <a href="https://github.com/caimanjing/netcanvas" data-i18n="hero.code">Repo</a>
+        <a href="https://caimanjing.github.io/netcanvas/" data-i18n="hero.project">Project</a>
+        <a href="#cite" data-i18n="hero.cite">Cite</a>
       </p>
     </div>
   </header>
 
   <div class="layout">
     <aside class="toc" aria-label="On this page">
-      <p>On this page</p>
-      <a href="#workbench">0. Workbench</a>
-      <a href="#problem">1. Topology amnesia</a>
-      <a href="#method">2. NetCanvas</a>
-      <a href="#results">3. Results</a>
-      <a href="#ablations">4. What drives the gains</a>
-      <a href="#cite">5. Cite</a>
+      <p data-i18n="toc.title">On this page</p>
+      <a href="#problem" data-i18n="toc.problem">Problem</a>
+      <a href="#solution" data-i18n="toc.solution">Solution</a>
+      <a href="#results" data-i18n="toc.results">Effect</a>
+      <a href="#next" data-i18n="toc.next">Next</a>
+      <a href="#cite" data-i18n="toc.cite">Cite</a>
     </aside>
 
     <main>
-      <section id="workbench" class="workbench-section">
-        <h2>Interactive Visual Working Memory</h2>
-        <p class="lead">
-          Replay of a recorded <strong>M3</strong> trajectory (pass).
-          Pick a <strong>plane</strong> (physical / logical / security / underlay) —
-          the filmstrip only plays that plane in probe order.
-          Tool chain jumps among overview / focus / path / inspect <em>inside</em> the active plane.
+      <section id="problem">
+        <p class="section-kicker" data-i18n="problem.kicker">01 / Problem</p>
+        <h2 data-i18n="problem.title">证据都拿到了，Agent 还是认错了防火墙</h2>
+        <p class="lead" data-i18n-html="problem.lead">
+          把 LLM Agent 放进多设备、多路径的真实网络排障，会看到一种反直觉的失效：每一条 CLI 它都读得懂，但设备邻接、路径分叉这些空间关系散落在越滚越长的日志里，每往前一跳都要从碎片里重新拼一遍。我们把这种失效叫做「拓扑失忆」。它听起来抽象，先看一道真实的题。
         </p>
-        <p class="workbench-meta" data-workbench-meta></p>
-
-        <div class="workbench" data-workbench>
-          <div class="wb-main">
-            <div class="wb-viewport">
-              <img data-wb-image alt="Topology working memory frame" />
-              <div class="wb-hotspots" data-wb-hotspots hidden></div>
-            </div>
-            <div class="wb-attr" data-wb-attr hidden></div>
-          </div>
-          <aside class="wb-side">
-            <div class="wb-act">
-              <p class="wb-label">Agent tool</p>
-              <p class="wb-tool" data-wb-tool></p>
-              <p class="wb-args" data-wb-args></p>
-              <p class="wb-intent" data-wb-intent></p>
-              <p class="wb-plane-now" data-wb-plane-now></p>
-            </div>
-            <div class="wb-rail" aria-label="Tool chain">
-              <p class="wb-label">Tool chain</p>
-              <button type="button" data-wb-tool-btn="overview">Overview</button>
-              <button type="button" data-wb-tool-btn="focus">Focus</button>
-              <button type="button" data-wb-tool-btn="path">Path</button>
-              <button type="button" data-wb-tool-btn="inspect">Inspect</button>
-            </div>
-            <div class="wb-planes" aria-label="Topology plane">
-              <p class="wb-label">Plane</p>
-              <button type="button" data-wb-plane="physical">Physical</button>
-              <button type="button" data-wb-plane="logical">Logical</button>
-              <button type="button" data-wb-plane="security">Security</button>
-              <button type="button" data-wb-plane="underlay">Underlay</button>
-            </div>
-          </aside>
-          <div class="wb-timeline">
-            <div class="wb-controls">
-              <button type="button" data-wb-play title="Auto-advance frames in the selected plane">Autoplay plane</button>
-              <button type="button" data-wb-prev title="Previous frame in this plane">← Prev frame</button>
-              <button type="button" data-wb-next title="Next frame in this plane">Next frame →</button>
-              <span data-wb-index></span>
-              <a href="assets/demo/demo.gif" target="_blank" rel="noopener">Open full GIF</a>
-            </div>
-            <p class="wb-hint">
-              Filmstrip = ordered renders on the <em>selected plane only</em>.
-              Autoplay / Prev / Next move inside that plane — they do not run CLI.
-            </p>
-            <div class="wb-film" data-wb-film></div>
-          </div>
+        <p data-i18n-html="problem.case">
+          题目是一台办公 PC 上不了外网。网里有一对互为热备的双防火墙，标准答案是其中一台没启用全局热备协议（HRP）。纯文本 Agent 发了 <strong>151</strong> 条命令，把两台防火墙的热备状态都查过了——<strong>证据它拿到手了</strong>。但它最后把根因判给了另一台防火墙的安全策略，还捎带上一台出口网关的 NAT 配置：两条都错，而且认错了是哪一台在这条路径上出问题。
+        </p>
+        <p data-i18n-html="problem.why">
+          缺的不是阅读能力，也不是知识：热备该怎么查、命令怎么读，它全都会。缺的是空间记忆——两台并行的防火墙在这条路径上各自站在哪个位置，这件事没有一处稳定地存着。排障越深，局部观测越多，整体空间关系反而在长文本里坍塌。堆更多上下文、上微调和强化学习，都绕不开这一点：模型缺的不是知识，而是持续维护网络空间状态的能力。
+        </p>
+        <p data-i18n-html="problem.turn">
+          现在换掉唯一一个变量。同一道题、同一个底座模型、同一套可用命令，只把「网长什么样」从模型脑子里挪进系统——也就是换成 NetCanvas。下面两条轨迹放在一起看。左边，纯文本那 151 条命令的回放；右边，那张网逐帧在它眼前长出来。
+        </p>
+        <div class="growth-grid">
+          <figure>
+            <img src="assets/demo/growth/q15_text_cli.gif" alt="Q15 text-only agent issuing 151 CLI commands" />
+            <figcaption data-i18n="problem.textGif">
+              同一道题，纯文本失败侧：151 次工具调用，全部在发命令。逐条命令回放自那条失败轨迹。
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="assets/demo/growth/q15_physical_growth.gif" alt="Q15 topology growing with probes" />
+            <figcaption data-i18n="problem.gif">
+              同一道题上，NetCanvas 侧的拓扑生长过程（同一张物理平面，逐帧取自一条答对的轨迹）。不是开局给出全网，而是每下发一条 CLI，设备和连线在图上长出来；当前焦点高亮。
+            </figcaption>
+          </figure>
         </div>
+        <p data-i18n-html="problem.verdict">
+          两台防火墙的并行关系一旦在图上摆开，问题就从「哪台防火墙有毛病」变成了「这条路径上这台防火墙该起什么作用」。这一次它用了 <strong>49</strong> 次工具调用，其中只有 <strong>5</strong> 次是发命令，答案一次就对。151 比 49，赢的不是更强的推理，而是它不再需要在长文本里一遍遍重建那张网。后面效果一节那组 30.3% 到 54.5%，背后就是一道道这样的题。
+        </p>
       </section>
 
-      <section id="problem">
-        <h2>Topology amnesia</h2>
-        <p class="lead">
-          Cross-device IP fault localization needs a stable spatial map. Text-only
-          agents rebuild adjacency and path forks from scattered CLI logs at every hop—
-          <em>topology amnesia</em>. NetCanvas keeps a probe-synchronized topology image instead.
+      <section id="solution">
+        <p class="section-kicker" data-i18n="solution.kicker">02 / Solution</p>
+        <h2 data-i18n="solution.title">Close the loop between probing and seeing</h2>
+        <p class="lead" data-i18n-html="solution.lead">
+          把镜头从题目移到系统。系统改的不是参数，而是模型解决问题的路径——证据进到哪里、当前这一步看见什么、下一步如何在图上取景。<strong>不是把专家经验写进 Prompt，而是把专家的工作方式写进 Agent 的运行时。</strong>
+        </p>
+        <p data-i18n-html="solution.see">
+          同一张网，在人和 Agent 眼里本来就不是一回事。资深网工排障时，脑子里始终悬着一张活图：流量从哪进、在哪分流、防火墙卡在第几跳。纯文本 Agent 面对的却是一维滚动的 CLI，邻接、分叉、区域层级全被压扁进回显，每往前一跳都要从碎片里重新脑补。NetCanvas 做的，是把那张活图从「只能存在于专家脑子里」，变成系统可以维护、模型可以点选的工作记忆。
         </p>
         <figure>
-          <img src="figures/teaser.png" alt="Text-only agent vs interactive visual agent" />
-          <figcaption>
-            Text-only agents reconstruct topology from one-dimensional logs;
-            NetCanvas keeps a probe-synchronized topology image in context.
+          <img src="figures/teaser.png" alt="Human, text-only agent, and NetCanvas" />
+          <figcaption data-i18n="solution.teaserCaption">
+            Same network, three ways of seeing. Left: the engineer keeps a live map.
+            Middle: a text-only agent rebuilds adjacency from log fragments at every hop.
+            Right: NetCanvas updates the topology with probing and puts an interactive working
+            memory into context.
           </figcaption>
         </figure>
-      </section>
-
-      <section id="method">
-        <h2>NetCanvas</h2>
-        <p>
-          Two coupled pieces — not only the ingest loop.
-          Use the workbench above to feel both.
+        <p data-i18n="solution.loopIntro">
+          The loop is closed:
         </p>
-
-        <h3>1. Probe → Ingest → Render → Act</h3>
         <div class="loop" aria-label="Runtime loop">
-          <span>Probe</span>
-          <span>Ingest</span>
-          <span>Render</span>
-          <span>Act</span>
+          <span data-i18n="solution.probeK">Probe</span>
+          <span data-i18n="solution.ingestK">Ingest</span>
+          <span data-i18n="solution.renderK">Render</span>
+          <span data-i18n="solution.actK">Act</span>
         </div>
         <ul class="clean">
-          <li><strong>Probe</strong> — CLI on devices / simulator.</li>
-          <li><strong>Ingest</strong> — merge observations into growing graph state <em>G<sub>t</sub></em>.</li>
-          <li><strong>Render</strong> — project domain-aligned topology image + Manifest handles as <em>W<sub>t</sub></em>.</li>
-          <li><strong>Act</strong> — reason over visual working memory; choose next tool.</li>
+          <li data-i18n-html="solution.probe"><strong>Probe</strong> — issue CLI on a device; the environment returns raw text.</li>
+          <li data-i18n-html="solution.ingest"><strong>Ingest</strong> — a dedicated extractor writes routes, interfaces, and next hops into a growing graph. New evidence goes into the map, not only onto the end of the chat.</li>
+          <li data-i18n-html="solution.render"><strong>Render</strong> — crop this step’s view in an engineer’s layout, plus a clickable index. The agent sees this frame, not a dump of every node.</li>
+          <li data-i18n-html="solution.act"><strong>Choose the next step</strong> — the agent can issue another CLI command; switch the view’s scope or evidence plane; inspect a node or link; trace an L2 or L3 path; or stop probing and answer. Every visual action returns a new frame for the next decision.</li>
         </ul>
-
         <figure>
           <img src="figures/architecture.png" alt="NetCanvas architecture" />
-          <figcaption>
-            Architecture: the agent context holds topology images and semantic
-            handles; the backend owns CLI execution, GraphStore updates, and rendering.
+          <figcaption data-i18n="solution.archCaption">
+            Four-layer split. The model side holds only the topology image and the clickable
+            index. The backend owns validation, graph updates, and rendering. Graph state does
+            not enter context as JSON.
           </figcaption>
         </figure>
-
-        <h3>2. Multi-granularity interaction</h3>
-        <p>
-          The agent does not dump full <em>G<sub>t</sub></em> into context.
-          It pulls slices via overview / local focus / path highlight / attribute inspect
-          (and physical · logical · security planes) — the same controls mirrored in the workbench rail.
+        <p data-i18n-html="solution.three">
+          The loop determines how evidence enters working memory and guides the next action.
+          Three design choices make it more than a static picture:
+          <strong>continuous ingestion</strong> keeps spatial state across probes;
+          <strong>on-demand framing</strong> shows only the device, link, or path needed now;
+          and an <strong>engineer-native layout</strong> makes that spatial state directly readable.
+          The next section tests these choices against structured data, static maps, and a generic layout.
         </p>
-
-        <figure>
-          <img src="figures/workflow.png" alt="M3 interactive visual workflow" />
-          <figcaption>
-            Interactive visual workflow: the agent pulls local slices of topology
-            as diagnosis proceeds.
-          </figcaption>
-        </figure>
       </section>
 
       <section id="results">
-        <h2>Results on CTBench</h2>
-        <p>
-          Evaluated on the 66-question fault localization subset of CTBench,
-          without preloading the physical topology unless noted.
+        <p class="section-kicker" data-i18n="results.kicker">03 / Effect</p>
+        <h2 data-i18n="results.title">What we added is not “a figure”</h2>
+        <p class="lead" data-i18n="results.intro">
+          One question is not a result. On CTBench Q1–Q66, same backbone, same CLI, same scoring —
+          only the working-memory form changes. Best-of-3, strict set match, no partial credit.
+          First, the four worlds the agent actually receives on the same question.
         </p>
-
+        <figure>
+          <img src="figures/workflow.png" data-i18n-src="fig.forms" alt="Four working memory forms" />
+          <figcaption data-i18n="results.formsCaption">
+            Same question, four worlds in context: raw CLI, a JSON subgraph, a static physical snapshot,
+            and NetCanvas rendering the local path.
+          </figcaption>
+        </figure>
         <div class="stats">
           <div class="stat">
             <strong>54.5%</strong>
-            <span>Interactive visual (M3) pass@66</span>
+            <span data-i18n="results.m3">NetCanvas · 36/66 · 113 steps</span>
           </div>
           <div class="stat">
             <strong>37.9%</strong>
-            <span>Structured-graph baseline</span>
+            <span data-i18n="results.m2">Structured graph · 25/66 · 217 steps</span>
           </div>
           <div class="stat">
             <strong>30.3%</strong>
-            <span>Text-only baseline</span>
+            <span data-i18n="results.m1">Text-only · 20/66 · 159 steps</span>
           </div>
         </div>
-
-        <p>
-          With physical topology preload, the interactive visual chain further
-          reaches <strong>63.6%</strong>, and uses fewer average probing steps than
-          text-only / structured-graph baselines. The advantage also persists under
-          an additional multimodal LLM backbone.
+        <p data-i18n-html="results.nail">
+          <strong>JSON is not enough.</strong> The same ingest, symbols only in front: 37.9%
+          (25/66), average steps up to 217. The graph lives in the system, not as spatial
+          structure the model can use.
+          <strong>A static global picture is not enough.</strong> 24/66 and 29/66, both below
+          the 36/66 that redraws and highlights.
+          <strong>The wrong layout is not enough either.</strong> Keep ingest and the click
+          protocol; swap only coordinates for a force-directed view, and 54.5% falls back to
+          <strong>37.9%</strong>.
+          With a physical-link prior, NetCanvas reaches <strong>63.6%</strong> (42/66) — the
+          ceiling of working memory plus a base map, not the no-prior 30.3% vs 54.5% contrast.
         </p>
-
         <figure>
-          <img src="figures/results.png" alt="Overall pass rates comparison" />
-          <figcaption>Main comparison across working-memory representations.</figcaption>
-        </figure>
-      </section>
-
-      <section id="ablations">
-        <h2>What drives the gains</h2>
-        <p>
-          Ablations attribute the benefit to two design choices:
-        </p>
-        <ul class="clean">
-          <li><strong>Probe-synchronized interactive views</strong> beat one-shot static global snapshots.</li>
-          <li><strong>Domain-aligned layouts</strong> beat generic force-directed layouts.</li>
-        </ul>
-        <figure>
-          <img src="figures/ablation.png" alt="Static vs dynamic visual memory" />
-          <figcaption>
-            Static global snapshots vs probe-synchronized interactive views.
+          <img src="figures/results.png" data-i18n-src="fig.results" alt="Pass rate and probing steps" />
+          <figcaption data-i18n="results.chartCaption">
+            Pass rate up, steps down. The structured-graph family walks the most.
+            NetCanvas is 54.5% / 113 steps; with a link prior, 63.6% / 107.
           </figcaption>
         </figure>
+        <figure>
+          <img src="figures/cost.png" alt="Pass rate versus average per-run tokens" />
+          <figcaption data-i18n="results.costCaption">
+            Pass rate against per-run tokens. The visual arms beat every structured-graph variant
+            on both axes, the link prior pushes both further, and the generic-layout ablation (M3g)
+            is worse and costlier. Accuracy here is not bought with cost.
+          </figcaption>
+        </figure>
+        <p data-i18n-html="results.close">
+          So: structure alone is not enough, a picture is not enough, “being able to click” is not
+          enough. What the harness supplies is a combination of four things —
+          <strong>a continuously ingested graph state, views that update with probing, a layout that
+          follows how engineers draw, and an interaction protocol that frames on demand</strong>.
+          Miss any one, and you are back to feeding an extra picture.
+        </p>
+      </section>
+
+      <section id="next">
+        <p class="section-kicker" data-i18n="next.kicker">04 / Next</p>
+        <h2 data-i18n="next.title">The next scaling step for network agents happens outside the model</h2>
+        <p class="lead" data-i18n-html="next.lead">
+          NetCanvas still misses <strong>30</strong> of 66. Almost none of those are “draw more pictures.”
+          The remaining faults sit in extraction (VRF, prefix-lists) and in multi-hop causal close-out
+          after the evidence is already in context. The harness can take over
+          <em>unreliable organisation and memory</em>. It cannot take over those two.
+        </p>
+        <p data-i18n-html="next.body">
+          The gain we can point to is mostly <strong>probe coverage</strong>: the device that used to be skipped
+          gets visited, because the path is visible. Dual-firewall / HRP / ECMP jumps hard;
+          cross-city VPN barely moves. That is the boundary, not a slogan.
+        </p>
+        <p data-i18n-html="next.close">
+          Same backbone: 30.3% as a naked model, 54.5% once the working method sits outside it.
+          You do not have to turn the weights into a senior engineer first. You can first let
+          the system design a smarter way of looking at the network.
+        </p>
       </section>
 
       <section id="cite">
-        <h2>Cite this work</h2>
+        <h2 data-i18n="cite.title">Cite this work</h2>
         <div class="citation">
           <div class="citation-bar">
             <span>BibTeX</span>
-            <button type="button" data-copy-bibtex>Copy</button>
+            <button type="button" data-copy-bibtex data-i18n="cite.copy">Copy</button>
           </div>
           <pre><code id="bibtex-code">@misc{netcanvas2026,
   title  = {{NetCanvas}: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization},
   author = {Cai, Manjing and Wu, Chenwei and You, Qiheng and Sun, Weijian and Chen, Xin},
   year   = {2026},
   month  = {aug},
-  day    = {10},
+  note   = {Preprint},
   url    = {https://caimanjing.github.io/netcanvas/}
 }</code></pre>
         </div>
-        <p class="note">
-          Project page URL is set to
+        <p class="note" data-i18n-html="cite.note">
+          Project page:
           <a href="https://caimanjing.github.io/netcanvas/">https://caimanjing.github.io/netcanvas/</a>.
-          Paper PDF is linked above; update arXiv/Code links and the BibTeX date after public release.
-          During double-blind review, keep the page anonymous or unpublished if required.
+          The paper PDF is at the top of this page. This work is not listed on arXiv yet.
+          The repository currently holds the project page and paper materials, not runnable code.
         </p>
       </section>
     </main>
   </div>
 
   <footer class="site-footer">
-    <p>
+    <p data-i18n-html="footer.license">
       This project page and paper materials are licensed under
       <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
     </p>
@@ -265,6 +269,6 @@
     </p>
   </footer>
 
-  <script type="module" src="assets/site.js"></script>
+  <script type="module" src="assets/site.js?v=cli"></script>
 </body>
 </html>

@@ -2,11 +2,15 @@
 
 Project page (and later code) for **NetCanvas: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization**.
 
-Site URL:
+站点 / Site:
 
 ```text
 https://caimanjing.github.io/netcanvas/
 ```
+
+页面右上角 **EN / 中** 切换。浏览器语言为中文时默认中文，否则默认英文。
+
+The page has an **EN / 中** toggle. Chinese browsers default to Chinese; otherwise English.
 
 ## Layout
 
@@ -17,10 +21,10 @@ netcanvas/
 ├── docs/                   # GitHub Pages source (Settings → /docs)
 │   ├── .nojekyll
 │   ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
-│   ├── index.html
-│   ├── paper/NetCanvas.pdf
-│   ├── assets/             # theme, workbench, demo frames
-│   └── figures/
+│   ├── index.html          # bilingual project page (EN / 中)
+│   ├── paper/NetCanvas.pdf # arXiv v2, named version
+│   ├── assets/             # theme, workbench, demo frames, growth GIFs
+│   └── figures/            # from arXiv v2 fig1–fig6
 ├── scripts/                # demo export + tests (dev tooling)
 └── superpowers/            # design notes (not published by Pages)
 ```
@@ -38,17 +42,19 @@ Open <http://localhost:8080>.
 
 ## Regen workbench demo (M3 + pass only)
 
+Export one question folder at a time. Catalog: `docs/assets/demo/catalog.json`.
+
 ```powershell
 cd "d:\work\memory攻关\netcanvas-site"
 python scripts/test_export_demo_trajectory.py
 python scripts/export_demo_trajectory.py `
   --run "D:\work\memory攻关\code\demo\memory-experiment\runs\<M3_PASS_RUN_ID>" `
-  --out "docs/assets/demo" `
-  --max-steps 20
+  --out "docs/assets/demo\q15" `
+  --max-steps 16
 node scripts/test_workbench_logic.mjs
 ```
 
-Scripts reject `M3-0` and failed trajectories. Current assets: `docs/assets/demo/SOURCE.txt`.
+Scripts reject `M3-0` and failed trajectories. Default playback is chronological and loops.
 
 ## GitHub Pages (project subpath)
 
@@ -61,9 +67,9 @@ Scripts reject `M3-0` and failed trajectories. Current assets: `docs/assets/demo
 
 ## Before public launch
 
-- Paper PDF is at `docs/paper/NetCanvas.pdf` (named version; do not upload `NetCanvas-anon.pdf` to a public page)
-- Fill arXiv / Code links in `docs/index.html` when ready
-- Confirm BibTeX date
+- Paper PDF is at `docs/paper/NetCanvas.pdf` (arXiv v2 named version; do not upload `NetCanvas-anon.pdf`)
+- Fill the arXiv ID in `docs/index.html` and BibTeX when the preprint is announced
+- Growth GIFs/MP4: `docs/assets/demo/growth/SOURCE.txt` (Q15 GIF from v9 article; Q13 MP4 from v7.1)
 - During double-blind review, keep the repo private or strip author identity if required
 
 ## License

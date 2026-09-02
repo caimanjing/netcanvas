@@ -65,6 +65,23 @@ def find_next_by_tag(steps: list[dict], current: int, tag: str) -> int:
     return current
 
 
+def subsample_chrono(steps: list[dict], max_steps: int = 16) -> list[dict]:
+    """Keep probe time order. Evenly sample if the run is long."""
+    if not steps or len(steps) <= max_steps:
+        return list(steps)
+    if max_steps <= 1:
+        return [steps[0]]
+    last = len(steps) - 1
+    idxs = [round(i * last / (max_steps - 1)) for i in range(max_steps)]
+    seen: set[int] = set()
+    out: list[dict] = []
+    for i in idxs:
+        if i not in seen:
+            seen.add(i)
+            out.append(steps[i])
+    return out
+
+
 def subsample_keep_tags(steps: list[dict], max_steps: int = 20) -> list[dict]:
     """Keep tool diversity, but prefer a plane-chapter ordering for narrative."""
     if not steps:
@@ -228,7 +245,12 @@ def build_gif(frame_paths: list[Path], out_gif: Path, duration_ms: int = 900) ->
 
 
 def export_run(
-    run_dir: Path, out_dir: Path, max_steps: int = 20, min_nodes: int = 2
+    run_dir: Path,
+    out_dir: Path,
+    max_steps: int = 16,
+    min_nodes: int = 2,
+    order: str = "chrono",
+    write_gif: bool = False,
 ) -> None:
     meta = load_meta(run_dir)
     assert_m3_passed(meta)
@@ -237,12 +259,19 @@ def export_run(
     if not pngs:
         raise SystemExit(f"no multi-node topology PNGs (min_nodes={min_nodes})")
     qid = "unknown"
-    m = re.match(r"(q\d+)_", pngs[0].name, re.I)
-    if m:
-        qid = m.group(1).lower()
+    qn = meta.get("question_number")
+    if qn is not None:
+        qid = f"q{qn}"
+    else:
+        m = re.match(r"(q\d+)_", pngs[0].name, re.I)
+        if m:
+            qid = m.group(1).lower()
 
     raw_steps = [infer_step(p) for p in pngs]
-    steps = subsample_keep_tags(raw_steps, max_steps=max_steps)
+    if order == "plane":
+        steps = subsample_keep_tags(raw_steps, max_steps=max_steps)
+    else:
+        steps = subsample_chrono(raw_steps, max_steps=max_steps)
 
     frames_dir = out_dir / "frames"
     if out_dir.exists():
@@ -288,7 +317,8 @@ def export_run(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    build_gif(frame_files, out_dir / "demo.gif")
+    if write_gif:
+        build_gif(frame_files, out_dir / "demo.gif")
     (out_dir / "SOURCE.txt").write_text(
         "\n".join(
             [
@@ -310,7 +340,14 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True, type=Path)
     ap.add_argument("--out", required=True, type=Path)
-    ap.add_argument("--max-steps", type=int, default=20)
+    ap.add_argument("--max-steps", type=int, default=16)
+    ap.add_argument(
+        "--order",
+        choices=("chrono", "plane"),
+        default="chrono",
+        help="chrono = probe time order (default); plane = chapter by topology plane.",
+    )
+    ap.add_argument("--gif", action="store_true", help="Also write demo.gif")
     ap.add_argument(
         "--min-nodes",
         type=int,
@@ -323,6 +360,8 @@ def main() -> None:
         args.out.resolve(),
         max_steps=args.max_steps,
         min_nodes=args.min_nodes,
+        order=args.order,
+        write_gif=args.gif,
     )
     print(f"exported -> {args.out}")
 

@@ -5,6 +5,7 @@ from export_demo_trajectory import (
     find_next_by_tag,
     is_multi_node_frame,
     nodes_shown_from_manifest,
+    subsample_chrono,
     subsample_keep_tags,
     tags_from_name,
 )
@@ -25,6 +26,13 @@ class TestExport(unittest.TestCase):
         t = tags_from_name("q10_xxx_physical_path_A_to_B.png")
         self.assertIn("path", t)
         self.assertIn("physical", t)
+
+    def test_subsample_chrono_keeps_ends(self):
+        steps = [{"i": i} for i in range(10)]
+        out = subsample_chrono(steps, max_steps=4)
+        self.assertEqual(out[0]["i"], 0)
+        self.assertEqual(out[-1]["i"], 9)
+        self.assertLessEqual(len(out), 4)
 
     def test_subsample_keeps_tool_diversity(self):
         steps = [

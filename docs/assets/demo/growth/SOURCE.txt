@@ -1,0 +1,26 @@
+q15_text_cli.gif
+  question_id=q15
+  arm=M1
+  pass=false
+  run_id=1e14ab1402cc
+  bash_calls=151
+  source=code/demo/memory-experiment/runs/1e14ab1402cc/q15_trace.json
+  note=Text-only failure used in v9: 151 CLI, wrong FW_01 + NAT. Rendered by scripts/export_q15_text_cli_gif.py
+
+q15_physical_growth.gif
+  question_id=q15
+  arm=M3
+  pass=true
+  run_id=2b3bde7367e0
+  used_in=华为GTS_NetCanvas_v9.docx (Word stores the strip PNG; HTML uses the original GIF)
+  source=code/demo/memory-experiment/docs/wechat_articles/fig_q15_physical_growth.gif
+
+q13_topo_for_word.mp4
+q13_topo_for_word.gif
+  question_id=q13
+  arm=M4
+  pass=true
+  run_id=12222f615d27
+  used_in=华为GTS_NetCanvas_v7.1.docx (Word OLE embed of this MP4)
+  source=deliverables/m4-q13-physical-growth-gif/
+  note=Same Probe→Ingest→Render loop; later visual design (M4), not one of the paper's nine MiniMax arms.
