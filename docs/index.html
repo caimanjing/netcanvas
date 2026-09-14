@@ -3,171 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>华为 GTS NetCanvas：给故障定位 Agent 配上可交互的拓扑工作记忆</title>
-  <meta name="description" content="跨设备 IP 故障定位里，NetCanvas 把 Agent 的工作记忆做成一张跟着探查更新的交互拓扑图，而非往上下文里堆文本。" />
+  <title>华为 GTS NetCanvas：让 Agent 像资深工程师一样「看着网络排障」</title>
+  <meta name="description" content="华为 GTS NetCanvas 为大模型 Agent 提供随探查更新的可交互视觉拓扑，让 Agent 像资深工程师一样看着网络排障。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Noto+Sans+SC:wght@400;600&family=Noto+Serif+SC:wght@600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/theme.css?v=article" />
   <style>
-    .hero {
-      padding: 4rem 1.25rem 3.2rem;
-    }
-    .hero .kicker {
-      color: #7fd6cb;
-    }
-    .hero h1 {
-      max-width: 40rem;
-    }
-    .article {
-      width: min(100% - 2rem, var(--max));
-      margin: 0 auto;
-      padding: 2.4rem 0 4rem;
-    }
-    .condu {
-      margin: 0 0 2.4rem;
-      padding: 1.1rem 1.25rem 1.2rem;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--accent);
-      border-radius: 0.7rem;
-    }
-    .condu .condu-tag {
-      display: block;
-      margin-bottom: 0.45rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-    }
-    .condu p {
-      margin: 0 0 0.8rem;
-      color: #243447;
-    }
-    .condu p:last-child {
-      margin-bottom: 0;
-    }
-    .article section {
-      margin-bottom: 2.6rem;
-      scroll-margin-top: 1.2rem;
-    }
-    .article h2 {
-      margin: 0 0 0.9rem;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 600;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-    .sec-num {
-      color: var(--accent);
-    }
-    .article p {
-      margin: 0 0 1rem;
-      color: #243447;
-    }
-    .article strong {
-      color: #142033;
-    }
-    .article ul {
-      margin: 0.4rem 0 1rem;
-      padding-left: 1.2rem;
-    }
-    .article ul li {
-      margin: 0.4rem 0;
-      color: #243447;
-    }
-    .article code {
-      font-family: var(--font-mono);
-      font-size: 0.88em;
-      color: #0b5f59;
-      background: var(--accent-soft);
-      padding: 0.08rem 0.32rem;
-      border-radius: 0.3rem;
-    }
-    .article table {
-      width: 100%;
-      margin: 1.1rem 0 1.6rem;
-      border-collapse: collapse;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 0.7rem;
-      overflow: hidden;
-      font-size: 0.94rem;
-    }
-    .article th,
-    .article td {
-      padding: 0.62rem 0.8rem;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      color: #243447;
-    }
-    .article thead th {
-      background: #eef3f7;
-      color: #142033;
-      font-weight: 600;
-      font-size: 0.88rem;
-      white-space: nowrap;
-    }
-    .article tbody tr:last-child td {
-      border-bottom: 0;
-    }
-    .article tbody tr:hover {
-      background: #f6fafb;
-    }
-    .article td.num {
-      text-align: right;
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
-    .article .fig {
-      margin: 1.3rem 0 0.6rem;
-    }
-    .article figcaption {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .article figcaption strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .end-mark {
-      margin-top: 2.4rem;
-      text-align: center;
-      color: var(--muted);
-      letter-spacing: 0.3em;
-      font-size: 0.92rem;
-    }
-    .sources {
-      margin-top: 1rem;
-      padding: 1rem 1.2rem;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 0.7rem;
-    }
-    .sources h3 {
-      margin: 0 0 0.6rem;
-      font-size: 1rem;
-    }
-    .sources ul {
-      margin: 0;
-      padding-left: 1.2rem;
-    }
-    .sources li {
-      margin: 0.3rem 0;
-    }
+    .hero { padding: 4rem 1.25rem 3.2rem; }
+    .hero .kicker { color: #7fd6cb; }
+    .hero h1 { max-width: 42rem; }
+    .article { width: min(100% - 2rem, var(--max)); margin: 0 auto; padding: 2.4rem 0 4rem; }
+    .condu { margin: 0 0 2.4rem; padding: 1.1rem 1.25rem 1.2rem; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 0.7rem; }
+    .condu .condu-tag { display: block; margin-bottom: 0.45rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; color: var(--accent); }
+    .condu p { margin: 0 0 0.8rem; color: #243447; }
+    .condu p:last-child { margin-bottom: 0; }
+    .article section { margin-bottom: 2.6rem; scroll-margin-top: 1.2rem; }
+    .article h2 { margin: 0 0 0.9rem; font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+    .article h3 { margin: 1.8rem 0 0.8rem; font-size: 1.15rem; line-height: 1.5; color: #142033; }
+    .sec-num { color: var(--accent); }
+    .article p { margin: 0 0 1rem; color: #243447; }
+    .article strong { color: #142033; }
+    .article ul { margin: 0.4rem 0 1rem; padding-left: 1.2rem; }
+    .article ul li { margin: 0.4rem 0; color: #243447; }
+    .article code { font-family: var(--font-mono); font-size: 0.88em; color: #0b5f59; background: var(--accent-soft); padding: 0.08rem 0.32rem; border-radius: 0.3rem; }
+    .article table { width: 100%; margin: 1.1rem 0 1.6rem; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 0.7rem; overflow: hidden; font-size: 0.94rem; }
+    .article th, .article td { padding: 0.62rem 0.8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; color: #243447; }
+    .article thead th { background: #eef3f7; color: #142033; font-weight: 600; font-size: 0.88rem; white-space: nowrap; }
+    .article tbody tr:last-child td { border-bottom: 0; }
+    .article tbody tr:hover { background: #f6fafb; }
+    .article td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .article .fig { margin: 1.3rem 0 0.6rem; }
+    .article figcaption { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .article figcaption strong { color: var(--accent); font-weight: 600; }
+    .end-mark { margin-top: 2.4rem; text-align: center; color: var(--muted); letter-spacing: 0.3em; font-size: 0.92rem; }
+    .sources { margin-top: 1rem; padding: 1rem 1.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: 0.7rem; }
+    .sources h3 { margin: 0 0 0.6rem; font-size: 1rem; }
+    .sources ul { margin: 0; padding-left: 1.2rem; }
+    .sources li { margin: 0.3rem 0; }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="hero-inner">
       <p class="kicker">中文长文解读</p>
-      <h1>华为 GTS NetCanvas：给故障定位 Agent 配上可交互的拓扑工作记忆</h1>
-      <p class="tagline">
-        跨设备 IP 故障定位里，把 Agent 的工作记忆做成一张跟着探查更新的交互拓扑图。
-      </p>
+      <h1>华为 GTS NetCanvas：让 Agent 像资深工程师一样「看着网络排障」</h1>
+      <p class="tagline">为大模型配上一张随探查更新、可以交互的网络拓扑图。</p>
       <p class="links">
         <a class="primary" href="paper/NetCanvas.pdf">论文 PDF</a>
         <a href="https://github.com/caimanjing/netcanvas">仓库</a>
@@ -179,372 +60,158 @@
   <main class="article">
     <div class="condu">
       <span class="condu-tag">导读</span>
-      <p>
-        跨设备 IP 故障定位里，Agent 要在多台设备、多条路径上把「谁连谁、流量在哪分、这一跳是哪台防火墙」维持住。常见做法是把 CLI 回显堆进文本上下文：邻接、分叉、区域层次都散在各轮日志里，模型只能一遍遍重拼。华为 GTS 把这个失效叫拓扑失忆。
-      </p>
-      <p>
-        NetCanvas 的做法不是再往窗口里堆文本，而是把工作记忆做成一张跟着探查更新的交互拓扑图。后台维护图状态，前台按当前任务渲染局部视图；Agent 用语义指令取景、追路径、检视属性。CTBench 前 66 道故障定位题上，同一底座、同一套评分，只换工作记忆的组织方式：纯文本通过率 30.3%，NetCanvas 54.5%，平均步数从 159 降到 113。对照下来，起作用的是「能跟着探查改的交互视图」和「按园区 / 核心 / 安全域摆的布局」，不是上下文里多贴了一张图。
-      </p>
+      <p>IP 承载网是千行万业数字化系统的底座。一次刷卡支付、一次线上挂号，背后都离不开它。然而，这张网一旦出故障，线索往往深埋在海量的告警或静默的配置中。业务中断时，排障的第一道门槛往往不是怎么修，而是理清——“此时此刻，这张网到底长什么样？”</p>
+      <p>想要回答这个问题，门槛极高。因为真实的现网是“活”的、动态的。每一次故障的网络拓扑空间都截然不同，面对错综复杂的路由，能在脑海中实时重构出“动态网”并揪出根因的，只有极少数资深专家。</p>
+      <p>既然资深专家可遇不可求，将排障重任交给大模型 Agent（智能体），便成了行业破局的共识。业内曾普遍以为，凭借大模型强大的知识理解、逻辑推理与分析决策能力，这会是一场降维打击。</p>
+      <p>然而，当承载着厚望的 Agent 真正走进现场后，华为 GTS 算法团队却发现了一个反直觉的致命痛点：AI 的推理能力再强，读得懂海量的文本日志，却偏偏记不住这张网长什么样。团队将此称为「拓扑失忆」。让一个纯文本 Agent 在脑海里硬扛成百上千个节点的动态变化，注定会陷入记忆坍塌。</p>
+      <p>如何破局？团队给出了精准解法——NetCanvas：引入一套「可交互视觉拓扑」机制，为大模型提供了一张可以画线推演的「外部工作记忆」画布。让 AI 真正学会“认知卸载”，像专业工程师一样“看着网络排障”。</p>
     </div>
 
     <section>
-      <h2><span class="sec-num">01</span> / 拓扑失忆：回显读得懂，路径关系保不住</h2>
-      <p>
-        跨设备排障不是单点读日志。一条路径会穿过交换机、路由器、防火墙，证据每次只露出局部：接口、邻居、路由、策略、配置片段。模型和网工一样，得把这些碎片拼成一张还能用来定位的局部拓扑。
-      </p>
-      <p>
-        纯文本 Agent 把命令输出、推理过程和中间结论全部写进上下文。空间关系因此变成零散文本事实。探查跳数一多，先前推过的上游连接容易在读下游回显时丢掉，下一步又得重推谁连谁。这就是拓扑失忆。把回显抽成 JSON 图，后台有结构了，模型眼前仍是符号，空间关系还得自己恢复，Token 往往更高。
-      </p>
-      <p>
-        有一道双防火墙题把这个缺口摊开。办公 PC 访问外网不通，网里一对热备防火墙，标准根因是其中一台没启用全局热备协议（HRP）。纯文本 Agent 打了 151 次工具调用，全是下发 CLI，两台防火墙的热备状态都查过了。最后却把根因判给另一台的安全策略，还加上一台出口网关的 NAT：两条都错，而且认错了这条路径上的那一台。会发命令、读得懂回显，不知道两台并行防火墙各自站在第几跳。
-      </p>
+      <h2><span class="sec-num">01</span> / 痛点剖析：AI 读得懂日志却修不好网？缺的是一张跟着排查更新的拓扑图</h2>
+      <p>引入大模型 Agent，原本是为了复刻资深专家的排障经验、填补现网的人力缺口。但一线很快碰到一个反直觉现象——模型明明能解析单条命令、单段回显，一旦进入多设备、多路径、带防火墙与 ECMP 的真实复杂拓扑，就开始绕弯、重复探查，甚至在同一节点打转。</p>
+      <p>一个典型的案例是：一台办公 PC 上不了外网，网里有一对互为热备的双防火墙，标准答案是其中一台没启用全局热备协议（HRP）。纯文本 Agent 发了 151 条命令，把两台防火墙的热备状态都查过了——<strong>证据它拿到手了</strong>。但它最后把根因判给了另一台防火墙的安全策略，还捎带上一台出口网关的 NAT 配置：两条都错，而且认错了是哪一台在这条路径上出问题。它会查热备、读得懂回显，却不知道这两台并行的防火墙，各自站在整个图里哪条路径的第几跳。</p>
       <figure class="fig">
-        <img src="assets/demo/growth/q15_text_cli.gif" alt="纯文本 Agent 的 151 次 CLI 调用回放" loading="lazy" />
-        <figcaption>
-          <strong>图 1</strong> 同一道双防火墙题，纯文本失败侧。151 次工具调用全部是发命令。逐条回放自把路径上那台防火墙认错的轨迹。该查的回显进了上下文，根因仍然判错。
-        </figcaption>
+        <img src="assets/demo/growth/q15_text_cli.gif" alt="纯文本 Agent 发了 151 条命令" loading="lazy" />
+        <figcaption><strong>图 1</strong> 同一道双防火墙题，纯文本失败侧：151 次工具调用，全部在发命令。逐条回放，可以看到它认错防火墙的过程。证据都查到了，根因仍然判错。</figcaption>
       </figure>
-      <p>
-        所以缺的不是「再读一轮日志」，而是进模型窗口的那份世界怎么组织。后台可以随探查维护一张越来越大的图 G<sub>t</sub>；整张 G<sub>t</sub> 或原始日志塞不进有限窗口。真正进模型的是按当前任务切出来的工作记忆 W<sub>t</sub>。01 只把缺口钉在这里：W<sub>t</sub> 给文本、给 JSON，还是给一张能跟着探查改的图，结果会差很多。怎么给、给完能不能按需换局部，放到下一节。
-      </p>
+      <p>明明推理能力在线，为什么 AI 还会迷路？答案是：缺了空间记忆。</p>
+      <p>资深网工排障时，脑子里始终悬着一张不断更新的拓扑图：流量从哪里进入、在哪分流、防火墙卡在第几跳，一切清清楚楚。反观纯文本 Agent，面对的却是一维滚动的 CLI（命令行）——每推进一步，都要从碎片的日志里重新脑补网络长什么样。上下文越长，这种空间关系就越容易在长文本里「坍塌」。</p>
+      <p>针对这一现象，华为 GTS AI 算法团队将其精准命名为「拓扑失忆」（Topology Amnesia）：排障越深入，局部观测可能越来越多，整体的空间关系却在逐渐丢失。</p>
+      <p>怎么破局？既然人脑都需要依靠图纸来梳理复杂逻辑，AI 自然也一样。拓扑图对网工来说是排障时的“外部工作记忆”，查到哪，图更新到哪。因此，Agent 需要一张能与它产生交互、随排查一起更新的拓扑图。</p>
+      <p>沿着这个逻辑，GTS 的解法是把专家的工作方式写进 Agent 系统：模型负责思考决策，NetCanvas 负责记路与画图。</p>
+      <figure class="fig">
+        <img src="figures/teaser-zh.png" alt="同一张网，在人和 Agent 眼里是两回事" loading="lazy" />
+        <figcaption><strong>图 2</strong> 同一张网，在人和 Agent 眼里其实是两回事：(a) 人类工程师脑中的空间记忆；(b) 纯文本 Agent 陷入拓扑坍塌；(c) NetCanvas 为 Agent 配备随探查更新的可交互拓扑视图。</figcaption>
+      </figure>
     </section>
 
     <section>
-      <h2><span class="sec-num">02</span> / 方法：探查、入图、渲染、决策</h2>
-      <p>
-        NetCanvas 的答法是：W<sub>t</sub> 用跟着探查更新的交互拓扑图。模型负责决策，系统把当前相关的那一段网画出来、允许点选。网工排障本来就靠拓扑图做路径追踪、局部放大、确认设备位置；这里把同一件事做成运行时。
-      </p>
+      <h2><span class="sec-num">02</span> / 技术方案：一张「探查—入图—渲染—决策」的可交互视觉拓扑</h2>
+      <p>NetCanvas 是一套运行时机制：后台随探查维护一份持续更新的网络图状态，前台把当前任务相关的局部结构渲染成可交互的拓扑视图，交给模型。</p>
+      <p>整条链路是一个闭环，分四步。</p>
+      <p><strong>第一步，探查。</strong> Agent 对指定设备下发 CLI，例如读路由表、接口状态或配置片段，环境返回原始文本回显。</p>
+      <p><strong>第二步，入图。</strong> 由一个专门的抽取模型把非结构化回显解析成路由条目、接口、OSPF 邻居、下一跳这些对象，合并进持续累积的拓扑图。</p>
+      <p><strong>第三步，渲染。</strong> 按网络工程习惯的区域布局，从当前图状态切出目标子图，画成一张图。每渲染一次，同时生成一份索引，记下每个实体的标识、它画在哪个位置、哪块区域可以点。Agent 拿到的是当前这一步的视图加上这份索引。</p>
+      <p><strong>第四步，决策。</strong> Agent 基于当前视图选择下一步：继续发命令，或先在图上操作。图上的操作走语义指令：点某台设备、点某条链路、追某条路径；后台照那份索引定位、裁剪、重绘，返回新的一帧视图。下一步的图是系统按它的请求现画出来的。抽取失败或命令不在白名单时，这一步退回成纯文本原始回显，不影响可用性。</p>
       <figure class="fig">
-        <img src="figures/teaser-zh.png" alt="同一网络状态的三种工作记忆" loading="lazy" />
-        <figcaption>
-          <strong>图 2</strong> 同一张网，三种工作记忆。(a) 工程师靠脑中的拓扑关系定位；(b) 纯文本 Agent 必须从一维日志里重拼邻接和分叉；(c) NetCanvas 用跟着探查更新的拓扑图把空间结构留在上下文里。
-        </figcaption>
+        <img src="figures/architecture.png" alt="NetCanvas 的运行机制" loading="lazy" />
+        <figcaption><strong>图 3</strong> NetCanvas 运行时的四层分工。最左是模型侧，它上下文里主要是拓扑图和那份可点选的索引；中间一层把请求分派成看图、查属性、发命令三类；第三层是后台，负责校验调用、更新图状态、动态渲染；最右是执行网络命令的环境。</figcaption>
       </figure>
-      <p>
-        谁在干活，分四层。模型侧窗口里只有当前拓扑图和 Manifest（每个实体的标识、画在哪、哪块能点）；动作层把请求分成看图、查属性、发命令；后台引擎校验调用、更新 GraphStore、按 Manifest 定位并重绘；执行环境在设备或仿真里跑 CLI，返回原始文本回显。上下文里只有图和这份句柄，没有整库。
-      </p>
-      <figure class="fig">
-        <img src="figures/architecture.png" alt="NetCanvas 运行时分层" loading="lazy" />
-        <figcaption>
-          <strong>图 3</strong> 四层是谁在干活。模型侧只拿到拓扑图和可点选索引；中间一层把请求分成看图、查属性、发命令；后台负责校验、更新图状态、动态渲染；最右是执行网络命令的环境。
-        </figcaption>
-      </figure>
-      <p>
-        一轮排障怎么走，是下面四步（论文里写作 Probe → Ingest → Render → Act）。
-      </p>
-      <ul>
-        <li><strong>探查。</strong>Agent 指定设备、下发 CLI，例如读路由表、接口状态或配置片段。环境返回原始文本。</li>
-        <li><strong>入图。</strong>抽取模型把回显解析成路由条目、接口、OSPF 邻居、下一跳等对象，合并进 GraphStore，G<sub>t</sub> 变大一圈。抽取失败或命令不在白名单时，这一轮退回原始回显，不中断后面的步骤。</li>
-        <li><strong>渲染。</strong>按园区 / 广域、核心 / 接入、安全域这些工程坐标，从 G<sub>t</sub> 切出目标子图，画成一张图，并生成 Manifest。之后 Agent 用设备、链路、路径这些语义标识发请求，后台按索引定位、裁剪、重绘。</li>
-        <li><strong>决策。</strong>Agent 看着当前这帧图，选择下一步：继续发命令，或先在图上换取景、追路径、打开属性。图不是环境拍来的照片，是 GraphStore 按当前任务渲出来的领域视图；Agent 发语义指令，后台重画。</li>
-      </ul>
-      <p>这四步落成 Agent 能调的接口如下（名称是实验代码里的接口名）：</p>
+      <p>这个闭环最终以八个工具的形式开放给 Agent（工具名为实验代码里的实际接口名）：</p>
       <table>
-        <thead>
-          <tr>
-            <th>工具</th>
-            <th>它要做什么</th>
-            <th>系统返回什么</th>
-          </tr>
-        </thead>
+        <thead><tr><th>工具</th><th>它想干什么</th><th>系统给它什么</th></tr></thead>
         <tbody>
-          <tr>
-            <td><code>flush_and_render</code></td>
-            <td>发一条命令，并把这轮新证据立刻画出来</td>
-            <td>入图后的拓扑图 + Manifest</td>
-          </tr>
-          <tr>
-            <td><code>render_topology</code></td>
-            <td>换取景：全局 / 设备邻域 / 端到端路径，或切换物理 / 逻辑 / 控制 / Overlay / 安全平面</td>
-            <td>从已有 GraphStore 重画，不再跑 CLI</td>
-          </tr>
-          <tr>
-            <td><code>crop_node</code></td>
-            <td>看某个节点的三跳邻域和属性</td>
-            <td>局部图 + 属性框</td>
-          </tr>
-          <tr>
-            <td><code>trace_route_path</code></td>
-            <td>按路由和下一跳追三层转发路径</td>
-            <td>路径高亮，并标明这条跳链是否闭合</td>
-          </tr>
-          <tr>
-            <td><code>trace_l2_paths</code></td>
-            <td>按端口、LLDP、对端链路追二层 / 物理连通</td>
-            <td>物理平面高亮</td>
-          </tr>
-          <tr>
-            <td><code>inspect_visual_node</code> / <code>inspect_visual_edge</code></td>
-            <td>问某个节点或某条链路在图库里的证据</td>
-            <td>命中对象高亮 + 属性框叠回图上</td>
-          </tr>
-          <tr>
-            <td><code>draw_agent_path</code></td>
-            <td>把自己的判断写回图上</td>
-            <td>按它给的跳序和每跳通断，画成绿 / 红虚线</td>
-          </tr>
+          <tr><td><code>flush_and_render</code></td><td>发一条命令，并把这轮新证据立刻画出来</td><td>入图后的拓扑图 + 索引</td></tr>
+          <tr><td><code>render_topology</code></td><td>换取景：全局总览 / 设备邻域 / 端到端路径，或切换物理 / 逻辑 / 控制 / Overlay / 安全平面</td><td>从已累积的图状态重画</td></tr>
+          <tr><td><code>crop_node</code></td><td>就近看某个节点的三跳邻域和属性</td><td>局部图 + 属性框叠在图上</td></tr>
+          <tr><td><code>trace_route_path</code></td><td>追三层转发路径</td><td>按路由与下一跳证据高亮，并标明这条链是否闭合</td></tr>
+          <tr><td><code>trace_l2_paths</code></td><td>追二层 / 物理连通</td><td>按端口、LLDP、对端链路证据高亮</td></tr>
+          <tr><td><code>inspect_visual_node</code></td><td>问某个节点的底层证据</td><td>命中节点高亮 + 属性框回贴到图上</td></tr>
+          <tr><td><code>inspect_visual_edge</code></td><td>问某条链路的底层证据</td><td>命中链路高亮 + 属性框回贴到图上</td></tr>
+          <tr><td><code>draw_agent_path</code></td><td>把自己的判断写回图上</td><td>按它给的跳序和每跳通断，画成绿 / 红虚线</td></tr>
         </tbody>
       </table>
-      <p>
-        这张表里，除了最后的 <code>draw_agent_path</code>，其余都是「让它看见」；<code>draw_agent_path</code> 是「让它写」：Agent 给出一串设备顺序，再对每一跳标注自己判断通还是断，系统把这串假设画成绿 / 红虚线叠在拓扑上——之后同一平面的重绘会自动带上这些线。系统不替它验证转发是否真的成立，画上去的只是它自己的推断。
-      </p>
-      <p>
-        闭环里有三个设计决定。04 节会分开验：边查边长对上「开局一张静态图够不够」，当前视图对上「一次把全图摊开行不行」，领域布局对上「换成力导向还剩多少」。
-      </p>
-      <p>
-        <strong>图跟着探查长。</strong>现场一开始没有完整全局拓扑。每入一次图，新设备、新链路、新的路径证据合并进 G<sub>t</sub>。Agent 认的是一张边查边长的图，不是开局贴死的快照。
-      </p>
-      <p>
-        01 节那道双防火墙题，换成 NetCanvas 之后可以按帧看到图是怎么长出来的：探到核心，两侧防火墙先出现；焦点移到防火墙，路径开始成形；出口网关齐了，整条路径才落在同一视图上。两台防火墙的并行关系一旦在图上摆开，问题就从「哪台防火墙有毛病」变成「这条路径上这台该起什么作用」。这一次 49 次工具调用，其中发命令只有 5 次，根因一次命中。对面纯文本是 151 次调用，全部在发命令。
-      </p>
+      <p>前七个工具主要让 Agent 探查、取景和检视，第八个则让它把判断写回图上：Agent 给出一串设备顺序，再对每一跳标注自己认为通还是断，系统把这串假设画成绿红虚线叠在拓扑上——之后同一平面的重绘会自动带上这些线。系统不替它验证转发是否真的成立，画上去的就是它自己的推断。这个补充接口不参与前述双防火墙轨迹的定位过程。</p>
+      <p>四步闭环说的是流程怎么跑；流程之内，还有三个容易被忽略的设计决定，后面的对照实验会分别验证它们。</p>
+      <p><strong>一是图跟着探查长。</strong> 真实的排障现场，没有人能在第一时间拿到完美的全局拓扑。入图那一步每跑一次，新发现的设备、链路与路径证据就合并进当前图状态——Agent 认的是一张跟着探查一起生长的拓扑。</p>
+      <p>前面 01 节那道双防火墙的题，换成 NetCanvas 之后可以逐帧看清拓扑是怎么长出来的：探到核心，两侧防火墙先露头；焦点移到防火墙，路径开始成形；出口网关齐了，整条路径才落在图上。两台防火墙的并行关系一旦在图上摆开，问题就从「哪台防火墙有毛病」变成了「这条路径上这台防火墙该起什么作用」。这一次它用了 49 次工具调用，其中只有 5 次是发命令，答案一次就对——对面纯文本那条轨迹是 151 次调用、全部在发命令。</p>
       <figure class="fig">
         <img src="assets/demo/growth/q15_physical_growth.gif" alt="拓扑跟着探查一起长" loading="lazy" />
-        <figcaption>
-          <strong>图 4</strong> 同一道双防火墙题、同一张物理平面上的拓扑生长（取自一条答对轨迹）。从报障 PC 单点起步，每轮探查后新节点和连线在图上出现，当前焦点高亮。
-        </figcaption>
+        <figcaption><strong>图 4</strong> 同一道双防火墙题上，NetCanvas 侧的拓扑生长过程（同一张物理平面，逐帧取自一条答对的轨迹）。从只有报障 PC 的单点起步，每一轮探查后新发现的设备和连线在图上长出来，当前焦点高亮。</figcaption>
       </figure>
-      <p>
-        <strong>每步只给当前视图。</strong>完整 G<sub>t</sub> 不进窗口。渲染切出来的始终是当前任务相关的局部：全局和局部切换、按焦点裁剪、高亮路径、打开节点和边的属性。空间状态放在 GraphStore 里，模型不用在长文本里重拼整张网。开局给一张不能变焦的静态全图，验的就是这件事的反面。
-      </p>
-      <p>
-        <strong>按网工习惯摆。</strong>设备按园区 / 广域、核心 / 接入、安全域归组。布局编码的是工程语义，不是为了好看。入图和交互协议都不动、只把这些坐标换成 NetworkX 力导向布局（Fruchterman–Reingold），看布局本身占多少分。
-      </p>
-      <p>
-        三个决定要分开看，就不能连底座、评分、数据源一起改。下一节只换 W<sub>t</sub> 怎么组织。
-      </p>
+      <p><strong>二是每步只给当前视图。</strong> 完整的图状态不适合直接塞进有限的上下文。渲染那一步切出来的始终是围绕当前任务的局部：切换全局与局部视图、围绕焦点设备裁剪、高亮当前路径、查看节点与链路属性，还可以在图上标记通断假设。空间状态交给系统维护，模型不必在脑子里死记硬背整张网。</p>
+      <p><strong>三是按网工习惯的领域布局画。</strong> 设备按园区 / 广域、核心 / 接入、安全域归组，路径走向有章法，接近工程师手绘的草图。布局编码的是园区、核心、安全域这些工程语义——看见什么重要，以什么方式呈现同样重要。这一点，后面的对照实验会单独验证。</p>
     </section>
 
     <section>
-      <h2><span class="sec-num">03</span> / 实验：只换工作记忆怎么组织</h2>
-      <p>
-        评测用公开基准 CTBench 的前 66 道故障定位题（Q1–Q66）。题目来自真实运维案例，经专家流程整理。Agent 进入未知网络、自己发命令，从不完整证据里给出规范化根因（故障节点、故障对象、根因），覆盖路由、端口、安全 / NAT、Overlay/VPN、高可用。证据是局部的，拓扑是未知的，根因往往在跨设备的那一跳上。
-      </p>
-      <p>
-        底座、harness、评分规则、底层 CLI 数据源固定，变的只是上下文里那份世界怎么组织。九条配置分成三族，外加一条只换布局的消融：
-      </p>
+      <h2><span class="sec-num">03</span> / 数据验证：66 道真实故障题，只换工作记忆的组织方式</h2>
+      <p>验证放在公开基准 CTBench 的前 66 道故障定位题（Q1–Q66）上。题目源自真实运维案例：Agent 要进入未知网络、自己发命令，从不完整证据里给出规范化根因（故障节点、故障对象、根因）。难度远超单轮问答——证据是局部的，拓扑是未知的，根因往往在跨设备的那一跳上。</p>
+      <p>对照实验把工作记忆形态当成唯一自变量。底座模型、Agent 的 harness 框架、评分规则、底层 CLI 数据源全部固定，变的只是上下文里那份「世界」怎么组织：</p>
       <ul>
-        <li><strong>纯文本（M1 / M1-0 / M1-0-0）。</strong>回显直接进上下文。M1 只堆探查文本；M1-0 额外预置一段物理连线说明；M1-0-0 开局给一张静态物理拓扑图，之后不再更新、不能交互。</li>
-        <li><strong>结构化图（M2 / M2-0 / M2-0-0）。</strong>同样入图，前台只给 JSON 子图和图查询结果，没有图像。M2-0 开局把物理连线写入 GraphStore；M2-0-0 再加一张静态物理图。</li>
-        <li><strong>NetCanvas（M3 / M3-0）。</strong>走完探查 → 入图 → 渲染 → 决策。M3-0 用同一份物理连线做底图，后续探查继续画在上面。</li>
-        <li><strong>只换布局（M3g）。</strong>和 M3 同一套管线，只把渲染坐标换成通用力导向。</li>
+        <li><strong>纯文本：</strong>回显直接进上下文，拓扑必须在脑子里拼。</li>
+        <li><strong>结构化图：</strong>同样入图，前台只给 JSON 子图和查询结果，没有图像。</li>
+        <li><strong>NetCanvas：</strong>走完探查 → 入图 → 渲染 → 决策，按需取景、高亮路径、检视属性。</li>
       </ul>
-      <p>
-        预置只给物理平面：设备和物理连线。不含逻辑平面、路由表、ACL、接口状态、端口配置、协议状态，也不含故障答案。逻辑状态还是要靠 CLI 查。
-      </p>
-      <p>
-        主指标是 66 题上的 <strong>best-of-3 通过率</strong>：每个（题目, 配置）最多独立跑 3 次，任一次命中算这题通过。判分是严格集合匹配，不对语义放水、不给部分分。步数 = 一次工具调用，发一条 CLI 和在图上换一次取景都算一步；平均数含成功和失败。Token 只看成本趋势，不当作「第一次答对花了多少」。底座统一 MiniMax-M3，每题最多 1 小时。
-      </p>
-      <p>
-        同一道题上，这几类配置给 Agent 看的东西不一样。数字放在下一节，先看它实际收到的是什么。
-      </p>
+      <p>在这三类之上，还各加了两种事先给拓扑的对照，区别在于给的是图还是数据。两者都只给物理平面：设备和物理连线，不含逻辑平面、路由表、ACL、接口状态、端口配置、协议状态，也不含故障答案；逻辑状态仍须靠 CLI 探查获得。</p>
+      <ul>
+        <li><strong>开局静态图：</strong>一张画好的物理拓扑图。开局给一次，之后不再更新、不能交互。</li>
+        <li><strong>预置连线数据：</strong>同一份物理平面拓扑数据，预置进各自的工作记忆。纯文本侧是一段连线文字说明，结构化图侧进后台图库，NetCanvas 侧成为底图、后续探查继续画在上面。</li>
+      </ul>
+      <p>再加上一个只换渲染布局的消融，一共九条对照臂。底座统一 MiniMax-M3；每题最多 1 小时；每个（题目, 配置）最多独立重复 3 次，任一次命中即算通过。判分是<strong>严格集合匹配</strong>。一步就是一次工具调用，发一条 CLI 和在图上换一次取景都算一步。</p>
+      <figure class="fig">
+        <img src="figures/workflow-zh.png" alt="四种工作记忆，Agent 看见的世界完全不同" loading="lazy" />
+        <figcaption><strong>图 5</strong> 同一道题上的四种工作记忆，面板里就是各配置下 Agent 实际收到的内容。左上纯文本，拓扑必须从命令回显碎片里脑补；右上结构化图，图在系统里，模型仍要从符号推断谁连谁；左下开局静态图，信息全给但没有焦点、不能交互；右下 NetCanvas，按当前路径渲染局部，可高亮、可检视。</figcaption>
+      </figure>
+
+      <h3>发现一：只换工作记忆的组织方式，通过率从 30.3% 提到 54.5%</h3>
+      <p>九条对照臂的完整数字如下（步数为平均每次运行的工具调用次数，成功与失败都计入）：</p>
+      <table>
+        <thead><tr><th>工作记忆形态</th><th class="num">答对题数</th><th class="num">通过率</th><th class="num">平均步数</th></tr></thead>
+        <tbody>
+          <tr><td>纯文本</td><td class="num">20/66</td><td class="num">30.3%</td><td class="num">159</td></tr>
+          <tr><td>纯文本 + 开局静态图</td><td class="num">24/66</td><td class="num">36.4%</td><td class="num">145</td></tr>
+          <tr><td>纯文本 + 预置连线数据</td><td class="num">26/66</td><td class="num">39.4%</td><td class="num">159</td></tr>
+          <tr><td>JSON 结构化图</td><td class="num">25/66</td><td class="num">37.9%</td><td class="num">217</td></tr>
+          <tr><td>JSON 结构化图 + 开局静态图</td><td class="num">29/66</td><td class="num">43.9%</td><td class="num">182</td></tr>
+          <tr><td>JSON 结构化图 + 预置连线数据</td><td class="num">32/66</td><td class="num">48.5%</td><td class="num">183</td></tr>
+          <tr><td><strong>NetCanvas</strong></td><td class="num"><strong>36/66</strong></td><td class="num"><strong>54.5%</strong></td><td class="num"><strong>113</strong></td></tr>
+          <tr><td>NetCanvas，换通用力导向布局</td><td class="num">25/66</td><td class="num">37.9%</td><td class="num">131</td></tr>
+          <tr><td>NetCanvas + 预置连线数据</td><td class="num">42/66</td><td class="num">63.6%</td><td class="num">107</td></tr>
+        </tbody>
+      </table>
+      <p>净对照是纯文本与 NetCanvas 那两行：<strong>36 道对 20 道</strong>，逐题配对 <strong>16 胜、0 负、50 平</strong>。表里最高的 63.6% 是 NetCanvas 再加预置连线数据，那是「工作记忆 + 预置数据」的上限。</p>
+
+      <h3>发现二：赢的不是「有图」，而是随探查更新的交互视图——JSON、静态图、通用布局都追不上</h3>
+      <p><strong>JSON 结构化图 37.9%，平均 217 步</strong>，单次 Token 约为 NetCanvas 的两倍。后台同样入图，前台只给符号，空间关系进不了模型能直接用的那一层。</p>
+      <p><strong>开局静态图：纯文本 24 道、结构化图 29 道</strong>，都低于会重绘、会高亮的 36 道。对纯文本 Agent 来说，预置连线数据（26 道）甚至比给一张静态图更好用，但仍然明显弱于随探查更新的交互视图。</p>
+      <p><strong>只换布局：36 道掉到 25 道</strong>，配对 11 胜 0 负，退回和 JSON 同一档。入图和交互协议都没变，摊开的节点对视觉推理是干扰。这验证了 02 节的第三个设计决定：领域布局是信息。</p>
+      <p><strong>预置连线数据对各形态都有用，但抹不平差距。</strong> 三类各多答对 6–7 道（20→26、25→32、36→42），排序不变；不预置的 NetCanvas（54.5%）仍高于预置了的结构化图（48.5%）。它给的只是谁连着谁，路由、策略、端口状态还是要自己去查。</p>
+
+      <h3>发现三：增益集中在最依赖空间记忆的场景——平行路径题从 10% 拉到 90%</h3>
+      <p>把 66 道题按故障场景拆开：</p>
+      <table>
+        <thead><tr><th>故障场景</th><th class="num">题数</th><th class="num">纯文本</th><th class="num">JSON 结构化图</th><th class="num">NetCanvas</th><th class="num">NetCanvas + 预置连线</th></tr></thead>
+        <tbody>
+          <tr><td>防火墙策略与出接口</td><td class="num">11</td><td class="num">90.9%</td><td class="num">90.9%</td><td class="num">100%</td><td class="num">100%</td></tr>
+          <tr><td>双防火墙 HRP / ECMP 平行路径</td><td class="num">10</td><td class="num"><strong>10.0%</strong></td><td class="num">20.0%</td><td class="num"><strong>90.0%</strong></td><td class="num">90.0%</td></tr>
+          <tr><td>总部核心 STP / 二层拓扑</td><td class="num">8</td><td class="num">50.0%</td><td class="num">75.0%</td><td class="num">87.5%</td><td class="num">100%</td></tr>
+          <tr><td>跨园区访客接入</td><td class="num">6</td><td class="num">0</td><td class="num">16.7%</td><td class="num">16.7%</td><td class="num">83.3%</td></tr>
+          <tr><td>跨城 L3VPN 路由异常</td><td class="num">15</td><td class="num">0</td><td class="num">0</td><td class="num">6.7%</td><td class="num">13.3%</td></tr>
+          <tr><td>AP 上联 / 核心侧 STP</td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+      <p>差距最大的一行就是 01 节那道双防火墙题所在的簇。短路径策略题各方案本来就高，这层机制几乎没有额外空间。跨城 VPN 上各方案都弱，NetCanvas 也只有 <strong>6.7%</strong>，瓶颈已不在工作记忆形态。</p>
+
+      <h3>发现四：更准的同时也更省——看图省掉的是纯文本的反复试错</h3>
+      <p>画图会把视觉上下文送进窗口，单次任务总 Token 并不比纯文本更低，但明显低于 JSON 方案；与此同时，NetCanvas 的平均工具调用步数从纯文本的 159 步降到 113 步。</p>
+      <figure class="fig">
+        <img src="figures/results-zh.png" alt="CTBench 通过率与平均工具调用步数" loading="lazy" />
+        <figcaption><strong>图 6</strong> 九条对照臂的通过率（柱，柱内为通过率与答对题数）与平均工具调用步数（红线）。横轴按三个家族分组：纯文本、结构化图、NetCanvas，最右是只换渲染布局的消融。数字与发现一的表一致。</figcaption>
+      </figure>
+      <p>把增益逐题回看之后更具体：<strong>多答对的题主要赢在探查覆盖率</strong>。有了空间化的局部视图和路径高亮，原来漏掉的那台设备被查到了——CLI 翻查变成了沿着看得见的结构做机制验证。</p>
+
+      <h3>发现五：这层机制的边界——剩下的错题缺的是抽取和推理，不是画图</h3>
+      <p>这 30 道逐题回看了轨迹、入图记录和最终答案，并按三个环节及其组合归因：证据层（关键命令发了，抽取模型没把回显结构化进图）、探查层（关键探查没发生，或拿到线索没有跟下去）、推理层（证据都在上下文里了，仍收不成最小根因）。实际形成下面四种组合：</p>
+      <table>
+        <thead><tr><th>失败卡在哪一层</th><th class="num">题数</th><th class="num">占 30 道失败题</th></tr></thead>
+        <tbody>
+          <tr><td>证据层 + 推理层</td><td class="num">14</td><td class="num">46.7%</td></tr>
+          <tr><td>探查层 + 推理层</td><td class="num">9</td><td class="num">30.0%</td></tr>
+          <tr><td>探查层 + 证据层</td><td class="num">5</td><td class="num">16.7%</td></tr>
+          <tr><td>纯推理层</td><td class="num">2</td><td class="num">6.7%</td></tr>
+        </tbody>
+      </table>
+      <p>这层机制能接走的，是「组织和记录不可靠」那一层。抽取模型面对 VRF/RT、前缀列表时的结构化能力，和模型拿到证据后的多跳因果收敛，要分别靠强化抽取模型和领域后训练去补。这也对上发现三：平行路径抬得上去，因为缺的是覆盖；跨城 VPN 抬不上去，因为缺的是抽取和推理。</p>
+      <p>还有一层边界：这 66 道题背后是同一张网——企业园区加跨城星型组网。在这类多站点网络里，交互视觉工作记忆能卸掉路径追踪和局部拓扑理解的负担；换成数据中心的 spine-leaf、更大规模的骨干网或更高密度的多租户云网，领域布局这个先验还成不成立，需要重新验证。</p>
     </section>
 
     <section>
-      <h2><span class="sec-num">04</span> / 结果：赢的不是「有图」</h2>
-      <figure class="fig">
-        <img src="figures/workflow-zh.png" alt="四种工作记忆，Agent 看见的世界不同" loading="lazy" />
-        <figcaption>
-          <strong>图 5</strong> 同一道题上的四种工作记忆，面板里就是各配置下 Agent 实际收到的内容。左上纯文本，拓扑要从回显碎片里拼；右上结构化图，图在系统里，模型仍要从符号判断谁连谁；左下开局静态图，信息一次给全但没有焦点、不能交互；右下 NetCanvas，按当前路径渲染局部，可高亮、可检视。
-        </figcaption>
-      </figure>
-      <p>九条配置的数字如下（步数为平均每次运行的工具调用次数，成功失败都计入）。</p>
-      <table>
-        <thead>
-          <tr>
-            <th>工作记忆配置</th>
-            <th class="num">答对</th>
-            <th class="num">通过率</th>
-            <th class="num">平均步数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>纯文本</td>
-            <td class="num">20/66</td>
-            <td class="num">30.3%</td>
-            <td class="num">159</td>
-          </tr>
-          <tr>
-            <td>纯文本 + 开局静态图</td>
-            <td class="num">24/66</td>
-            <td class="num">36.4%</td>
-            <td class="num">145</td>
-          </tr>
-          <tr>
-            <td>纯文本 + 预置连线数据</td>
-            <td class="num">26/66</td>
-            <td class="num">39.4%</td>
-            <td class="num">159</td>
-          </tr>
-          <tr>
-            <td>JSON 结构化图</td>
-            <td class="num">25/66</td>
-            <td class="num">37.9%</td>
-            <td class="num">217</td>
-          </tr>
-          <tr>
-            <td>结构化图 + 开局静态图</td>
-            <td class="num">29/66</td>
-            <td class="num">43.9%</td>
-            <td class="num">182</td>
-          </tr>
-          <tr>
-            <td>结构化图 + 预置连线数据</td>
-            <td class="num">32/66</td>
-            <td class="num">48.5%</td>
-            <td class="num">183</td>
-          </tr>
-          <tr>
-            <td><strong>NetCanvas（领域布局）</strong></td>
-            <td class="num"><strong>36/66</strong></td>
-            <td class="num"><strong>54.5%</strong></td>
-            <td class="num"><strong>113</strong></td>
-          </tr>
-          <tr>
-            <td>NetCanvas，换通用力导向布局</td>
-            <td class="num">25/66</td>
-            <td class="num">37.9%</td>
-            <td class="num">131</td>
-          </tr>
-          <tr>
-            <td>NetCanvas + 预置连线数据</td>
-            <td class="num">42/66</td>
-            <td class="num">63.6%</td>
-            <td class="num">107</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        净对照是纯文本和 NetCanvas 两行：<strong>36 道对 20 道</strong>，逐题配对 <strong>16 胜、0 负、50 平</strong>。和结构化图比，是 14 胜、3 负。两者走同一条入图管线，差的不是「后台有没有建图」，是模型拿得到的那份 W<sub>t</sub>，以及能不能在图上按需取景。表里 63.6% 是 NetCanvas 再加预置连线，那是「工作记忆 + 物理拓扑先验」的上限，不要和 30.3% → 54.5% 混成同一组对照。步数从 159 降到 113；单次运行 Token 比纯文本高、比所有 JSON 配置低，不是用更高成本换准确率。换另一个多模态底座、后台和评分不变，仍多 14 道（25/66 → 39/66），那个底座的纯文本还赶不上 MiniMax 上的 NetCanvas。
-      </p>
-      <figure class="fig">
-        <img src="figures/results-zh.png" alt="CTBench 通过率与平均探查步数" loading="lazy" />
-        <figcaption>
-          <strong>图 6</strong> 九条配置的通过率（柱，柱内为通过率与答对题数）与平均探查步数（线）。横轴按纯文本、结构化图、NetCanvas 分组，最右是只换布局的消融。数字与上表一致。
-        </figcaption>
-      </figure>
-      <p>02 节那三个决定，可以在这张表上对上。</p>
-      <p>
-        <strong>开局给一张静态图不够。</strong>纯文本加静态图 24 道，结构化图加静态图 29 道，都低于会重绘、会高亮的 36 道。静态全图不能跟着当前探查变焦，还容易把无关节点摊在眼前——这是「每步只给当前视图」的反面。对纯文本来说，预置连线文字（26 道）甚至比给一张静态图更好用，但仍然明显低于跟着探查更新的交互视图。
-      </p>
-      <p>
-        <strong>只换布局，36 道掉到 25 道。</strong>配对 11 胜 0 负，回到和 JSON 同一档。入图和交互协议没变，摊开的节点对视觉推理是干扰。领域布局是信息。只换布局的那条，通过率下来了，步数也上去了。
-      </p>
-      <p>
-        <strong>预置连线对各形态都有用，抹不平差距。</strong>三类各多对 6–7 道（20→26、25→32、36→42），排序不变。不预置的 NetCanvas（54.5%）仍高于预置了的结构化图（48.5%）。预置给的是谁连着谁，路由、策略、端口状态还是要自己查。这也不是单调变好：有个例是不预置过了、预置反而没过——全局底图在推理跟不上时，可能让探查过早收住。
-      </p>
-      <p>
-        总表说的是「不是有图」。分到题上，增益集中在最依赖空间关系的场景；有些题本来就高，有些题换 W<sub>t</sub> 也抬不上去。
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>故障场景</th>
-            <th class="num">题数</th>
-            <th class="num">纯文本</th>
-            <th class="num">JSON 结构化图</th>
-            <th class="num">NetCanvas</th>
-            <th class="num">NetCanvas + 预置连线</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>防火墙策略与出接口</td>
-            <td class="num">11</td>
-            <td class="num">90.9%</td>
-            <td class="num">90.9%</td>
-            <td class="num">100%</td>
-            <td class="num">100%</td>
-          </tr>
-          <tr>
-            <td>双防火墙 HRP / ECMP 平行路径</td>
-            <td class="num">10</td>
-            <td class="num">10.0%</td>
-            <td class="num">20.0%</td>
-            <td class="num">90.0%</td>
-            <td class="num">90.0%</td>
-          </tr>
-          <tr>
-            <td>总部核心 STP / 二层拓扑</td>
-            <td class="num">8</td>
-            <td class="num">50.0%</td>
-            <td class="num">75.0%</td>
-            <td class="num">87.5%</td>
-            <td class="num">100%</td>
-          </tr>
-          <tr>
-            <td>跨园区访客接入</td>
-            <td class="num">6</td>
-            <td class="num">0</td>
-            <td class="num">16.7%</td>
-            <td class="num">16.7%</td>
-            <td class="num">83.3%</td>
-          </tr>
-          <tr>
-            <td>跨城 L3VPN 路由异常</td>
-            <td class="num">15</td>
-            <td class="num">0</td>
-            <td class="num">0</td>
-            <td class="num">6.7%</td>
-            <td class="num">13.3%</td>
-          </tr>
-          <tr>
-            <td>AP 上联 / 核心侧 STP</td>
-            <td class="num">6</td>
-            <td class="num">0</td>
-            <td class="num">0</td>
-            <td class="num">0</td>
-            <td class="num">0</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        01 节那道题就在平行路径这一行：纯文本 10%，NetCanvas 90%。短路径策略题各方案本来就高，换工作记忆几乎加不了分。跨城 VPN 上各方案都弱，NetCanvas 也只有 6.7%，瓶颈已经不在 W<sub>t</sub> 怎么画。
-      </p>
-      <p>
-        剩下 30 道，逐题对过轨迹、入图记录和最终答案，按卡在哪一层归了三类：推理（证据已经在了，收不成最小根因）、探查（该查的没查，或线索没有跟下去）、入图（命令发了，抽取没写进图）。
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>失败卡在哪一层</th>
-            <th class="num">题数</th>
-            <th class="num">占 30 道失败题</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>入图 + 推理</td>
-            <td class="num">14</td>
-            <td class="num">46.7%</td>
-          </tr>
-          <tr>
-            <td>探查 + 推理</td>
-            <td class="num">9</td>
-            <td class="num">30.0%</td>
-          </tr>
-          <tr>
-            <td>探查 + 入图</td>
-            <td class="num">5</td>
-            <td class="num">16.7%</td>
-          </tr>
-          <tr>
-            <td>只推理</td>
-            <td class="num">2</td>
-            <td class="num">6.7%</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        相对纯文本多出来的那 16 道，主要赢在探查覆盖：局部视图和路径高亮让原来漏掉的设备被查到，CLI 翻查变成沿着看得见的结构做机制验证。跨城 VPN、AP 上联、部分 STP 抬不上去，缺的是 VRF/RT、前缀列表这类协议的抽取，以及证据齐了之后的多跳收敛。这两层换 W<sub>t</sub> 补不上。
-      </p>
-      <p>
-        这 66 道题背后是同一张网：企业园区加跨城星型组网。在这类多站点网络里，交互视觉工作记忆能卸掉路径追踪和局部拓扑理解的负担。换成数据中心 spine-leaf、更大规模骨干网或更高密度的多租户云网，现在这套领域布局还成不成立，要另做实验。评分按严格集合匹配，格式不合规也记失败，可能把「机制对了、输出不规范」估低了。
-      </p>
-      <p>
-        跨设备故障定位里，上限往往不在会不会读某一条回显，而在 W<sub>t</sub> 怎么呈现、能不能按需拉取。对照要的是能重绘、能高亮的交互视图，加上按工程区域摆的布局；复杂协议上没过的题，卡在抽取和推理，不在画图。
-      </p>
-
+      <h2><span class="sec-num">04</span> / 终极启示：学会「认知卸载」，构建专业 Agent 的新范式</h2>
+      <p>NetCanvas 的实践，揭示了专业 Agent 走向现网落地的核心命题：模型本身的理解能力固然重要，但外围系统（Harness）如何为它呈现这个真实世界，才真正决定了它最终的战斗力。</p>
+      <p>对于 IP 网络这种由拓扑、路径、协议动态交织的真实复杂系统，把海量日志生硬地压进大模型的 Token 里，注定会导致认知超载。Agent 除了需要强大的语言理解能力，更需要一套能持续演化的「延展工作记忆」。真正的专业能力，不仅仅依赖于模型内部庞大的“知识储备”与强大的“推理决策”，更在于懂得借助外围系统来进行“认知卸载”，建立起真正的网络空间全局观。</p>
+      <p>这也是华为 GTS AI 始终坚守的技术演进路径：从真实的运维现场出发，将资深工程师长期沉淀的“空间认知与工作方式”工程化，转化为 Agent 可感知、可交互的系统能力。</p>
+      <p>未来的网络智能运维，Agent 将彻底告别在海量碎片日志中“大脑超载、盲人摸象”的窘境。有了「可交互视觉拓扑」的驱动，AI 终于可以像顶尖专家一样，看着网络、沿着路径，精准排障。</p>
       <div class="sources">
         <h3>项目地址</h3>
         <ul>
@@ -552,41 +219,28 @@
           <li>CTBench：<a href="https://huggingface.co/datasets/netop/CTBench">https://huggingface.co/datasets/netop/CTBench</a></li>
         </ul>
       </div>
-
       <p class="end-mark">— 完 —</p>
     </section>
 
     <section id="cite">
       <h2>引用本文</h2>
       <div class="citation">
-        <div class="citation-bar">
-          <span>BibTeX</span>
-          <button type="button" id="copy-bibtex">复制</button>
-        </div>
+        <div class="citation-bar"><span>BibTeX</span><button type="button" id="copy-bibtex">复制</button></div>
         <pre><code id="bibtex-code">@misc{netcanvas2026,
   title  = {{NetCanvas}: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization},
   author = {Cai, Manjing and Wu, Chenwei and You, Qiheng and Sun, Weijian and Chen, Xin},
   year   = {2026},
-  month  = {aug},
   note   = {Preprint},
   url    = {https://caimanjing.github.io/netcanvas/}
 }</code></pre>
       </div>
-      <p class="note">
-        项目主页：<a href="https://caimanjing.github.io/netcanvas/">https://caimanjing.github.io/netcanvas/</a>。论文 PDF 见页首「论文 PDF」按钮。
-      </p>
+      <p class="note">项目主页：<a href="https://caimanjing.github.io/netcanvas/">https://caimanjing.github.io/netcanvas/</a>。论文 PDF 见页首「论文 PDF」按钮。</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>
-      本文为中文长文解读。本项目页与论文材料采用
-      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。
-    </p>
-    <p class="footer-meta">
-      NetCanvas · <a href="https://caimanjing.github.io/netcanvas/">caimanjing.github.io/netcanvas</a>
-      · see <a href="LICENSE">LICENSE</a>
-    </p>
+    <p>本文为中文长文解读。本项目页与论文材料采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。</p>
+    <p class="footer-meta">NetCanvas · <a href="https://caimanjing.github.io/netcanvas/">caimanjing.github.io/netcanvas</a> · see <a href="LICENSE">LICENSE</a></p>
   </footer>
 
   <script>
