@@ -1,63 +1,28 @@
 # NetCanvas
 
-Project page (and later code) for **NetCanvas: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization**.
+**NetCanvas：面向 LLM 的 IP 网络故障定位可交互视觉工作记忆** 项目主页。
 
-站点 / Site:
+Project page for **NetCanvas: Interactive Visual Working Memory for LLM-Based IP Network Fault Localization**.
 
-```text
-https://caimanjing.github.io/netcanvas/
-```
+- 站点 / Site：<https://caimanjing.github.io/netcanvas/>
+- 首页是一篇中文长文解读《华为 GTS NetCanvas：给故障定位 Agent 配上可交互的拓扑工作记忆》，附论文 PDF 与 BibTeX 引用。
 
-站点首页为一篇中文长文解读。
-
-The landing page is a Chinese long-form article.
-
-## Layout
+## 项目内容
 
 ```text
 netcanvas/
 ├── README.md
-├── LICENSE                 # dual-license note (site vs future code)
-└── docs/                   # GitHub Pages source (Settings → /docs)
+├── LICENSE              # 站点与未来代码的双许可说明
+└── docs/                # GitHub Pages 站点源（/docs）
     ├── .nojekyll
-    ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
-    ├── index.html          # 中文长文解读
+    ├── LICENSE          # 页面与论文材料：CC BY-NC-SA 4.0
+    ├── index.html       # 中文长文解读首页
     ├── paper/NetCanvas.pdf
-    ├── assets/             # theme, site JS, growth GIFs
-    └── figures/
+    ├── assets/          # 主题样式与演示动图
+    └── figures/         # 文章配图
 ```
-
-Root is reserved for future runnable code. The public site lives only in `docs/`.
-
-## Local preview
-
-```powershell
-python -m http.server 8080 --directory docs
-```
-
-Open [http://localhost:8080](http://localhost:8080).
-
-## GitHub Pages (project subpath)
-
-1. Push this repo to `https://github.com/caimanjing/netcanvas`
-2. **Settings → Pages**
-  - Source: **Deploy from a branch**
-  - Branch: `main`
-  - Folder: `/docs`  ← not `/ (root)`
-3. Wait 1–2 minutes, then open `https://caimanjing.github.io/netcanvas/`
-
-
-
-## Notes
-
-- Paper PDF is at `docs/paper/NetCanvas.pdf` (arXiv v2 named version; do not upload `NetCanvas-anon.pdf`)
-- Fill the arXiv ID in `docs/index.html` and BibTeX when the preprint is announced
-- Growth GIFs/MP4: `docs/assets/demo/growth/SOURCE.txt` (Q15 GIF from v9 article; Q13 MP4 from v7.1)
-
-
 
 ## License
 
-- **Project page & paper materials (**`docs/`**)** → [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) (`docs/LICENSE`)
-- **Future source code** → separate software license; see root `LICENSE`
-
+- **项目页与论文材料（`docs/`）** → [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)（见 `docs/LICENSE`）
+- **未来源代码** → 另行采用软件许可，见根目录 `LICENSE`
