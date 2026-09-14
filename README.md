@@ -23,7 +23,7 @@ netcanvas/
     ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
     ├── index.html          # 中文长文解读（青稞 AI 投稿，v11 稿）
     ├── paper/NetCanvas.pdf
-    ├── assets/             # theme, site JS, growth GIFs
+    ├── assets/             # theme, growth GIFs
     └── figures/
 ```
 
@@ -46,12 +46,11 @@ Open <http://localhost:8080>.
    - Folder: **`/docs`**  ← not `/ (root)`
 3. Wait 1–2 minutes, then open `https://caimanjing.github.io/netcanvas/`
 
-## Before public launch
+## Notes
 
 - Paper PDF is at `docs/paper/NetCanvas.pdf` (arXiv v2 named version; do not upload `NetCanvas-anon.pdf`)
 - Fill the arXiv ID in `docs/index.html` and BibTeX when the preprint is announced
 - Growth GIFs/MP4: `docs/assets/demo/growth/SOURCE.txt` (Q15 GIF from v9 article; Q13 MP4 from v7.1)
-- During double-blind review, keep the repo private or strip author identity if required
 
 ## License
 
