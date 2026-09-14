@@ -8,9 +8,9 @@ Project page (and later code) for **NetCanvas: Interactive Visual Working Memory
 https://caimanjing.github.io/netcanvas/
 ```
 
-页面右上角 **EN / 中** 切换。浏览器语言为中文时默认中文，否则默认英文。
+站点首页为一篇中文长文解读（青稞 AI 投稿，v11 稿）。
 
-The page has an **EN / 中** toggle. Chinese browsers default to Chinese; otherwise English.
+The landing page is a Chinese long-form article (青稞 AI submission, v11 draft).
 
 ## Layout
 
@@ -21,7 +21,7 @@ netcanvas/
 └── docs/                   # GitHub Pages source (Settings → /docs)
     ├── .nojekyll
     ├── LICENSE             # CC BY-NC-SA 4.0 for page/paper materials
-    ├── index.html          # bilingual project page (EN / 中)
+    ├── index.html          # 中文长文解读（青稞 AI 投稿，v11 稿）
     ├── paper/NetCanvas.pdf
     ├── assets/             # theme, site JS, growth GIFs
     └── figures/
